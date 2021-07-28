@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		ƒrƒ‹ƒ{[ƒh•`‰æ[ SpriteBillboard.cpp ]
+		ï¿½rï¿½ï¿½ï¿½{ï¿½[ï¿½hï¿½`ï¿½ï¿½[ SpriteBillboard.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/25
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -24,29 +22,29 @@
 #include "SpriteBillboard.h"
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CSpriteBillboard::CSprite2D(int Priolity)
-ˆø”:		int Priolity	—Dæ“x
-–ß‚è’l:
-à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ï¿½Öï¿½ï¿½ï¿½:		CSpriteBillboard::CSprite2D(int Priolity)
+ï¿½ï¿½ï¿½ï¿½:		int Priolity	ï¿½Dï¿½ï¿½x
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CSpriteBillboard::CSpriteBillboard(int Priolity) :CScene(Priolity)
 {
-	m_VtxBuff = NULL;							// ’¸“_ƒoƒbƒtƒ@
-	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	‰ñ“]
-	m_Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);	//	Šg‘å—¦
-	m_Normal = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	–@ü
-	m_Size = D3DXVECTOR2(0.0f, 0.0f);			//	’¸“_À•W
-	m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);//	F
-	m_TexturePattern = 0;						//	ƒeƒNƒXƒ`ƒƒƒpƒ^[ƒ“
-	m_TextureAnimationCount = 0.0f;				//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒJƒEƒ“ƒ^
-	m_TextureAnimationTime = 0.0f;				//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒ^ƒCƒ€
+	m_VtxBuff = NULL;							// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
+	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	ï¿½ï¿½]
+	m_Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);	//	ï¿½gï¿½å—¦
+	m_Normal = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	ï¿½@ï¿½ï¿½
+	m_Size = D3DXVECTOR2(0.0f, 0.0f);			//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½W
+	m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);//	ï¿½F
+	m_TexturePattern = 0;						//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½
+	m_TextureAnimationCount = 0.0f;				//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½^
+	m_TextureAnimationTime = 0.0f;				//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CSpriteBillboard* CSpriteBillboard::Create(int Priolity)
-ˆø”:		int Priolity				—Dæ“x
-–ß‚è’l:		return spriteBillboard;		ƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^
-à–¾:		¶¬
+ï¿½Öï¿½ï¿½ï¿½:		CSpriteBillboard* CSpriteBillboard::Create(int Priolity)
+ï¿½ï¿½ï¿½ï¿½:		int Priolity				ï¿½Dï¿½ï¿½x
+ï¿½ß‚ï¿½l:		return spriteBillboard;		ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CSpriteBillboard* CSpriteBillboard::Create(int Priolity)
 {
@@ -54,83 +52,83 @@ CSpriteBillboard* CSpriteBillboard::Create(int Priolity)
 
 	spriteBillboard = new CSpriteBillboard(Priolity);
 
-	spriteBillboard->Init();	//	‰Šú‰»
+	spriteBillboard->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	return spriteBillboard;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::Init(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰Šú‰»
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::Init(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::Init(void)
 {
-	MakeVerTex();	//	’¸“_‚Ìì¬
+	MakeVerTex();	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::Uninit(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::Uninit(void)
 {
 	if (m_VtxBuff != NULL)
-	{	//	’¸“_ƒoƒbƒtƒ@
+	{	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
 
-		m_VtxBuff->Release();	// ‰ð•ú
+		m_VtxBuff->Release();	// ï¿½ï¿½ï¿½
 		m_VtxBuff = NULL;
 	}
 
-	CScene::Release();	//	ƒIƒuƒWƒFƒNƒgŽ©g‚Ì‰ð•ú
+	CScene::Release();	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½gï¿½Ì‰ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::Update(void)
 {
-	SetUpVerTex();	//	’¸“_‚ÌÝ’è
+	SetUpVerTex();	//	ï¿½ï¿½ï¿½_ï¿½ÌÝ’ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::Draw(void)
 {
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚ðƒf[ƒ^ƒXƒgƒŠ[ƒ€‚ÉÝ’è
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÉÝ’ï¿½
 	Device->SetStreamSource(0, m_VtxBuff, 0, sizeof(VERTEX_3D));
 
-	// ’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	// ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	Device->SetFVF(FVF_VERTEX_3D);
 
-	// ƒeƒNƒXƒ`ƒƒ‚ÌÝ’è
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌÝ’ï¿½
 	Device->SetTexture(0, CManager::GetTextureManager()->GetTextureInfo(m_TextureId).Texture);
 
-	SetWorld(Device);	//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+	SetWorld(Device);	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 
-						// •`‰æ
+						// ï¿½`ï¿½ï¿½
 	Device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::TextureAnimation(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::TextureAnimation(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::TextureAnimation(void)
 {
@@ -142,71 +140,71 @@ void CSpriteBillboard::TextureAnimation(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::MakeVerTex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		’¸“_‚Ìì¬
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::MakeVerTex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::MakeVerTex(void)
 {
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚Ì¶¬
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½
 	if (FAILED(Device->CreateVertexBuffer(sizeof(VERTEX_3D) * NUM_VERTEX, D3DUSAGE_WRITEONLY, FVF_VERTEX_2D, D3DPOOL_MANAGED, &m_VtxBuff, NULL)))
 	{
 
-		MessageBox(NULL, "’¸“_ƒoƒbƒtƒ@‚Ì¶¬‚ÉŽ¸”s", "SpriteBillboard.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "SpriteBillboard.cpp", MB_OK | MB_ICONHAND);
 		return;
 	}
 
-	// ’¸“_î•ñ‚ðÝ’è
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_3D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[0].Pos = D3DXVECTOR3(-m_Size.x, m_Size.y, 0.0f);
 	pVtx[1].Pos = D3DXVECTOR3(m_Size.x, m_Size.y, 0.0f);
 	pVtx[2].Pos = D3DXVECTOR3(-m_Size.x, 0.0f, 0.0f);
 	pVtx[3].Pos = D3DXVECTOR3(m_Size.x, 0.0f, 0.0f);
 
 
-	//	–@ü
+	//	ï¿½@ï¿½ï¿½
 	pVtx[0].Nor = m_Normal;
 	pVtx[1].Nor = m_Normal;
 	pVtx[2].Nor = m_Normal;
 	pVtx[3].Nor = m_Normal;
 
 
-	// ’¸“_ƒJƒ‰[
+	// ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
 
-	// ƒeƒNƒXƒ`ƒƒÀ•W
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 	pVtx[0].Tex = D3DXVECTOR2(0, 0);
 	pVtx[1].Tex = D3DXVECTOR2(1, 0);
 	pVtx[2].Tex = D3DXVECTOR2(0, 1);
 	pVtx[3].Tex = D3DXVECTOR2(1, 1);
 
 
-	//	ƒoƒbƒtƒ@‚ðƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::SetUpVerTex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		’¸“_‚ÌÝ’è
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::SetUpVerTex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½ÌÝ’ï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::SetUpVerTex(void)
 {
@@ -224,83 +222,83 @@ void CSpriteBillboard::SetUpVerTex(void)
 	const float u1 = (float)(tcx + tcw) / tw;
 	const float v1 = (float)(tcy + tch) / th;
 
-	// ’¸“_î•ñ‚ðÝ’è
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_3D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[0].Pos = D3DXVECTOR3(-m_Size.x, m_Size.y, 0.0f);
 	pVtx[1].Pos = D3DXVECTOR3(m_Size.x, m_Size.y, 0.0f);
 	pVtx[2].Pos = D3DXVECTOR3(-m_Size.x, 0.0f, 0.0f);
 	pVtx[3].Pos = D3DXVECTOR3(m_Size.x, 0.0f, 0.0f);
 
 
-	//	–@ü
+	//	ï¿½@ï¿½ï¿½
 	pVtx[0].Nor = m_Normal;
 	pVtx[1].Nor = m_Normal;
 	pVtx[2].Nor = m_Normal;
 	pVtx[3].Nor = m_Normal;
 
 
-	// ’¸“_ƒJƒ‰[
+	// ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
 
-	// ƒeƒNƒXƒ`ƒƒÀ•W
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 	pVtx[0].Tex = D3DXVECTOR2(u0, v0);
 	pVtx[1].Tex = D3DXVECTOR2(u1, v0);
 	pVtx[2].Tex = D3DXVECTOR2(u0, v1);
 	pVtx[3].Tex = D3DXVECTOR2(u1, v1);
 
 
-	//	ƒoƒbƒtƒ@‚ðƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteBillboard::SetWorld(LPDIRECT3DDEVICE9 Device)
-ˆø”:		LPDIRECT3DDEVICE9 Device	ƒfƒoƒCƒX
-–ß‚è’l:
-à–¾:		ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteBillboard::SetWorld(LPDIRECT3DDEVICE9 Device)
+ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 Device	ï¿½fï¿½oï¿½Cï¿½X
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteBillboard::SetWorld(LPDIRECT3DDEVICE9 Device)
 {
-	//	ƒrƒ…[s—ñ‚Ì‹ts—ñ‚ðŽæ“¾
+	//	ï¿½rï¿½ï¿½ï¿½[ï¿½sï¿½ï¿½Ì‹tï¿½sï¿½ï¿½ï¿½ï¿½æ“¾
 	D3DXMATRIX mtxViewInverse = CManager::GetCamera()->GetInversedView();
 
 
 	D3DXMATRIX mtxWorld, mtxScl, mtxPos;
 
-	D3DXMatrixIdentity(&mtxWorld);	//	s—ñ‚ð’PˆÊs—ñ‚É‚·‚é
+	D3DXMatrixIdentity(&mtxWorld);	//	ï¿½sï¿½ï¿½ï¿½Pï¿½Êsï¿½ï¿½É‚ï¿½ï¿½ï¿½
 
-	//	Šg‘ås—ñ‚ðì‚é
-	D3DXMatrixScaling(&mtxScl,	//Šg‘ås—ñ‚ªì‚ç‚ê‚é
-		m_Scale.x,	//	XŽ²Šg‘å
-		m_Scale.y,	//	YŽ²Šg‘å
-		m_Scale.z);	//	ZŽ²Šg‘å
+	//	ï¿½gï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixScaling(&mtxScl,	//ï¿½gï¿½ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		m_Scale.x,	//	Xï¿½ï¿½ï¿½gï¿½ï¿½
+		m_Scale.y,	//	Yï¿½ï¿½ï¿½gï¿½ï¿½
+		m_Scale.z);	//	Zï¿½ï¿½ï¿½gï¿½ï¿½
 
 
-	//	•½sˆÚ“®s—ñ‚ðì‚é
+	//	ï¿½ï¿½ï¿½sï¿½Ú“ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixTranslation(&mtxPos,
-		m_Position.x,	//	XŽ²ˆÚ“®
-		m_Position.y,	//	YŽ²ˆÚ“®
-		m_Position.z);	//	ZŽ²ˆÚ“®
+		m_Position.x,	//	Xï¿½ï¿½ï¿½Ú“ï¿½
+		m_Position.y,	//	Yï¿½ï¿½ï¿½Ú“ï¿½
+		m_Position.z);	//	Zï¿½ï¿½ï¿½Ú“ï¿½
 
 
-	//	Š|‚¯‚é
+	//	ï¿½|ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxViewInverse);
 
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxScl);
 
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxPos);
 
-	//	ƒfƒoƒCƒX‚Éƒ[ƒ‹ƒh•ÏŠ·s—ñ‚ðÝ’è
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½Ý’ï¿½
 	Device->SetTransform(D3DTS_WORLD, &mtxWorld);
 }

@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒtƒF[ƒh[ Fade.h ]
+		ï¿½tï¿½Fï¿½[ï¿½h[ Fade.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/25
 =============================================================================*/
 
@@ -17,41 +15,41 @@
 #define _FADE_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CFade
 {
 public:
 	enum FADE
-	{	//	ƒtƒF[ƒh‚Ìó‘Ô
+	{	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ìï¿½ï¿½
 		FADE_NONE = 0,
-		FADE_IN,	//	ƒtƒF[ƒhƒCƒ“
-		FADE_OUT,	//	ƒtƒF[ƒhƒAƒEƒg
+		FADE_IN,	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½
+		FADE_OUT,	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½g
 	};
 
-	CFade();	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CFade();	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	//	ƒtƒF[ƒh‚ÌƒZƒbƒg
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ÌƒZï¿½bï¿½g
 	static void SetFade(const FADE Fade, CMode *Mode) { m_Fade = Fade, m_Mode = Mode; }
 
-	static CFade *Create(void);	//	¶¬
+	static CFade *Create(void);	//	ï¿½ï¿½ï¿½ï¿½
 	
-	void Uninit(void);	//	I—¹
-	void Update(void);	//	XV
-	void Draw(void);	//	•`‰æ
+	void Uninit(void);	//	ï¿½Iï¿½ï¿½
+	void Update(void);	//	ï¿½Xï¿½V
+	void Draw(void);	//	ï¿½`ï¿½ï¿½
 
 private:
-	void Init(void);			//	‰Šú‰»
-	void MakeVerTex(void);		//	’¸“_‚Ìì¬
-	void ChangeVerTex(void);	//	’¸“_‚Ì•ÏX
-	void AlphaFade(void);		//	ƒ¿’l‚ÌƒtƒF[ƒh
+	void Init(void);			//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	void MakeVerTex(void);		//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+	void ChangeVerTex(void);	//	ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
+	void AlphaFade(void);		//	ï¿½ï¿½ï¿½lï¿½Ìƒtï¿½Fï¿½[ï¿½h
 
 private:
-	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;	// ’¸“_ƒoƒbƒtƒ@‚Ìƒ|ƒCƒ“ƒ^
+	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
-	D3DXCOLOR m_Color;					//	F
+	D3DXCOLOR m_Color;					//	ï¿½F
 
-	static FADE m_Fade;					//	ƒtƒF[ƒhó‘Ô
-	static CMode *m_Mode;				//	‰æ–Ê‘JˆÚ‚Ìƒ|ƒCƒ“ƒ^
+	static FADE m_Fade;					//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½
+	static CMode *m_Mode;				//	ï¿½ï¿½Ê‘Jï¿½Ú‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 };
 #endif

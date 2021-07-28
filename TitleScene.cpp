@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		ƒ^ƒCƒgƒ‹ƒV[ƒ“[ TitleScene.cpp ]
+		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Vï¿½[ï¿½ï¿½[ TitleScene.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Input.h"
@@ -36,10 +34,10 @@
 #include "House.h"
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CTitleScene::Init(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void CTitleScene::Init(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CTitleScene::Init(void)
 {
@@ -48,68 +46,68 @@ void CTitleScene::Init(void)
 
 	sound->Play(CSound::SOUND_LABEL_BGM_TITLE);
 
-	//	ƒeƒNƒXƒ`ƒƒŠÇ—‚Ìæ“¾
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½ï¿½Ìæ“¾
 	CTextureManager* TextureManager = CManager::GetTextureManager();
 
-	//	ƒeƒNƒXƒ`ƒƒ‚Ìƒ[ƒh
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	TextureManager->Load(CTextureManager::TEX_GROUND);
 	TextureManager->Load(CTextureManager::TEX_TITLE_LOGO);
 	TextureManager->Load(CTextureManager::TEX_PUSH_BUTTOM);
 	TextureManager->Load(CTextureManager::TEX_SKYDOME);
 
-	ObjectCreate();	//	ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	ObjectCreate();	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTitleScene::Uninit(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CTitleScene::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CTitleScene::Uninit(void)
 {
-	//	ƒeƒNƒXƒ`ƒƒŠÇ—‚Ìæ“¾
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½ï¿½Ìæ“¾
 	CTextureManager* TextureManager = CManager::GetTextureManager();
 
-	TextureManager->UnloadAll();	//	‘SƒeƒNƒXƒ`ƒƒ‚Ì”jŠü
+	TextureManager->UnloadAll();	//	ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì”jï¿½ï¿½
 
-	CScene::ReleaseAll();	//	‘SƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+	CScene::ReleaseAll();	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‰ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTitleScene::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CTitleScene::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CTitleScene::Update(void)
 {
 
-	ConditionalTransition();	//	‘JˆÚğŒ
+	ConditionalTransition();	//	ï¿½Jï¿½Úï¿½ï¿½ï¿½
 
-	CScene::UpdateAll();		//	‘SƒIƒuƒWƒFƒNƒg‚ÌXV
+	CScene::UpdateAll();		//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌXï¿½V
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTitleScene::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CTitleScene::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CTitleScene::Draw(void)
 {
-	CScene::DrawAll();	//	‘SƒIƒuƒWƒFƒNƒg‚Ì•`‰æ
+	CScene::DrawAll();	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì•`ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTitleScene::ConditionalTransition(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‘JˆÚğŒ
+ï¿½Öï¿½ï¿½ï¿½:		void CTitleScene::ConditionalTransition(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Jï¿½Úï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CTitleScene::ConditionalTransition(void)
 {
-	//	ƒL[ƒ{[ƒh‚Ìæ“¾
+	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ìæ“¾
 	CInputKeyboard* KeyBoard = CManager::GetKeyboard();
 
 	if (KeyBoard->GetKeyTrigger(DIK_SPACE))
@@ -132,10 +130,10 @@ void CTitleScene::ConditionalTransition(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTitleScene::ObjectCreate(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+ï¿½Öï¿½ï¿½ï¿½:		void CTitleScene::ObjectCreate(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CTitleScene::ObjectCreate(void)
 {

@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒ^ƒCƒgƒ‹ƒV[ƒ“[ TitleScene.h ]
+		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Vï¿½[ï¿½ï¿½[ TitleScene.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
@@ -17,28 +15,28 @@
 #define _TITLESCENE_H_
 
 /*-----------------------------------------------------------------------------
-	‘O•ûéŒ¾
+	ï¿½Oï¿½ï¿½ï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-class CSprite2D;			//	2D•`‰æ
-class CSpriteModeLX;		//	ƒ‚ƒfƒ‹•`‰æ
+class CSprite2D;			//	2Dï¿½`ï¿½ï¿½
+class CSpriteModeLX;		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½`ï¿½ï¿½
 class CFadeRogo;
 class CGround;
 class CHouse;
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CTitleScene:public CMode
 {
 public:
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 private:
-	void ConditionalTransition(void);	//	‘JˆÚğŒ
-	void ObjectCreate(void);			//	ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	void ConditionalTransition(void);	//	ï¿½Jï¿½Úï¿½ï¿½ï¿½
+	void ObjectCreate(void);			//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 
 private:
 	CSprite2D* m_Title_Logo;

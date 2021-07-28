@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒV[ƒ“[ TutorialScene.h ]
+		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Vï¿½[ï¿½ï¿½[ TutorialScene.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/09/01
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/09/01
 =============================================================================*/
 
@@ -23,19 +21,19 @@ class CHouse;
 class CTarget;
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CTutorialScene:public CMode
 {
 public:
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 private:
-	void ConditionalTransition(void);	//	‘JˆÚğŒ
-	void ObjectCreate(void);			//	ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	void ConditionalTransition(void);	//	ï¿½Jï¿½Úï¿½ï¿½ï¿½
+	void ObjectCreate(void);			//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 
 private:
 	CSprite2D* m_bg;

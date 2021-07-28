@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		DirectXİ’è[ DirectX.h ]
+		DirectXï¿½İ’ï¿½[ DirectX.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
@@ -17,30 +15,30 @@
 #define _DIRECTX_H_
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <d3dx9.h>
 #include <crtdbg.h>
 #include <Xinput.h>
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define SCREEN_WIDTH   ( 800 )	//	ƒEƒCƒ“ƒhƒE‚Ì•
-#define SCREEN_HEIGHT  ( 600 )	//	ƒEƒCƒ“ƒhƒE‚Ì‚‚³
+#define SCREEN_WIDTH   ( 800 )	//	ï¿½Eï¿½Cï¿½ï¿½ï¿½hï¿½Eï¿½Ì•ï¿½
+#define SCREEN_HEIGHT  ( 600 )	//	ï¿½Eï¿½Cï¿½ï¿½ï¿½hï¿½Eï¿½Ìï¿½ï¿½ï¿½
 
-//	’¸“_ƒtƒH[ƒ}ƒbƒg
+//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½g
 #define FVF_VERTEX_2D (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)	//	2D
 #define FVF_VERTEX_3D (D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1 | D3DFVF_NORMAL)	//	3D
 
-#define NUM_VERTEX ( 4 )	//	’¸“_”
-#define NUM_POLYGON ( 2 )	//	ƒ|ƒŠƒSƒ“”
+#define NUM_VERTEX ( 4 )	//	ï¿½ï¿½ï¿½_ï¿½ï¿½
+#define NUM_POLYGON ( 2 )	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½ï¿½
 
-#define new ::new(_NORMAL_BLOCK, __FILE__, __LINE__)	//	ƒƒ‚ƒŠƒŠ[ƒNŒŸo(o—ÍƒfƒoƒbƒO‚É•\¦‚³‚ê‚é)
+#define new ::new(_NORMAL_BLOCK, __FILE__, __LINE__)	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Nï¿½ï¿½ï¿½o(ï¿½oï¿½Íƒfï¿½oï¿½bï¿½Oï¿½É•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 
 /*-----------------------------------------------------------------------------
-	 ƒ‰ƒCƒuƒ‰ƒŠƒtƒ@ƒCƒ‹
-	 [\¬ƒvƒƒpƒeƒB]->[ƒŠƒ“ƒJ[]->[“ü—Í]->[’Ç‰Á‚ÌˆË‘¶ƒtƒ@ƒCƒ‹]‚É‹Lq‚µ‚Ä‚à‰Â”\
+	 ï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½
+	 [ï¿½\ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B]->[ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½[]->[ï¿½ï¿½ï¿½ï¿½]->[ï¿½Ç‰ï¿½ï¿½ÌˆË‘ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½]ï¿½É‹Lï¿½qï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Â”\
 -----------------------------------------------------------------------------*/
 #pragma comment(lib , "d3d9.lib")
 #define DIRECTINPUT_VERSION (0x0800)
@@ -50,62 +48,62 @@
 #pragma comment(lib, "xinput.lib")	//	XInput
 #pragma comment(lib, "d3dx9.lib")
 #pragma comment(lib, "dxguid.lib")
-#pragma comment(lib, "winmm.lib")	//	ƒVƒXƒeƒ€æ“¾‚É•K—v
+#pragma comment(lib, "winmm.lib")	//	ï¿½Vï¿½Xï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½É•Kï¿½v
 #pragma comment(lib, "dinput8.lib")
 
 /*-----------------------------------------------------------------------------
-	\‘¢‘Ì
+	ï¿½\ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 struct VERTEX_2D
 {
-	D3DXVECTOR3 Pos;	//	’¸“_À•W
-	float Rhw;			//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒOiDirectX‚É‚µ‚©‚È‚¢d—lj•K‚¸1.0f‚ğ“ü‚ê‚é
-	D3DCOLOR Color;		//	’¸“_ƒJƒ‰[
-	D3DXVECTOR2 Tex;	//	ƒeƒNƒXƒ`ƒƒÀ•W
+	D3DXVECTOR3 Pos;	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½W
+	float Rhw;			//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½iDirectXï¿½É‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½dï¿½lï¿½jï¿½Kï¿½ï¿½1.0fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DCOLOR Color;		//	ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[
+	D3DXVECTOR2 Tex;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 };
 
 struct VERTEX_3D
 {
-	D3DXVECTOR3 Pos;	//	’¸“_À•W
-	D3DXVECTOR3 Nor;	//	–@ü
-	D3DCOLOR Color;		//	’¸“_ƒJƒ‰[
-	D3DXVECTOR2 Tex;	//	ƒeƒNƒXƒ`ƒƒÀ•W
+	D3DXVECTOR3 Pos;	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½W
+	D3DXVECTOR3 Nor;	//	ï¿½@ï¿½ï¿½
+	D3DCOLOR Color;		//	ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[
+	D3DXVECTOR2 Tex;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 };
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CDirectX
 {
 public:
-	static HRESULT Init(HWND Wnd, bool Window);	//	‰Šú‰»
-	static void Uninit(void);					//	I—¹
+	static HRESULT Init(HWND Wnd, bool Window);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static void Uninit(void);					//	ï¿½Iï¿½ï¿½
 
-	static void DrawBegin(void);	//	•`‰æ‚ÌŠJn
-	static void DrawEnd(void);		//	•`‰æ‚ÌI—¹
+	static void DrawBegin(void);	//	ï¿½`ï¿½ï¿½ÌŠJï¿½n
+	static void DrawEnd(void);		//	ï¿½`ï¿½ï¿½ÌIï¿½ï¿½
 
 	//	Getter
-	static LPDIRECT3DDEVICE9 GetDevice(void) { return m_pD3DDevice; }	//	ƒfƒoƒCƒX
+	static LPDIRECT3DDEVICE9 GetDevice(void) { return m_pD3DDevice; }	//	ï¿½fï¿½oï¿½Cï¿½X
 
 private:
-	//	ƒfƒoƒCƒX‚Ì‰Šú‰»
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 	static void SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HWND Wnd, bool Window);
-	static void SetRenderState(void);			//	ƒŒƒ“ƒ_[ƒXƒe[ƒg‚Ìİ’è
-	static void SetSamplerState(void);			//	ƒTƒ“ƒvƒ‰[ƒXƒe[ƒg‚Ìİ’è
-	static void SetTextureStageState(void);		//	ƒeƒNƒXƒ`ƒƒƒXƒe[ƒWƒXƒe[ƒg‚Ìİ’è
+	static void SetRenderState(void);			//	ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½[ï¿½Xï¿½eï¿½[ï¿½gï¿½Ìİ’ï¿½
+	static void SetSamplerState(void);			//	ï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½[ï¿½Xï¿½eï¿½[ï¿½gï¿½Ìİ’ï¿½
+	static void SetTextureStageState(void);		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½Wï¿½Xï¿½eï¿½[ï¿½gï¿½Ìİ’ï¿½
 
 #ifdef _DEBUG
-	static void DrawFPS(void);	//	FPS•\¦
+	static void DrawFPS(void);	//	FPSï¿½\ï¿½ï¿½
 #endif
 
 private:
-	static D3DXCOLOR m_BackBufferColor;				//	ƒoƒbƒNƒoƒbƒtƒ@F
+	static D3DXCOLOR m_BackBufferColor;				//	ï¿½oï¿½bï¿½Nï¿½oï¿½bï¿½tï¿½@ï¿½F
 
-	static LPDIRECT3D9				m_pD3D;			// Direct3DƒIƒuƒWƒFƒNƒg
-	static LPDIRECT3DDEVICE9		m_pD3DDevice;	// DeviceƒIƒuƒWƒFƒNƒg(•`‰æ‚É•K—v)
+	static LPDIRECT3D9				m_pD3D;			// Direct3Dï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
+	static LPDIRECT3DDEVICE9		m_pD3DDevice;	// Deviceï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g(ï¿½`ï¿½ï¿½É•Kï¿½v)
 
 #ifdef _DEBUG
-	static LPD3DXFONT m_Font;	// ƒtƒHƒ“ƒg‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	static LPD3DXFONT m_Font;	// ï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 #endif
 };
 #endif

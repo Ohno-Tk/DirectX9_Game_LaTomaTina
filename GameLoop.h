@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒQ[ƒ€ƒ‹[ƒv[ GameLoop.h ]
+		ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½v[ GameLoop.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
@@ -17,34 +15,34 @@
 #define _GAMELOOP_H_
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <Windows.h>
 
 /*-----------------------------------------------------------------------------
-	‘O•ûéŒ¾
+	ï¿½Oï¿½ï¿½ï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-class CManager;	//	ƒ}ƒl[ƒWƒƒ
+class CManager;	//	ï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CGameLoop
 {
 public:
-	static void Init(HINSTANCE hInstance, HWND hWnd);	//	‰Šú‰»
-	static void ClockFps(void);	//	FPSŒv‘ª
-	static void Uninit(void);	//	I—¹
+	static void Init(HINSTANCE hInstance, HWND hWnd);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static void ClockFps(void);	//	FPSï¿½vï¿½ï¿½
+	static void Uninit(void);	//	ï¿½Iï¿½ï¿½
 
-	static const int GetFPS(void){ return m_nCountFPS; }	//	FPSæ“¾
+	static const int GetFPS(void){ return m_nCountFPS; }	//	FPSï¿½æ“¾
 
 private:
 	static DWORD m_dwFrameCount;
-	static DWORD m_dwCurrentTime;	//	Œ»İ‚ÌŠÔ
-	static DWORD m_dwExecLastTime;	//	Œ»İ‚Ì‚ğƒ~ƒŠ’PˆÊ‚Åæ“¾
+	static DWORD m_dwCurrentTime;	//	ï¿½ï¿½ï¿½İ‚Ìï¿½ï¿½ï¿½
+	static DWORD m_dwExecLastTime;	//	ï¿½ï¿½ï¿½İ‚Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½Pï¿½Ê‚Åæ“¾
 	static DWORD m_dwFPSLastTime;
-	static int m_nCountFPS;			//	FPSƒJƒEƒ“ƒ^
+	static int m_nCountFPS;			//	FPSï¿½Jï¿½Eï¿½ï¿½ï¿½^
 
-	static CManager* m_Manager;		//	ƒ}ƒl[ƒWƒƒ
+	static CManager* m_Manager;		//	ï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½
 };
 #endif

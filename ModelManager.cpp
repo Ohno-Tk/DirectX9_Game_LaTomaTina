@@ -1,25 +1,23 @@
 /*=============================================================================
 
-		ƒ‚ƒfƒ‹ŠÇ—[ ModelManager.cpp ]
+		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ç—ï¿½[ ModelManager.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/25
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	scanf ‚Ìwarning–h~
+	scanf ï¿½ï¿½warningï¿½hï¿½~
 -----------------------------------------------------------------------------*/
 #define _CRT_SECURE_NO_WARNINGS
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <string.h>
 #include <assert.h>
@@ -27,15 +25,15 @@
 #include "ModelManager.h"
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define TEXTURE_PATH "data/TEXTURE/"
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:	
-ˆø”:		
-–ß‚è’l:
-à–¾:		
+ï¿½Öï¿½ï¿½ï¿½:	
+ï¿½ï¿½ï¿½ï¿½:		
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		
 -----------------------------------------------------------------------------*/
 void CModelManager::Init(void)
 {
@@ -64,43 +62,43 @@ void CModelManager::Init(void)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒ‚ƒfƒ‹‚Ìƒ[ƒh
+ ï¿½Öï¿½ï¿½ï¿½:	
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void CModelManager::Load(char* Name)
 {
-	//	“¯‚¶ƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚é‚©‚Ìƒ`ƒFƒbƒN
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½é‚©ï¿½Ìƒ`ï¿½Fï¿½bï¿½N
 	auto it = m_Model_Map.find(Name);
 
 	if (it == m_Model_Map.end())
-	{	//	‘¶İ‚µ‚È‚©‚Á‚½‚ç
+	{	//	ï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		HRESULT hr;
 
-		//	ƒfƒoƒCƒX‚Ìæ“¾
+		//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 		LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
-		// Xƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
-		hr = D3DXLoadMeshFromX(Name,		//	ƒtƒ@ƒCƒ‹–¼
+		// Xï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+		hr = D3DXLoadMeshFromX(Name,		//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 			D3DXMESH_SYSTEMMEM,
-			Device,					//	ƒfƒoƒCƒX
-			NULL,					//	—×Úƒoƒbƒtƒ@
-			&m_Model.BuffMat,		//	ƒ}ƒeƒŠƒAƒ‹î•ñ‚ğŠi”[
+			Device,					//	ï¿½fï¿½oï¿½Cï¿½X
+			NULL,					//	ï¿½×Úƒoï¿½bï¿½tï¿½@
+			&m_Model.BuffMat,		//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
 			NULL,
-			&m_Model.NumMat,		//	ƒ}ƒeƒŠƒAƒ‹”
-			&m_Model.Mesh);			//	ƒƒbƒVƒ…
+			&m_Model.NumMat,		//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½
+			&m_Model.Mesh);			//	ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 
 		if (FAILED(hr))
 		{
 
-			MessageBox(NULL, "ƒ‚ƒfƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ‚Å‚µ‚½", "Model.cpp", MB_OK | MB_ICONHAND);
+			MessageBox(NULL, "ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ß‚Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½", "Model.cpp", MB_OK | MB_ICONHAND);
 			return;
 		}
 
 
-		//	ƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 		m_Model.Mat = (D3DXMATERIAL*)m_Model.BuffMat->GetBufferPointer();
 		m_Model.Texture = new LPDIRECT3DTEXTURE9[m_Model.NumMat];
 		for (int i = 0; i < (int)m_Model.NumMat; i++)
@@ -120,77 +118,77 @@ void CModelManager::Load(char* Name)
 				if (FAILED(hr))
 				{
 
-					MessageBox(NULL, "ƒeƒNƒXƒ`ƒƒ‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ‚Å‚µ‚½", "Model.cpp", MB_OK | MB_ICONHAND);
+					MessageBox(NULL, "ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ß‚Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½", "Model.cpp", MB_OK | MB_ICONHAND);
 					return;
 				}
 			}
 		}
 
 
-		//	ƒL[‚Æ’l‚ğ˜AŒ‹‚³‚¹‚é
+		//	ï¿½Lï¿½[ï¿½Æ’lï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		m_Model_Map[Name] = m_Model;
 	}
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CModelManager::UnloadAll(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‘Sƒ‚ƒfƒ‹‚Ì”jŠü
+ï¿½Öï¿½ï¿½ï¿½:		void CModelManager::UnloadAll(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ì”jï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CModelManager::UnloadAll(void)
 {
 	for (auto it = m_Model_Map.begin(); it != m_Model_Map.end(); ++it)
 	{
 
-		//	ƒeƒNƒXƒ`ƒƒ‚Ì‰ğ•ú
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½
 		for (unsigned int i = 0; i < it->second.NumMat; i++)
 		{
 
 			if (it->second.Texture[i] == NULL) continue;
 
-			it->second.Texture[i]->Release();	//	‰ğ•ú
+			it->second.Texture[i]->Release();	//	ï¿½ï¿½ï¿½
 
 		}
 
-		delete[] it->second.Texture;	//	‰ğ•ú
+		delete[] it->second.Texture;	//	ï¿½ï¿½ï¿½
 
-		if (it->second.Mesh != NULL)    it->second.Mesh->Release();	//	‰ğ•ú
+		if (it->second.Mesh != NULL)    it->second.Mesh->Release();	//	ï¿½ï¿½ï¿½
 
-		if (it->second.BuffMat != NULL) it->second.BuffMat->Release();	//	‰ğ•ú
+		if (it->second.BuffMat != NULL) it->second.BuffMat->Release();	//	ï¿½ï¿½ï¿½
 
 	}
 
-	m_Model_Map.clear();	//	‘S—v‘f‚Ìíœ
+	m_Model_Map.clear();	//	ï¿½Sï¿½vï¿½fï¿½Ìíœ
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		
-ˆø”:		
-–ß‚è’l:
-à–¾:		ƒ‚ƒfƒ‹ID‚Ìæ“¾
+ï¿½Öï¿½ï¿½ï¿½:		
+ï¿½ï¿½ï¿½ï¿½:		
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½fï¿½ï¿½IDï¿½Ìæ“¾
 -----------------------------------------------------------------------------*/
 const CModelManager::MODEL_PARAM CModelManager::GetModelParam(char* Name)const
 {
-	//	‰Šú‰»
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	MODEL_PARAM Model;
 	Model.BuffMat = NULL;
 	Model.Mat = 0;
 	Model.Mesh = NULL;
 	Model.NumMat = 0;
 
-	//	ƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚é‚©‚Ìƒ`ƒFƒbƒN
+	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½é‚©ï¿½Ìƒ`ï¿½Fï¿½bï¿½N
 	auto it = m_Model_Map.find(Name);
 
 
 	if (it != m_Model_Map.end())
-	{	//	‘¶İ‚µ‚Ä‚¢‚½‚ç
+	{	//	ï¿½ï¿½ï¿½İ‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		return it->second;
 
 	}
 
-	assert(!"[ ModelManager.cpp ]   ƒ‚ƒfƒ‹‚ªæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½");
+	assert(!"[ ModelManager.cpp ]   ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½");
 
 	return Model;
 }

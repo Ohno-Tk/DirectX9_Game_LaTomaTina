@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒeƒNƒXƒ`ƒƒŠÇ—[ TextureManager.h ]
+		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½[ TextureManager.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
@@ -17,26 +15,26 @@
 #define _TEXTUREMANAGER_H_
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <unordered_map>
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CTextureManager
 {
 public:
 	enum TEXTURE_ID
 	{
-		TEX_FADE = 0,	//	ƒtƒF[ƒh
-		TEX_PUSH_BUTTOM,	//	ƒvƒbƒVƒ…ƒ{ƒ^ƒ“
-		TEX_TITLE_LOGO,	//	ƒ^ƒCƒgƒ‹ƒƒS
-		TEX_GROUND,		//	’n–Ê
+		TEX_FADE = 0,	//	ï¿½tï¿½Fï¿½[ï¿½h
+		TEX_PUSH_BUTTOM,	//	ï¿½vï¿½bï¿½Vï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½
+		TEX_TITLE_LOGO,	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
+		TEX_GROUND,		//	ï¿½nï¿½ï¿½
 		TEX_PLAYERUI,
-		TEX_NUMBER,		//	”Žš
-		TEX_WAVE_LOGO,	//	ƒEƒF[ƒuƒƒS
-		TEX_SKYDOME,	//	ƒXƒJƒCƒh[ƒ€
+		TEX_NUMBER,		//	ï¿½ï¿½ï¿½ï¿½
+		TEX_WAVE_LOGO,	//	ï¿½Eï¿½Fï¿½[ï¿½uï¿½ï¿½ï¿½S
+		TEX_SKYDOME,	//	ï¿½Xï¿½Jï¿½Cï¿½hï¿½[ï¿½ï¿½
 		TEX_GAME_UI,
 		TEX_LOGO,
 		TEX_PUSH_BUTTOM2,
@@ -45,25 +43,25 @@ public:
 		TEX_TARGET,
 		TEX_START,
 		TEX_GOAL,
-		MAX_TEXTURES	//	Å‘å
+		MAX_TEXTURES	//	ï¿½Å‘ï¿½
 	};
 	struct TEXTUREINFO
 	{
-		LPDIRECT3DTEXTURE9 Texture;	//	ƒeƒNƒXƒ`ƒƒ‚Ìƒ|ƒCƒ“ƒ^
-		D3DXVECTOR2 Size;			//	‘å‚«‚³
-		D3DXVECTOR2 Div;			//	•ªŠ„”
+		LPDIRECT3DTEXTURE9 Texture;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+		D3DXVECTOR2 Size;			//	ï¿½å‚«ï¿½ï¿½
+		D3DXVECTOR2 Div;			//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	};
 
-	void Load(TEXTURE_ID Id, D3DXVECTOR2 Div = D3DXVECTOR2(1.f, 1.f));	//	ƒeƒNƒXƒ`ƒƒ‚Ìƒ[ƒh
-	void UnloadAll(void);	//	‘SƒeƒNƒXƒ`ƒƒ‚Ì”jŠü
+	void Load(TEXTURE_ID Id, D3DXVECTOR2 Div = D3DXVECTOR2(1.f, 1.f));	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
+	void UnloadAll(void);	//	ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì”jï¿½ï¿½
 
 	//	Getter
-	TEXTUREINFO GetTextureInfo(TEXTURE_ID Id) { return m_TextureInfo[Id]; }	//	ƒeƒNƒXƒ`ƒƒî•ñ
+	TEXTUREINFO GetTextureInfo(TEXTURE_ID Id) { return m_TextureInfo[Id]; }	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½
 
 private:
-	static const LPSTR m_FilePass[MAX_TEXTURES];	//	ƒtƒ@ƒCƒ‹ƒpƒX
+	static const LPSTR m_FilePass[MAX_TEXTURES];	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½pï¿½X
 
-	TEXTUREINFO m_TextureInfo[MAX_TEXTURES];	//	ƒeƒNƒXƒ`ƒƒî•ñ
+	TEXTUREINFO m_TextureInfo[MAX_TEXTURES];	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	std::unordered_map< TEXTURE_ID, TEXTUREINFO > m_Texture_Map;
 };

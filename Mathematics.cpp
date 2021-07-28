@@ -1,71 +1,69 @@
 /*=============================================================================
 
-		”ŠwŒnŠÖ”[ Mathematics.cpp ]
+		ï¿½ï¿½ï¿½wï¿½nï¿½Öï¿½[ Mathematics.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/07/20
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/17
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Mathematics.h"
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define PI ((float)3.141592654)	//	‰~ü—¦
-#define DEGREETORADIAN ( degree ) ((degree) * (PI / 180.0f))//	Šp“x‚ğ‹‚ß‚é
-#define RADIANTODEGREE ( radian ) ((radian) * (180.0f / PI))//	“x‚ğ‹‚ß‚é
+#define PI ((float)3.141592654)	//	ï¿½~ï¿½ï¿½ï¿½ï¿½
+#define DEGREETORADIAN ( degree ) ((degree) * (PI / 180.0f))//	ï¿½pï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
+#define RADIANTODEGREE ( radian ) ((radian) * (180.0f / PI))//	ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		float CAngle2Vector::Angle2Vector(D3DXVECTOR3 VectorB)
-ˆø”:		D3DXVECTOR3 VectorB		ƒxƒNƒgƒ‹B
-–ß‚è’l:		return angle;			Šp“x
-à–¾:		Šp“x‚ğ‹‚ß‚é
+ï¿½Öï¿½ï¿½ï¿½:		float CAngle2Vector::Angle2Vector(D3DXVECTOR3 VectorB)
+ï¿½ï¿½ï¿½ï¿½:		D3DXVECTOR3 VectorB		ï¿½xï¿½Nï¿½gï¿½ï¿½B
+ï¿½ß‚ï¿½l:		return angle;			ï¿½pï¿½x
+ï¿½ï¿½ï¿½ï¿½:		ï¿½pï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 -----------------------------------------------------------------------------*/
 float CAngle2Vector::Angle2Vector(D3DXVECTOR3 VectorB)
 {
-	//	’·‚³‚ğ‹‚ß‚é
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 	float len1 = D3DXVec3Length(&m_VectorA);
 	float len2 = D3DXVec3Length(&VectorB);
 
-	//	Šp“x‚ğ‹‚ß‚é
+	//	ï¿½pï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 	float angle = (float)(acos(D3DXVec3Dot(&VectorB, &m_VectorA) / (len1*len2)));
 
 	return angle;
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CAstroidCurve::CAstroidCurve(D3DXVECTOR3 op, float rotvalue, float radius)
- ˆø”:		D3DXVECTOR3 op		Œ´“_
-			float rotvalue		Šp“x•Ï‰»—Ê
-			float radius		”¼Œa
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CAstroidCurve::CAstroidCurve(D3DXVECTOR3 op, float rotvalue, float radius)
+ ï¿½ï¿½ï¿½ï¿½:		D3DXVECTOR3 op		ï¿½ï¿½ï¿½_
+			float rotvalue		ï¿½pï¿½xï¿½Ï‰ï¿½ï¿½ï¿½
+			float radius		ï¿½ï¿½ï¿½a
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CAstroidCurve::CAstroidCurve(D3DXVECTOR3 op, float rotvalue, float radius)
 {
-	m_OriginPoint = op;		//	Œ´“_
+	m_OriginPoint = op;		//	ï¿½ï¿½ï¿½_
 
-	m_Rot = 0.0f;			//	Šp“x
-	m_RotValue = rotvalue;	//	Šp“x•Ï‰»—Ê
-	m_Radius = radius;		//	”¼Œa
+	m_Rot = 0.0f;			//	ï¿½pï¿½x
+	m_RotValue = rotvalue;	//	ï¿½pï¿½xï¿½Ï‰ï¿½ï¿½ï¿½
+	m_Radius = radius;		//	ï¿½ï¿½ï¿½a
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		D3DXVECTOR3 CAstroidCurve::AstroidCurve()
-ˆø”:
-–ß‚è’l:		return pos;		À•W
-à–¾:		ƒAƒXƒeƒƒCƒh‹ÈüŒvZ
+ï¿½Öï¿½ï¿½ï¿½:		D3DXVECTOR3 CAstroidCurve::AstroidCurve()
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:		return pos;		ï¿½ï¿½ï¿½W
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Aï¿½Xï¿½eï¿½ï¿½ï¿½Cï¿½hï¿½Èï¿½ï¿½vï¿½Z
 -----------------------------------------------------------------------------*/
 D3DXVECTOR3 CAstroidCurve::AstroidCurve()
 {
@@ -85,27 +83,27 @@ D3DXVECTOR3 CAstroidCurve::AstroidCurve()
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CInvoluteCurve::CInvoluteCurve(D3DXVECTOR3 op, float rotvalue, float radius)
-ˆø”:		D3DXVECTOR3 op		Œ´“_
-			float rotvalue		Šp“x•Ï‰»—Ê
-			float radius		”¼Œa
-–ß‚è’l:
-à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ï¿½Öï¿½ï¿½ï¿½:		CInvoluteCurve::CInvoluteCurve(D3DXVECTOR3 op, float rotvalue, float radius)
+ï¿½ï¿½ï¿½ï¿½:		D3DXVECTOR3 op		ï¿½ï¿½ï¿½_
+			float rotvalue		ï¿½pï¿½xï¿½Ï‰ï¿½ï¿½ï¿½
+			float radius		ï¿½ï¿½ï¿½a
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CInvoluteCurve::CInvoluteCurve(D3DXVECTOR3 op, float rotvalue, float radius)
 {
-	m_OriginPoint = op;		//	Œ´“_
+	m_OriginPoint = op;		//	ï¿½ï¿½ï¿½_
 
-	m_Rot = 0.0f;			//	Šp“x
-	m_RotValue = rotvalue;	//	Šp“x•Ï‰»—Ê
-	m_Radius = radius;		//	”¼Œa
+	m_Rot = 0.0f;			//	ï¿½pï¿½x
+	m_RotValue = rotvalue;	//	ï¿½pï¿½xï¿½Ï‰ï¿½ï¿½ï¿½
+	m_Radius = radius;		//	ï¿½ï¿½ï¿½a
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		D3DXVECTOR3 CInvoluteCurve::InvoluteCurve(void)
-ˆø”:
-–ß‚è’l:		return pos;		À•W
-à–¾:		ƒCƒ“ƒ{ƒŠƒ…[ƒg‹ÈüŒvZ
+ï¿½Öï¿½ï¿½ï¿½:		D3DXVECTOR3 CInvoluteCurve::InvoluteCurve(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:		return pos;		ï¿½ï¿½ï¿½W
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Cï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½gï¿½Èï¿½ï¿½vï¿½Z
 -----------------------------------------------------------------------------*/
 D3DXVECTOR3 CInvoluteCurve::InvoluteCurve(void)
 {

@@ -3,13 +3,11 @@
 
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/30
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/30
 =============================================================================*/
 
@@ -17,21 +15,21 @@
 #define _PLAYERUI_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CPlayerUI:public CSprite2D
 {
 public:
-	CPlayerUI(int Priolity):CSprite2D(Priolity){}	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CPlayerUI(int Priolity):CSprite2D(Priolity){}	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	static CPlayerUI* Create(int Priolity);	//	¶¬
+	static CPlayerUI* Create(int Priolity);	//	ï¿½ï¿½ï¿½ï¿½
 
 
 private:
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 };
 #endif

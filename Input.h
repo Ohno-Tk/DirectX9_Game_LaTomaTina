@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		“ü—ÍƒfƒoƒCƒX[ input.h ]
+		ï¿½ï¿½ï¿½Íƒfï¿½oï¿½Cï¿½X[ input.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/11/24
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/25
 =============================================================================*/
 
@@ -17,172 +15,172 @@
 #define _INPUT_H_
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define NUM_KEY_MAX ( 256 )	//	ƒL[‚ÌÅ‘å”
+#define NUM_KEY_MAX ( 256 )	//	ï¿½Lï¿½[ï¿½ÌÅ‘å”
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CInput
-{	//	“ü—ÍƒfƒoƒCƒX
+{	//	ï¿½ï¿½ï¿½Íƒfï¿½oï¿½Cï¿½X
 public:
-	CInput() { m_pDIDevice = NULL; }//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	virtual ~CInput(){}	//	ƒfƒXƒXƒgƒ‰ƒNƒ^
+	CInput() { m_pDIDevice = NULL; }//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+	virtual ~CInput(){}	//	ï¿½fï¿½Xï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	virtual HRESULT Init(HINSTANCE hInstance);	//	‰Šú‰»
-	virtual void Uninit(void);		//	I—¹
-	virtual void Update(void) = 0;	//	XV
+	virtual HRESULT Init(HINSTANCE hInstance);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void);		//	ï¿½Iï¿½ï¿½
+	virtual void Update(void) = 0;	//	ï¿½Xï¿½V
 
 protected:
-	static LPDIRECTINPUT8 m_pDInput;	// DirectInputƒIƒuƒWƒFƒNƒg‚Ö‚Ìƒ|ƒCƒ“ƒ^
-	LPDIRECTINPUTDEVICE8 m_pDIDevice;	// “ü—ÍƒfƒoƒCƒX(ƒL[ƒ{[ƒh)‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	static LPDIRECTINPUT8 m_pDInput;	// DirectInputï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+	LPDIRECTINPUTDEVICE8 m_pDIDevice;	// ï¿½ï¿½ï¿½Íƒfï¿½oï¿½Cï¿½X(ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h)ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 };
 
 class CInputKeyboard : public CInput
-{	//	ƒL[ƒ{[ƒh
+{	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h
 public:
-	CInputKeyboard();	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	~CInputKeyboard(){}	//	ƒfƒXƒXƒgƒ‰ƒNƒ^
+	CInputKeyboard();	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+	~CInputKeyboard(){}	//	ï¿½fï¿½Xï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	HRESULT Init(HINSTANCE hInstance, HWND hWnd);	//	‰Šú‰»
-	void Uninit(void) { CInput::Uninit(); }			//	I—¹
-	virtual void Update(void)override;				//	XV
+	HRESULT Init(HINSTANCE hInstance, HWND hWnd);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	void Uninit(void) { CInput::Uninit(); }			//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;				//	ï¿½Xï¿½V
 
-	//	ˆø”:DIK_W‚È‚ÇDIK_`
-	//	ƒL[ƒ{[ƒhƒf[ƒ^æ“¾
-	//	ƒvƒŒƒX
+	//	ï¿½ï¿½ï¿½ï¿½:DIK_Wï¿½È‚ï¿½DIK_ï¿½`
+	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½fï¿½[ï¿½^ï¿½æ“¾
+	//	ï¿½vï¿½ï¿½ï¿½X
 	BOOL GetKeyPress(int nKey) { return (m_aKeyState[nKey] & 0x80) ? TRUE : FALSE; }
 
-	//	ƒgƒŠƒK[
+	//	ï¿½gï¿½ï¿½ï¿½Kï¿½[
 	BOOL GetKeyTrigger(int nKey) { return (m_aKeyStateTrigger[nKey] & 0x80) ? TRUE : FALSE; }
 
-	//	ƒŠƒs[ƒg
+	//	ï¿½ï¿½ï¿½sï¿½[ï¿½g
 	BOOL GetKeyRepeat(int nKey) { return (m_aKeyStateRelease[nKey] & 0x80) ? TRUE : FALSE; }
 
-	//	ƒŠƒŠ[ƒX
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½X
 	BOOL GetKeyRelease(int nKey) { return (m_aKeyStateRepeat[nKey] & 0x80) ? TRUE : FALSE; }
 
-	//	ƒL[ƒ{[ƒhƒf[ƒ^íœ( ƒgƒŠƒK[ )
+	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½fï¿½[ï¿½^ï¿½íœ( ï¿½gï¿½ï¿½ï¿½Kï¿½[ )
 	void FlushKeyTrigger(int nKey) { m_aKeyStateTrigger[nKey] = 0; }
 
 private:
-	BYTE m_aKeyState[NUM_KEY_MAX];			// ƒL[ƒ{[ƒh‚Ì“ü—Íî•ñƒ[ƒN
-	BYTE m_aKeyStateTrigger[NUM_KEY_MAX];	// ƒL[ƒ{[ƒh‚ÌƒgƒŠƒK[î•ñƒ[ƒN
-	BYTE m_aKeyStateRelease[NUM_KEY_MAX];	// ƒL[ƒ{[ƒh‚ÌƒŠƒŠ[ƒXî•ñƒ[ƒN
-	BYTE m_aKeyStateRepeat[NUM_KEY_MAX];	// ƒL[ƒ{[ƒh‚ÌƒŠƒs[ƒgî•ñƒ[ƒN
-	int	 m_aKeyStateRepeatCnt[NUM_KEY_MAX];	// ƒL[ƒ{[ƒh‚ÌƒŠƒs[ƒgƒJƒEƒ“ƒ^
+	BYTE m_aKeyState[NUM_KEY_MAX];			// ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ì“ï¿½ï¿½Íï¿½ñƒ[ï¿½N
+	BYTE m_aKeyStateTrigger[NUM_KEY_MAX];	// ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ìƒgï¿½ï¿½ï¿½Kï¿½[ï¿½ï¿½ñƒ[ï¿½N
+	BYTE m_aKeyStateRelease[NUM_KEY_MAX];	// ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ìƒï¿½ï¿½ï¿½ï¿½[ï¿½Xï¿½ï¿½ñƒ[ï¿½N
+	BYTE m_aKeyStateRepeat[NUM_KEY_MAX];	// ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ìƒï¿½ï¿½sï¿½[ï¿½gï¿½ï¿½ñƒ[ï¿½N
+	int	 m_aKeyStateRepeatCnt[NUM_KEY_MAX];	// ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ìƒï¿½ï¿½sï¿½[ï¿½gï¿½Jï¿½Eï¿½ï¿½ï¿½^
 };
 
 class CInputMouse : public CInput
-{	//	ƒ}ƒEƒX
+{	//	ï¿½}ï¿½Eï¿½X
 public:
 	typedef enum
 	{
-		MOUSE_LEFT = 0,	//	¶ƒNƒŠƒbƒN
-		MOUSE_RIGHT,	//	‰EƒNƒŠƒbƒN
-		MOUSE_WHEEL,	//	ƒzƒC[ƒ‹
+		MOUSE_LEFT = 0,	//	ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½N
+		MOUSE_RIGHT,	//	ï¿½Eï¿½Nï¿½ï¿½ï¿½bï¿½N
+		MOUSE_WHEEL,	//	ï¿½zï¿½Cï¿½[ï¿½ï¿½
 	}MOUSEBUTTOM;
 
-	CInputMouse() {}	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	~CInputMouse() {}	//	ƒfƒXƒXƒgƒ‰ƒNƒ^
+	CInputMouse() {}	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+	~CInputMouse() {}	//	ï¿½fï¿½Xï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	HRESULT Init(HINSTANCE hInst, HWND hWnd);	//	‰Šú‰»
-	void Uninit(void) { CInput::Uninit(); }		//	I—¹
-	void Update(void) override;					//	XV
+	HRESULT Init(HINSTANCE hInst, HWND hWnd);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	void Uninit(void) { CInput::Uninit(); }		//	ï¿½Iï¿½ï¿½
+	void Update(void) override;					//	ï¿½Xï¿½V
 
-	//	ˆø” : MOUSEBUTTOM\‘¢‘Ì‚ğg‚¤
-	//	ƒ}ƒEƒXƒf[ƒ^æ“¾
-	//	ƒvƒŒƒX
+	//	ï¿½ï¿½ï¿½ï¿½ : MOUSEBUTTOMï¿½\ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½gï¿½ï¿½
+	//	ï¿½}ï¿½Eï¿½Xï¿½fï¿½[ï¿½^ï¿½æ“¾
+	//	ï¿½vï¿½ï¿½ï¿½X
 	BOOL GetKeyPress(int Key) { return (m_MouseState.rgbButtons[Key] & 0x80) ? TRUE : FALSE; }
 
-	//	ƒgƒŠƒK[
+	//	ï¿½gï¿½ï¿½ï¿½Kï¿½[
 	BOOL GetKeyTrigger(int Key) { return (m_MouseStateTrigger.rgbButtons[Key] & 0x80) ? TRUE : FALSE; }
 
-	//	ƒŠƒs[ƒg
+	//	ï¿½ï¿½ï¿½sï¿½[ï¿½g
 	BOOL GetKeyRelease(int Key) { return (m_MouseStateRepeat.rgbButtons[Key] & 0x80) ? TRUE : FALSE; }
 
-	// ‘OƒtƒŒ[ƒ€‚©‚ç‚Ì·•ªÀ•W
+	// ï¿½Oï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½W
 	LONG GetAxisX(void) { return m_MouseState.lX; }
 	LONG GetAxisY(void) { return m_MouseState.lY; }
 	LONG GetAxisZ(void) { return m_MouseState.lZ; }
 	
-	const POINT& GetPosWorld(void) { return m_PosMouseWorld; }// ƒ}ƒEƒX‚ÌƒXƒNƒŠ[ƒ“À•Wæ“¾
+	const POINT& GetPosWorld(void) { return m_PosMouseWorld; }// ï¿½}ï¿½Eï¿½Xï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½æ“¾
 	
 private:
-	DIMOUSESTATE2 m_MouseState;				// ƒ}ƒEƒX‚Ìó‘Ô‚ğó‚¯‚éƒ[ƒN
-	DIMOUSESTATE2 m_MouseStateTrigger;		// ƒgƒŠƒK[‚Ìƒ[ƒN
-	DIMOUSESTATE2 m_MouseStateRelease;		// ƒŠƒŠ[ƒX‚Ìƒ[ƒN
-	DIMOUSESTATE2 m_MouseStateRepeat;		// ƒŠƒs[ƒg‚Ìƒ[ƒN
-	POINT		  m_PosMouseWorld;			// ƒ}ƒEƒX‚ÌƒXƒNƒŠ[ƒ“À•W
+	DIMOUSESTATE2 m_MouseState;				// ï¿½}ï¿½Eï¿½Xï¿½Ìï¿½Ô‚ï¿½ï¿½ó‚¯‚éƒï¿½[ï¿½N
+	DIMOUSESTATE2 m_MouseStateTrigger;		// ï¿½gï¿½ï¿½ï¿½Kï¿½[ï¿½Ìƒï¿½ï¿½[ï¿½N
+	DIMOUSESTATE2 m_MouseStateRelease;		// ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Xï¿½Ìƒï¿½ï¿½[ï¿½N
+	DIMOUSESTATE2 m_MouseStateRepeat;		// ï¿½ï¿½ï¿½sï¿½[ï¿½gï¿½Ìƒï¿½ï¿½[ï¿½N
+	POINT		  m_PosMouseWorld;			// ï¿½}ï¿½Eï¿½Xï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½W
 };
 
 class CXInput
-{	//	ƒQ[ƒ€ƒpƒbƒh( XBOX )
+{	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½h( XBOX )
 public:
 	typedef enum
 	{
-		XINPUT_DPAD_UP = 0x0001,		//	\šƒL[ã
-		XINPUT_DPAD_DOWN = 0x0002,		//	\šƒL[‰º
-		XINPUT_DPAD_LEFT = 0x0004,		//	\šƒL[¶
-		XINPUT_DPAD_RIGHT = 0x0008,		//	\šƒL[‰E
-		XINPUT_START = 0x0010,			//	ƒXƒ^[ƒgƒL[
-		XINPUT_BACK = 0x0020,			//	ƒZƒŒƒNƒgƒL[
-		XINPUT_LEFT_THUMB = 0x0040,		//	¶ƒXƒeƒBƒbƒN‰Ÿ‚µ‚İ
-		XINPUT_RIGHT_THUMB = 0x0080,	//	‰EƒXƒeƒBƒbƒN‰Ÿ‚µ‚İ
-		XINPUT_LEFT_SHOULDER = 0x0100,	//	L1ƒL[
-		XINPUT_RIGHT_SHOULDER = 0x0200,	//	R1ƒL[
-		XINPUT_A = 0x1000,				//	Aƒ{ƒ^ƒ“
-		XINPUT_B = 0x2000,				//	Bƒ{ƒ^ƒ“
-		XINPUT_X = 0x4000,				//	Xƒ{ƒ^ƒ“
-		XINPUT_Y = 0x8000,				//	Yƒ{ƒ^ƒ“
+		XINPUT_DPAD_UP = 0x0001,		//	ï¿½\ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½
+		XINPUT_DPAD_DOWN = 0x0002,		//	ï¿½\ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½
+		XINPUT_DPAD_LEFT = 0x0004,		//	ï¿½\ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½
+		XINPUT_DPAD_RIGHT = 0x0008,		//	ï¿½\ï¿½ï¿½ï¿½Lï¿½[ï¿½E
+		XINPUT_START = 0x0010,			//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½Lï¿½[
+		XINPUT_BACK = 0x0020,			//	ï¿½Zï¿½ï¿½ï¿½Nï¿½gï¿½Lï¿½[
+		XINPUT_LEFT_THUMB = 0x0040,		//	ï¿½ï¿½ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		XINPUT_RIGHT_THUMB = 0x0080,	//	ï¿½Eï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		XINPUT_LEFT_SHOULDER = 0x0100,	//	L1ï¿½Lï¿½[
+		XINPUT_RIGHT_SHOULDER = 0x0200,	//	R1ï¿½Lï¿½[
+		XINPUT_A = 0x1000,				//	Aï¿½{ï¿½^ï¿½ï¿½
+		XINPUT_B = 0x2000,				//	Bï¿½{ï¿½^ï¿½ï¿½
+		XINPUT_X = 0x4000,				//	Xï¿½{ï¿½^ï¿½ï¿½
+		XINPUT_Y = 0x8000,				//	Yï¿½{ï¿½^ï¿½ï¿½
 	}XINPUT_BUTTOM;
 
-	CXInput();	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CXInput();	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	void Uninit(void) {}	//	I—¹
-	void Update(void);		//	XV
+	void Uninit(void) {}	//	ï¿½Iï¿½ï¿½
+	void Update(void);		//	ï¿½Xï¿½V
 
-	//	ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚ÌƒZƒbƒg
+	//	ï¿½oï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 	void SetVibration(void) { XInputSetState(m_ControllerNumber, &m_Vibration); }
 
-	XINPUT_STATE GetXinputState(void) { return m_state; }	//	XINPUT\‘¢‘Ì‚Ìæ“¾
+	XINPUT_STATE GetXinputState(void) { return m_state; }	//	XINPUTï¿½\ï¿½ï¿½ï¿½Ì‚Ìæ“¾
 
-	//	ˆø” : XINPUT_BUTTOM—ñ‹“‚ğg‚¤
-	//	ƒQ[ƒ€ƒpƒbƒhƒf[ƒ^æ“¾
-	//	ƒvƒŒƒX
+	//	ï¿½ï¿½ï¿½ï¿½ : XINPUT_BUTTOMï¿½ñ‹“‚ï¿½ï¿½gï¿½ï¿½
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½[ï¿½^ï¿½æ“¾
+	//	ï¿½vï¿½ï¿½ï¿½X
 	BOOL GetKeyPress(int nKey) { return (m_aKeyState & nKey) ? TRUE : FALSE; }
 
-	//	ƒgƒŠƒK[
+	//	ï¿½gï¿½ï¿½ï¿½Kï¿½[
 	BOOL GetKeyTrigger(int nKey) { return (m_aKeyStateTrigger & nKey) ? TRUE : FALSE; }
 
-	//	ƒŠƒs[ƒg
+	//	ï¿½ï¿½ï¿½sï¿½[ï¿½g
 	BOOL GetKeyRepeat(int nKey) { return (m_aKeyStateRepeat & nKey) ? TRUE : FALSE; }
 
-	//	ƒŠƒŠ[ƒX
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½X
 	BOOL GetKeyRelease(int nKey) { return (m_aKeyStateRelease & nKey) ? TRUE : FALSE; }
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒf[ƒ^íœ( ƒgƒŠƒK[ )
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½[ï¿½^ï¿½íœ( ï¿½gï¿½ï¿½ï¿½Kï¿½[ )
 	void FlushKeyTrigger(void) { m_aKeyStateTrigger = 0; }
 
 private:
-	WORD m_aKeyState;			// ƒQ[ƒ€ƒpƒbƒh‚Ì“ü—Íî•ñƒ[ƒN
-	WORD m_aKeyStateTrigger;	// ƒQ[ƒ€ƒpƒbƒh‚ÌƒgƒŠƒK[î•ñƒ[ƒN
-	WORD m_aKeyStateRelease;	// ƒQ[ƒ€ƒpƒbƒh‚ÌƒŠƒŠ[ƒXî•ñƒ[ƒN
-	WORD m_aKeyStateRepeat;		// ƒQ[ƒ€ƒpƒbƒh‚ÌƒŠƒs[ƒgî•ñƒ[ƒN
-	int	 m_aKeyStateRepeatCnt;	// ƒQ[ƒ€ƒpƒbƒh‚ÌƒŠƒs[ƒgƒJƒEƒ“ƒ^
+	WORD m_aKeyState;			// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ì“ï¿½ï¿½Íï¿½ñƒ[ï¿½N
+	WORD m_aKeyStateTrigger;	// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ìƒgï¿½ï¿½ï¿½Kï¿½[ï¿½ï¿½ñƒ[ï¿½N
+	WORD m_aKeyStateRelease;	// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ìƒï¿½ï¿½ï¿½ï¿½[ï¿½Xï¿½ï¿½ñƒ[ï¿½N
+	WORD m_aKeyStateRepeat;		// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ìƒï¿½ï¿½sï¿½[ï¿½gï¿½ï¿½ñƒ[ï¿½N
+	int	 m_aKeyStateRepeatCnt;	// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ìƒï¿½ï¿½sï¿½[ï¿½gï¿½Jï¿½Eï¿½ï¿½ï¿½^
 
-	SHORT m_ThumbLX;	//	¶ƒXƒeƒBƒbƒN‚ÌX
-	SHORT m_ThumbLY;	//	¶ƒXƒeƒBƒbƒN‚ÌY
-    SHORT m_ThumbRX;	//	‰EƒXƒeƒBƒbƒN‚ÌX
-    SHORT m_ThumbRY;	//	‰EƒXƒeƒBƒbƒN‚ÌY
+	SHORT m_ThumbLX;	//	ï¿½ï¿½ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½X
+	SHORT m_ThumbLY;	//	ï¿½ï¿½ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½Y
+    SHORT m_ThumbRX;	//	ï¿½Eï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½X
+    SHORT m_ThumbRY;	//	ï¿½Eï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½Y
 
-	unsigned int m_ControllerNumber;	//	ƒRƒ“ƒgƒ[ƒ‰[‚Ì”Ô†
+	unsigned int m_ControllerNumber;	//	ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½Ì”Ôï¿½
 
-	XINPUT_STATE m_state;		//	XINPUT_STATE\‘¢‘Ì
+	XINPUT_STATE m_state;		//	XINPUT_STATEï¿½\ï¿½ï¿½ï¿½ï¿½
 
-	DWORD m_dwResult;	//	ƒRƒ“ƒgƒ[ƒ‰[‚ª“Ç‚İ‚ß‚½‚©‚Ç‚¤‚©
+	DWORD m_dwResult;	//	ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ß‚ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 
-	XINPUT_VIBRATION m_Vibration;	//	ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚Ì’l
+	XINPUT_VIBRATION m_Vibration;	//	ï¿½oï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ì’l
 };
 #endif

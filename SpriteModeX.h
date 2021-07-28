@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		Xƒ‚ƒfƒ‹•`‰æ[ SpriteModeX.h ]
+		Xï¿½ï¿½ï¿½fï¿½ï¿½ï¿½`ï¿½ï¿½[ SpriteModeX.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
@@ -17,39 +15,39 @@
 #define _SPRITEMODELX_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CSpriteModeLX:public CScene
 {
 public:
-	CSpriteModeLX(int Priolity);	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CSpriteModeLX(int Priolity);	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	//	¶¬
+	//	ï¿½ï¿½ï¿½ï¿½
 	static CSpriteModeLX* Create(int Priolity);
 
-	virtual void Init(void)override {}	//	‰Šú‰»
-	virtual void Uninit(void)override { CScene::Release(); }	//	I—¹
-	virtual void Update(void)override {}	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override {}	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override { CScene::Release(); }	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override {}	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 	//	Setter
-	void SetRotation(const D3DXVECTOR3 Rot) { m_Rotation = Rot; }	//	‰ñ“]
-	void SetScale(const D3DXVECTOR3 Scl) { m_Scale = Scl; }			//	Šg‘å—¦
-	void SetModel(char *FileName) { m_FileName = FileName; }	//	ƒtƒ@ƒCƒ‹–¼
+	void SetRotation(const D3DXVECTOR3 Rot) { m_Rotation = Rot; }	//	ï¿½ï¿½]
+	void SetScale(const D3DXVECTOR3 Scl) { m_Scale = Scl; }			//	ï¿½gï¿½å—¦
+	void SetModel(char *FileName) { m_FileName = FileName; }	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 
 	//	Getter
-	D3DXVECTOR3 GetRotation(void) { return m_Rotation; }	//	‰ñ“]
-	D3DXVECTOR3 GetScale(void) { return m_Scale; }			//	Šg‘å—¦
+	D3DXVECTOR3 GetRotation(void) { return m_Rotation; }	//	ï¿½ï¿½]
+	D3DXVECTOR3 GetScale(void) { return m_Scale; }			//	ï¿½gï¿½å—¦
 
 private:
-	void SetWorld(LPDIRECT3DDEVICE9 Device);	//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+	void SetWorld(LPDIRECT3DDEVICE9 Device);	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 
 private:
-	D3DXVECTOR3	m_Rotation;				//	‰ñ“]
-	D3DXVECTOR3	m_Scale;				//	Šg‘å—¦
+	D3DXVECTOR3	m_Rotation;				//	ï¿½ï¿½]
+	D3DXVECTOR3	m_Scale;				//	ï¿½gï¿½å—¦
 
-	char *m_FileName;	//	ƒtƒ@ƒCƒ‹–¼
+	char *m_FileName;	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 
-	CModelManager::MODEL_PARAM m_ModelParam;	//	ƒ‚ƒfƒ‹\‘¢‘Ì
+	CModelManager::MODEL_PARAM m_ModelParam;	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½
 };
 #endif

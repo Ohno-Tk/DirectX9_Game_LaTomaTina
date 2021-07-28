@@ -1,20 +1,17 @@
 /*=============================================================================
 
-		ƒtƒF[ƒh[ Fade.cpp ]
+		ï¿½tï¿½Fï¿½[ï¿½h[ Fade.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
-
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -23,35 +20,35 @@
 #include "Fade.h"
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define FADE_RATE ( 1.0f / 60 )	//	‚Ç‚Ì‚­‚ç‚¢‚ÅƒtƒF[ƒh‚³‚¹‚é‚Ì‚©
-#define TEX_ID ( CTextureManager::TEX_FADE )	//	ƒeƒNƒXƒ`ƒƒ‚ÌID
+#define FADE_RATE ( 1.0f / 60 )	//	ï¿½Ç‚Ì‚ï¿½ï¿½ç‚¢ï¿½Åƒtï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½
+#define TEX_ID ( CTextureManager::TEX_FADE )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
 
 /*-----------------------------------------------------------------------------
-	Ã“I•Ï”
+	ï¿½Ã“Iï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-CFade::FADE CFade::m_Fade = FADE_NONE;	//	ƒtƒF[ƒhó‘Ô
-CMode *CFade::m_Mode = NULL;			//	‰æ–Ê‘JˆÚ‚Ìƒ|ƒCƒ“ƒ^
+CFade::FADE CFade::m_Fade = FADE_NONE;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½
+CMode *CFade::m_Mode = NULL;			//	ï¿½ï¿½Ê‘Jï¿½Ú‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CFade::CFade()
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CFade::CFade()
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CFade::CFade()
 {
-	m_VtxBuff = NULL;	// ’¸“_ƒoƒbƒtƒ@
+	m_VtxBuff = NULL;	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
 
-	m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f);	//	F
+	m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f);	//	ï¿½F
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CFade *CFade::Create(void)
-ˆø”:
-–ß‚è’l:		return fade;	ƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^
-à–¾:		¶¬
+ï¿½Öï¿½ï¿½ï¿½:		CFade *CFade::Create(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:		return fade;	ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CFade *CFade::Create(void)
 {
@@ -59,38 +56,38 @@ CFade *CFade::Create(void)
 
 	fade = new CFade;
 
-	fade->Init();	//	‰Šú‰»
+	fade->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	return fade;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::Init(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰Šú‰»
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::Init(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CFade::Init(void)
 {
-	//	ƒeƒNƒXƒ`ƒƒ‚ÌŽæ“¾
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌŽæ“¾
 	CTextureManager* Texture = CManager::GetTextureManager();
 
 	Texture->Load(TEX_ID);
 
-	MakeVerTex();	//	’¸“_‚Ìì¬
+	MakeVerTex();	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::Uninit(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CFade::Uninit(void)
 {
 	if (m_VtxBuff)
 	{
-		m_VtxBuff->Release();	//	‰ð•ú
+		m_VtxBuff->Release();	//	ï¿½ï¿½ï¿½
 		m_VtxBuff = NULL;
 	}
 
@@ -98,144 +95,144 @@ void CFade::Uninit(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CFade::Update(void)
 {
-	AlphaFade();	//	ƒ¿’l‚ÌƒtƒF[ƒh
+	AlphaFade();	//	ï¿½ï¿½ï¿½lï¿½Ìƒtï¿½Fï¿½[ï¿½h
 
-	ChangeVerTex();	//	’¸“_‚Ì•ÏX
+	ChangeVerTex();	//	ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CFade::Draw(void)
 {
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚ðƒf[ƒ^ƒXƒgƒŠ[ƒ€‚ÉÝ’è
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÉÝ’ï¿½
 	Device->SetStreamSource(0, m_VtxBuff, 0, sizeof(VERTEX_2D));
 
-	// ’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	// ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	Device->SetFVF(FVF_VERTEX_2D);
 
-	// ƒeƒNƒXƒ`ƒƒ‚ÌÝ’è
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌÝ’ï¿½
 	Device->SetTexture(0, CManager::GetTextureManager()->GetTextureInfo(TEX_ID).Texture);
 
-	// •`‰æ
+	// ï¿½`ï¿½ï¿½
 	Device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::MakeVerTex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		’¸“_‚Ìì¬
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::MakeVerTex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 void CFade::MakeVerTex(void)
 {
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚Ì¶¬
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½
 	if (FAILED(Device->CreateVertexBuffer(sizeof(VERTEX_2D) * NUM_VERTEX, D3DUSAGE_WRITEONLY, FVF_VERTEX_2D, D3DPOOL_MANAGED, &m_VtxBuff, NULL)))
 	{
 
-		MessageBox(NULL, "’¸“_ƒoƒbƒtƒ@‚Ì¶¬‚ÉŽ¸”s", "Fade.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "Fade.cpp", MB_OK | MB_ICONHAND);
 		return;
 	}
 
 
-	// ’¸“_î•ñ‚ðÝ’è
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[0].Pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	pVtx[1].Pos = D3DXVECTOR3(SCREEN_WIDTH, 0.0f, 0.0f);
 	pVtx[2].Pos = D3DXVECTOR3(0.0f, SCREEN_HEIGHT, 0.0f);
 	pVtx[3].Pos = D3DXVECTOR3(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f);
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[0].Rhw = 1.0f;
 	pVtx[1].Rhw = 1.0f;
 	pVtx[2].Rhw = 1.0f;
 	pVtx[3].Rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[0].Tex = D3DXVECTOR2(0, 0);
 	pVtx[1].Tex = D3DXVECTOR2(1, 0);
 	pVtx[2].Tex = D3DXVECTOR2(0, 1);
 	pVtx[3].Tex = D3DXVECTOR2(1, 1);
 
-	//	ƒoƒbƒtƒ@‚ðƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::ChangeVerTex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		’¸“_‚Ì•ÏX
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::ChangeVerTex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 -----------------------------------------------------------------------------*/
 void CFade::ChangeVerTex(void)
 {
-	// ’¸“_î•ñ‚ðÝ’è
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
 
-	//	ƒoƒbƒtƒ@‚ðƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CFade::AlphaFade(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒ¿’l‚ÌƒtƒF[ƒh
+ï¿½Öï¿½ï¿½ï¿½:		void CFade::AlphaFade(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½lï¿½Ìƒtï¿½Fï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void CFade::AlphaFade(void)
 {
-	//	ƒtƒF[ƒh‚ª‚È‚¢Žž‚Ìˆ—
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	if (m_Fade == FADE_NONE) return;
 
 	if (m_Fade == FADE_IN)
-	{	//	ƒtƒF[ƒhƒCƒ“Žž‚Ìˆ—
+	{	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-		m_Color.a -= FADE_RATE;	//	a’l‚ðŒ¸ŽZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ð•‚‚©‚Ñã‚ª‚ç‚¹‚é
+		m_Color.a -= FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ð•‚‚ï¿½ï¿½Ñã‚ªï¿½ç‚¹ï¿½ï¿½
 
 		if (m_Color.a < 0.0f)
-		{	//	ƒtƒF[ƒhƒCƒ“‚ÌI—¹
+		{	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
 			m_Color.a = 0.0f;
 			m_Fade = FADE_NONE;
@@ -243,17 +240,17 @@ void CFade::AlphaFade(void)
 	}
 
 	else if (m_Fade == FADE_OUT)
-	{	//	ƒtƒF[ƒhƒAƒEƒgŽž‚Ìˆ—
+	{	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-		m_Color.a += FADE_RATE;	//	a’l‚ð‰ÁŽZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ðÁ‚µ‚Ä‚¢‚­
+		m_Color.a += FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 
 		if (m_Color.a > 1.0f)
-		{	//	ƒtƒF[ƒhƒAƒEƒg‚ÌI—¹
+		{	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ÌIï¿½ï¿½
 
 			m_Color.a = 1.0f;
-			m_Fade = FADE_IN;	//	ƒtƒF[ƒhƒCƒ“‚Éˆ—‚ÌØ‚è‘Ö‚¦
+			m_Fade = FADE_IN;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ÌØ‚ï¿½Ö‚ï¿½
 
-			//	‘JˆÚ‚ÌÝ’è
+			//	ï¿½Jï¿½Ú‚ÌÝ’ï¿½
 			CManager::SetMode(m_Mode);
 		}
 	}

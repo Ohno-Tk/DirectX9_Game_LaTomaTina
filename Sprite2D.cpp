@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		2D•`‰æ[ Sprite2D.cpp ]
+		2Dï¿½`ï¿½ï¿½[ Sprite2D.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -23,26 +21,26 @@
 #include "Sprite2D.h"
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CSprite2D::CSprite2D(int Priolity)
- ˆø”:		int Priolity	—Dæ“x
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CSprite2D::CSprite2D(int Priolity)
+ ï¿½ï¿½ï¿½ï¿½:		int Priolity	ï¿½Dï¿½ï¿½x
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CSprite2D::CSprite2D(int Priolity) :CScene(Priolity)
 {
-	m_VtxBuff = NULL;							// ’¸“_ƒoƒbƒtƒ@
-	m_Size = D3DXVECTOR2(0.0f, 0.0f);			//	‘å‚«‚³
-	m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);//	F
-	m_TexturePattern = 0;						//	ƒeƒNƒXƒ`ƒƒƒpƒ^[ƒ“
-	m_TextureAnimationCount = 0.0f;				//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒJƒEƒ“ƒ^
-	m_TextureAnimationTime = 0.0f;				//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒ^ƒCƒ€
+	m_VtxBuff = NULL;							// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
+	m_Size = D3DXVECTOR2(0.0f, 0.0f);			//	ï¿½å‚«ï¿½ï¿½
+	m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);//	ï¿½F
+	m_TexturePattern = 0;						//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½
+	m_TextureAnimationCount = 0.0f;				//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½^
+	m_TextureAnimationTime = 0.0f;				//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CSprite2D* CSprite2D::Create(int Priolity)
-ˆø”:		int Priolity	—Dæ“x
-–ß‚è’l:		return sprite2D;	ƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^
-à–¾:		¶¬
+ï¿½Öï¿½ï¿½ï¿½:		CSprite2D* CSprite2D::Create(int Priolity)
+ï¿½ï¿½ï¿½ï¿½:		int Priolity	ï¿½Dï¿½ï¿½x
+ï¿½ß‚ï¿½l:		return sprite2D;	ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CSprite2D* CSprite2D::Create(int Priolity)
 {
@@ -50,81 +48,81 @@ CSprite2D* CSprite2D::Create(int Priolity)
 
 	sprite2D = new CSprite2D(Priolity);
 
-	sprite2D->Init();	//	‰Šú‰»
+	sprite2D->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	return sprite2D;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::Init(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰Šú‰»
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::Init(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSprite2D::Init(void)
 {
-	MakeVerTex();	//	’¸“_‚Ìì¬
+	MakeVerTex();	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::Uninit(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSprite2D::Uninit(void)
 {
 	if (m_VtxBuff != NULL)
-	{	//	’¸“_ƒoƒbƒtƒ@
+	{	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
 
-		m_VtxBuff->Release();	// ‰ð•ú
+		m_VtxBuff->Release();	// ï¿½ï¿½ï¿½
 		m_VtxBuff = NULL;
 	}
 
-	CScene::Release();	//	ƒIƒuƒWƒFƒNƒgŽ©g‚Ì‰ð•ú
+	CScene::Release();	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½gï¿½Ì‰ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CSprite2D::Update(void)
 {
-	SetUpVerTex();	//	’¸“_‚Ì•ÏX
+	SetUpVerTex();	//	ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSprite2D::Draw(void)
 {
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚ðƒf[ƒ^ƒXƒgƒŠ[ƒ€‚ÉÝ’è
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÉÝ’ï¿½
 	Device->SetStreamSource(0, m_VtxBuff, 0, sizeof(VERTEX_2D));
 
-	// ’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	// ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	Device->SetFVF(FVF_VERTEX_2D);
 
-	// ƒeƒNƒXƒ`ƒƒ‚ÌÝ’è
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌÝ’ï¿½
 	Device->SetTexture(0, CManager::GetTextureManager()->GetTextureInfo(m_TextureId).Texture);
 
-	// •`‰æ
+	// ï¿½`ï¿½ï¿½
 	Device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::TextureAnimation(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::TextureAnimation(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSprite2D::TextureAnimation(void)
 {
@@ -136,69 +134,69 @@ void CSprite2D::TextureAnimation(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::MakeVerTex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		’¸“_‚Ìì¬
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::MakeVerTex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 void CSprite2D::MakeVerTex(void)
 {
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚Ì¶¬
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½
 	if (FAILED(Device->CreateVertexBuffer(sizeof(VERTEX_2D) * NUM_VERTEX, D3DUSAGE_WRITEONLY, FVF_VERTEX_2D, D3DPOOL_MANAGED, &m_VtxBuff, NULL)))
 	{
 
-		MessageBox(NULL, "’¸“_ƒoƒbƒtƒ@‚Ì¶¬‚ÉŽ¸”s", "Sprite2D.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "Sprite2D.cpp", MB_OK | MB_ICONHAND);
 		return;
 	}
 
 
-	// ’¸“_î•ñ‚ðÝ’è
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[0].Pos = D3DXVECTOR3(m_Position.x, m_Position.y, 0.0f);
 	pVtx[1].Pos = D3DXVECTOR3(m_Position.x + m_Size.x, m_Position.y, 0.0f);
 	pVtx[2].Pos = D3DXVECTOR3(m_Position.x, m_Position.y + m_Size.y, 0.0f);
 	pVtx[3].Pos = D3DXVECTOR3(m_Position.x + m_Size.x, m_Position.y + m_Size.y, 0.0f);
 
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½O
 	pVtx[0].Rhw = 1.0f;
 	pVtx[1].Rhw = 1.0f;
 	pVtx[2].Rhw = 1.0f;
 	pVtx[3].Rhw = 1.0f;
 
 
-	// ’¸“_ƒJƒ‰[
+	// ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
 
-	// ƒeƒNƒXƒ`ƒƒÀ•W
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 	pVtx[0].Tex = D3DXVECTOR2(0, 0);
 	pVtx[1].Tex = D3DXVECTOR2(1, 0);
 	pVtx[2].Tex = D3DXVECTOR2(0, 1);
 	pVtx[3].Tex = D3DXVECTOR2(1, 1);
 
-	//	ƒoƒbƒtƒ@‚ðƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSprite2D::SetUpVerTex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		’¸“_‚Ì•ÏX
+ï¿½Öï¿½ï¿½ï¿½:		void CSprite2D::SetUpVerTex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 -----------------------------------------------------------------------------*/
 void CSprite2D::SetUpVerTex(void)
 {
@@ -216,33 +214,33 @@ void CSprite2D::SetUpVerTex(void)
 	const float u1 = (float)(tcx + tcw) / tw;
 	const float v1 = (float)(tcy + tch) / th;
 
-	// ’¸“_î•ñ‚ðÝ’è
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[0].Pos = D3DXVECTOR3(m_Position.x, m_Position.y, 0.0f);
 	pVtx[1].Pos = D3DXVECTOR3(m_Position.x + m_Size.x, m_Position.y, 0.0f);
 	pVtx[2].Pos = D3DXVECTOR3(m_Position.x, m_Position.y + m_Size.y, 0.0f);
 	pVtx[3].Pos = D3DXVECTOR3(m_Position.x + m_Size.x, m_Position.y + m_Size.y, 0.0f);
 
 
-	// ’¸“_ƒJƒ‰[
+	// ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
 
-	// ƒeƒNƒXƒ`ƒƒÀ•W
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 	pVtx[0].Tex = D3DXVECTOR2(u0, v0);
 	pVtx[1].Tex = D3DXVECTOR2(u1, v0);
 	pVtx[2].Tex = D3DXVECTOR2(u0, v1);
 	pVtx[3].Tex = D3DXVECTOR2(u1, v1);
 
-	//	ƒoƒbƒtƒ@‚ðƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 }

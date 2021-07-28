@@ -1,25 +1,23 @@
 /*=============================================================================
 
-		ƒ‚[ƒVƒ‡ƒ“[ Motion.cpp ]
+		ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½[ Motion.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/07
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/07
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	warning–h~
+	warningï¿½hï¿½~
 -----------------------------------------------------------------------------*/
 #define _CRT_SECURE_NO_WARNINGS
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -29,12 +27,12 @@
 #include "Motion.h"
 
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define TEXTURE_PATH "data/TEXTURE/"	//	ƒeƒNƒXƒ`ƒƒ‚ÌƒpƒX
+#define TEXTURE_PATH "data/TEXTURE/"	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒpï¿½X
 
 /*-----------------------------------------------------------------------------
-	Ã“Iƒƒ“ƒo•Ï”
+	ï¿½Ã“Iï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
 char CMotion::m_Buff[] = {};
 char *CMotion::m_FileToken[MAX_TOKEN] = {
@@ -60,34 +58,34 @@ char *CMotion::m_FileToken[MAX_TOKEN] = {
 	"KEY",
 	"END_KEY",
 	"=",
-	"‚±‚Ìs‚Íâ‘ÎÁ‚³‚È‚¢‚±‚ÆI",
+	"ï¿½ï¿½ï¿½Ìsï¿½Íï¿½Îï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ÆI",
 };
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CMotion::CMotion(int Priolity)
- ˆø”:		int Priolity	—Dæ“x
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CMotion::CMotion(int Priolity)
+ ï¿½ï¿½ï¿½ï¿½:		int Priolity	ï¿½Dï¿½ï¿½x
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CMotion::CMotion(int Priolity):CScene(Priolity)
 {
 
-	m_NumModel = 0;		//	ƒ‚ƒfƒ‹”
-	m_MotionIndex = 0;	//	ƒ‚[ƒVƒ‡ƒ“”Ô†
-	m_NumKey = 0;		//	ƒL[”
-	m_UpdateCount = 0;	//	XV‚ÌƒJƒEƒ“ƒ^
+	m_NumModel = 0;		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½
+	m_MotionIndex = 0;	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ôï¿½
+	m_NumKey = 0;		//	ï¿½Lï¿½[ï¿½ï¿½
+	m_UpdateCount = 0;	//	ï¿½Xï¿½Vï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½^
 
-	m_TextFileName = NULL;	//	ƒeƒLƒXƒg‚Ìƒtƒ@ƒCƒ‹–¼
+	m_TextFileName = NULL;	//	ï¿½eï¿½Lï¿½Xï¿½gï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 	m_ModelFileName = NULL;
-	m_CharInfo = NULL;	//	ƒLƒƒƒ‰ƒNƒ^[î•ñ
+	m_CharInfo = NULL;	//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ï¿½ï¿½
 
-	//	ƒ‚[ƒVƒ‡ƒ“î•ñ
+	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for(int i = 0 ; i < MAX_MOTION ; i++)
 	{
-		m_Motion[i].Loop = 0;		//	ƒ‹[ƒv‚·‚é‚©
-		m_Motion[i].NumKey = 0;		//	ƒL[”
-		m_Motion[i].Frame = NULL;	//	ƒtƒŒ[ƒ€”
-		m_Motion[i].Next = NULL;	//	Ÿ‚ÌêŠ
+		m_Motion[i].Loop = 0;		//	ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚©
+		m_Motion[i].NumKey = 0;		//	ï¿½Lï¿½[ï¿½ï¿½
+		m_Motion[i].Frame = NULL;	//	ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
+		m_Motion[i].Next = NULL;	//	ï¿½ï¿½ï¿½ÌêŠ
 	}
 }
 
@@ -98,31 +96,31 @@ CMotion::~CMotion()
 		for (int j = 0; j < m_Motion[i].NumKey; j++)
 		{
 			if (m_Motion[i].Next[j].Pos != NULL)
-			{	//	À•W
+			{	//	ï¿½ï¿½ï¿½W
 
-				delete m_Motion[i].Next[j].Pos;	//	‰ğ•ú
+				delete m_Motion[i].Next[j].Pos;	//	ï¿½ï¿½ï¿½
 				m_Motion[i].Next[j].Pos = NULL;
 			}
 
 			if (m_Motion[i].Next[j].Rot != NULL)
-			{	//	‰ñ“]
+			{	//	ï¿½ï¿½]
 
-				delete m_Motion[i].Next[j].Rot;	//	‰ğ•ú
+				delete m_Motion[i].Next[j].Rot;	//	ï¿½ï¿½ï¿½
 				m_Motion[i].Next[j].Rot = NULL;
 			}
 		}
 
 		if (m_Motion[i].Frame != NULL)
-		{	//	ƒ‹[ƒv‚·‚é‚©
+		{	//	ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚©
 
-			delete m_Motion[i].Frame;	//	‰ğ•ú
+			delete m_Motion[i].Frame;	//	ï¿½ï¿½ï¿½
 			m_Motion[i].Frame = NULL;
 		}
 
 		if (m_Motion[i].Next != NULL)
-		{	//	Ÿ‚ÌêŠ
+		{	//	ï¿½ï¿½ï¿½ÌêŠ
 
-			delete m_Motion[i].Next;	//	‰ğ•ú
+			delete m_Motion[i].Next;	//	ï¿½ï¿½ï¿½
 			m_Motion[i].Next = NULL;
 		}
 	}
@@ -131,34 +129,34 @@ CMotion::~CMotion()
 	{
 
 		if (m_CharInfo[i].Mesh != NULL)
-		{	//	ƒƒbƒVƒ…î•ñ
+		{	//	ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½
 
-			m_CharInfo[i].Mesh->Release();	//	‰ğ•ú
+			m_CharInfo[i].Mesh->Release();	//	ï¿½ï¿½ï¿½
 			m_CharInfo[i].Mesh = NULL;
 		}
 
 		if (m_CharInfo[i].BuffMat != NULL)
-		{	//	ƒ}ƒeƒŠƒAƒ‹î•ñ
+		{	//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½
 
-			m_CharInfo[i].BuffMat->Release();	//	‰ğ•ú
+			m_CharInfo[i].BuffMat->Release();	//	ï¿½ï¿½ï¿½
 			m_CharInfo[i].BuffMat = NULL;
 		}
 	}
 
 	if (m_CharInfo != NULL)
-	{	//	ƒLƒƒƒ‰ƒNƒ^[î•ñ
+	{	//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ï¿½ï¿½
 
-		delete[] m_CharInfo;	//	‰ğ•ú
+		delete[] m_CharInfo;	//	ï¿½ï¿½ï¿½
 		m_CharInfo = NULL;
 	}
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CMotion *CMotion::Create(const int priolity, char *FileName)
- ˆø”:		const int priolity		—Dæ“x
-			char *FileName			ƒtƒ@ƒCƒ‹–¼
- –ß‚è’l:	
- à–¾:		¶¬
+ ï¿½Öï¿½ï¿½ï¿½:	CMotion *CMotion::Create(const int priolity, char *FileName)
+ ï¿½ï¿½ï¿½ï¿½:		const int priolity		ï¿½Dï¿½ï¿½x
+			char *FileName			ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CMotion *CMotion::Create(const int priolity, char *FileName)
 {
@@ -166,29 +164,29 @@ CMotion *CMotion::Create(const int priolity, char *FileName)
 
 	motion = new CMotion(priolity);
 
-	motion->m_TextFileName = FileName;	//	ƒtƒ@ƒCƒ‹–¼
+	motion->m_TextFileName = FileName;	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 
-	motion->Init();	//	‰Šú‰»
+	motion->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	return motion;
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::Init( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::Init( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::Init( void )
 {
-	ReadText();	//	ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
+	ReadText();	//	ï¿½eï¿½Lï¿½Xï¿½gï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::Uninit( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		I—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::Uninit( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::Uninit( void )
 {
@@ -197,28 +195,28 @@ void CMotion::Uninit( void )
 		for (int j = 0; j < (int)m_CharInfo[i].NumMat; j++)
 		{
 			if (m_CharInfo[i].Texture[j] != NULL)
-			{	//	ƒeƒNƒXƒ`ƒƒ
+			{	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
 
-				m_CharInfo[i].Texture[j]->Release();	//	‰ğ•ú
+				m_CharInfo[i].Texture[j]->Release();	//	ï¿½ï¿½ï¿½
 				m_CharInfo[i].Texture[j] = NULL;
 			}
 		}
 
-		delete[] m_CharInfo[i].Texture;	//	‰ğ•ú
+		delete[] m_CharInfo[i].Texture;	//	ï¿½ï¿½ï¿½
 	}
 
-	CScene::Release();	//	ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+	CScene::Release();	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‰ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::Update( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		XV
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::Update( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CMotion::Update( void )
 {
-	// Šeƒ‚ƒfƒ‹‚ÌÀ•W‚ÆŠp“x‚ğXV
+	// ï¿½eï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìï¿½ï¿½Wï¿½ÆŠpï¿½xï¿½ï¿½ï¿½Xï¿½V
 	for(int i = 0 ; i < m_NumModel ; i++)
 	{
 		m_CharInfo[i].Pos += m_CharInfo[i].MovePos;
@@ -226,22 +224,22 @@ void CMotion::Update( void )
 	}
 
 	if(m_Motion[m_MotionIndex].Frame[m_NumKey] < m_UpdateCount)
-	{	//	ƒ‚[ƒVƒ‡ƒ“‚ÌƒtƒŒ[ƒ€”‚ğ’´‚¦‚½‚ç
+	{	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ìƒtï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ğ’´‚ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		if(m_Motion[m_MotionIndex].Loop == 0 && m_Motion[m_MotionIndex].NumKey <= m_NumKey)
 		{
 			m_NumKey = 0;
 		}
 
-		// ·•ª‚ğŒvZ‚µ‚ÄAˆÚ“®—Ê‚ğo‚·
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½ÄAï¿½Ú“ï¿½ï¿½Ê‚ï¿½ï¿½oï¿½ï¿½
 		for(int i = 0 ; i < m_NumModel ; i++)
 		{
-			// À•W
+			// ï¿½ï¿½ï¿½W
 			m_CharInfo[i].MovePos.x = (m_Motion[m_MotionIndex].Next[m_NumKey].Pos[i].x - m_CharInfo[i].Pos.x) / m_Motion[m_MotionIndex].Frame[m_NumKey];
 			m_CharInfo[i].MovePos.y = (m_Motion[m_MotionIndex].Next[m_NumKey].Pos[i].y - m_CharInfo[i].Pos.y) / m_Motion[m_MotionIndex].Frame[m_NumKey];
 			m_CharInfo[i].MovePos.z = (m_Motion[m_MotionIndex].Next[m_NumKey].Pos[i].z - m_CharInfo[i].Pos.z) / m_Motion[m_MotionIndex].Frame[m_NumKey];
 
-			// Šp“x
+			// ï¿½pï¿½x
 			m_CharInfo[i].MoveRot.x = (m_Motion[m_MotionIndex].Next[m_NumKey].Rot[i].x - m_CharInfo[i].Rot.x) / m_Motion[m_MotionIndex].Frame[m_NumKey];
 			m_CharInfo[i].MoveRot.y = (m_Motion[m_MotionIndex].Next[m_NumKey].Rot[i].y - m_CharInfo[i].Rot.y) / m_Motion[m_MotionIndex].Frame[m_NumKey];
 			m_CharInfo[i].MoveRot.z = (m_Motion[m_MotionIndex].Next[m_NumKey].Rot[i].z - m_CharInfo[i].Rot.z) / m_Motion[m_MotionIndex].Frame[m_NumKey];
@@ -250,7 +248,7 @@ void CMotion::Update( void )
 		m_UpdateCount = 0;
 		m_NumKey++;
 
-		//	ƒ‹[ƒv‚·‚é‚©‚Ç‚¤‚©
+		//	ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½
 		if(m_Motion[m_MotionIndex].Loop == 1 && m_NumKey == m_Motion[m_MotionIndex].NumKey)
 		{
 			m_NumKey = 0;
@@ -261,35 +259,35 @@ void CMotion::Update( void )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::Draw( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::Draw( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::Draw( void )
 {
-	//	ƒfƒoƒCƒX‚Ìæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
-	//	Œ»İƒfƒoƒCƒX‚Éİ’è‚³‚ê‚Ä‚¢‚éƒ}ƒeƒŠƒAƒ‹î•ñ‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½İƒfï¿½oï¿½Cï¿½Xï¿½Éİ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	D3DMATERIAL9 matDef;
 	Device->GetMaterial(&matDef);
 
 	for(int i = 0 ; i < m_NumModel ; i++)
 	{
 
-		//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+		//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 		SetWorld(i, Device);
 
 		for(int j = 0 ; j < (int)m_CharInfo[i].NumMat ; j++)
 		{
-			//	ƒfƒoƒCƒX‚Éƒ}ƒeƒŠƒAƒ‹‚ğİ’è
+			//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒ}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½İ’ï¿½
 			Device->SetMaterial(&m_CharInfo[i].Mat[j].MatD3D);
 
-			//	ƒeƒNƒXƒ`ƒƒİ’è
+			//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½İ’ï¿½
 			Device->SetTexture(0, m_CharInfo[i].Texture[j]);
 
-			//	•`‰æ
+			//	ï¿½`ï¿½ï¿½
 			m_CharInfo[i].Mesh->DrawSubset(j);
 		}
 		Device->SetMaterial(&matDef);
@@ -297,55 +295,55 @@ void CMotion::Draw( void )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::SetWorld(const int cntmodel, LPDIRECT3DDEVICE9 Device)
- ˆø”:		const int cntmodel			ƒ‚ƒfƒ‹”ƒJƒEƒ“ƒ^
-			LPDIRECT3DDEVICE9 Device	ƒfƒoƒCƒX
- –ß‚è’l:	
- à–¾:		ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::SetWorld(const int cntmodel, LPDIRECT3DDEVICE9 Device)
+ ï¿½ï¿½ï¿½ï¿½:		const int cntmodel			ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½^
+			LPDIRECT3DDEVICE9 Device	ï¿½fï¿½oï¿½Cï¿½X
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::SetWorld(const int cntmodel, LPDIRECT3DDEVICE9 Device)
 {
 
-	D3DXMatrixIdentity(&m_CharInfo[cntmodel].MtxWorld);	//	s—ñ‚ğ’PˆÊs—ñ‚É‚·‚é
+	D3DXMatrixIdentity(&m_CharInfo[cntmodel].MtxWorld);	//	ï¿½sï¿½ï¿½ï¿½Pï¿½Êsï¿½ï¿½É‚ï¿½ï¿½ï¿½
 
-	//	Šg‘ås—ñ‚ğì‚é
-	D3DXMatrixScaling(&m_CharInfo[cntmodel].MtxScl,	//Šg‘ås—ñ‚ªì‚ç‚ê‚é
-		1.0f,								//	X²Šg‘å
-		1.0f,								//	Y²Šg‘å
-		1.0f);								//	Z²Šg‘å
+	//	ï¿½gï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixScaling(&m_CharInfo[cntmodel].MtxScl,	//ï¿½gï¿½ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		1.0f,								//	Xï¿½ï¿½ï¿½gï¿½ï¿½
+		1.0f,								//	Yï¿½ï¿½ï¿½gï¿½ï¿½
+		1.0f);								//	Zï¿½ï¿½ï¿½gï¿½ï¿½
 
-	//	‰ñ“]s—ñ‚ğì‚é
-	D3DXMatrixRotationYawPitchRoll(&m_CharInfo[cntmodel].MtxRot,	//	‰ñ“]s—ñ‚ªì‚ç‚ê‚é
-		m_CharInfo[cntmodel].Rot.y + m_CharInfo[cntmodel].OffsetRot.y,		//	Y²‰ñ“]
-		m_CharInfo[cntmodel].Rot.x + m_CharInfo[cntmodel].OffsetRot.x,		//	X²‰ñ“]
-		m_CharInfo[cntmodel].Rot.z + m_CharInfo[cntmodel].OffsetRot.z);		//	Z²‰ñ“]
+	//	ï¿½ï¿½]ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixRotationYawPitchRoll(&m_CharInfo[cntmodel].MtxRot,	//	ï¿½ï¿½]ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		m_CharInfo[cntmodel].Rot.y + m_CharInfo[cntmodel].OffsetRot.y,		//	Yï¿½ï¿½ï¿½ï¿½]
+		m_CharInfo[cntmodel].Rot.x + m_CharInfo[cntmodel].OffsetRot.x,		//	Xï¿½ï¿½ï¿½ï¿½]
+		m_CharInfo[cntmodel].Rot.z + m_CharInfo[cntmodel].OffsetRot.z);		//	Zï¿½ï¿½ï¿½ï¿½]
 
-	//	•½sˆÚ“®s—ñ‚ğì‚é
-	D3DXMatrixTranslation(&m_CharInfo[cntmodel].MtxPos,	//	•½sˆÚ“®s—ñ‚ªì‚ç‚ê‚é
-		m_CharInfo[cntmodel].Pos.x + m_CharInfo[cntmodel].OffsetPos.x,	//	X²ˆÚ“®
-		m_CharInfo[cntmodel].Pos.y + m_CharInfo[cntmodel].OffsetPos.y,	//	Y²ˆÚ“®
-		m_CharInfo[cntmodel].Pos.z + m_CharInfo[cntmodel].OffsetPos.z);	//	Z²ˆÚ“®
+	//	ï¿½ï¿½ï¿½sï¿½Ú“ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixTranslation(&m_CharInfo[cntmodel].MtxPos,	//	ï¿½ï¿½ï¿½sï¿½Ú“ï¿½ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		m_CharInfo[cntmodel].Pos.x + m_CharInfo[cntmodel].OffsetPos.x,	//	Xï¿½ï¿½ï¿½Ú“ï¿½
+		m_CharInfo[cntmodel].Pos.y + m_CharInfo[cntmodel].OffsetPos.y,	//	Yï¿½ï¿½ï¿½Ú“ï¿½
+		m_CharInfo[cntmodel].Pos.z + m_CharInfo[cntmodel].OffsetPos.z);	//	Zï¿½ï¿½ï¿½Ú“ï¿½
 
-	//	ƒ}ƒgƒŠƒNƒX‚ğŠ|‚¯‚é
+	//	ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½Xï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixMultiply(&m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxScl);
 	D3DXMatrixMultiply(&m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxRot);
 	D3DXMatrixMultiply(&m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxPos);
 
 	if(m_CharInfo[cntmodel].Parent != -1)
-	{	//	eq\‘¢‚ª-1‚¾‚Á‚½‚ç
+	{	//	ï¿½eï¿½qï¿½\ï¿½ï¿½ï¿½ï¿½-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		D3DXMatrixMultiply(&m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[cntmodel].MtxWorld, &m_CharInfo[m_CharInfo[cntmodel].Parent].MtxWorld);
 	}
 
-	//	ƒfƒoƒCƒX‚Éƒ[ƒ‹ƒh•ÏŠ·s—ñ‚ğİ’è
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½İ’ï¿½
 	Device -> SetTransform( D3DTS_WORLD, &m_CharInfo[cntmodel].MtxWorld);
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::SetMotionIndex(const int index)
- ˆø”:		int index	”Ô†
- –ß‚è’l:	
- à–¾:		ƒ‚[ƒVƒ‡ƒ“”Ô†‚ÌƒZƒbƒg
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::SetMotionIndex(const int index)
+ ï¿½ï¿½ï¿½ï¿½:		int index	ï¿½Ôï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ôï¿½ï¿½ÌƒZï¿½bï¿½g
 -----------------------------------------------------------------------------*/
 void CMotion::SetMotionIndex(const int index)
 {
@@ -357,10 +355,10 @@ void CMotion::SetMotionIndex(const int index)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::ReadText(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::ReadText(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½eï¿½Lï¿½Xï¿½gï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::ReadText(void)
 {
@@ -372,26 +370,26 @@ void CMotion::ReadText(void)
 		fscanf( fp , "%s" , m_Buff );
 
 		if(strcmp( m_Buff , m_FileToken[SCRIPT] ) == 0)
-		{	//	SCRIPT‚ÌŒŸõ
+		{	//	SCRIPTï¿½ÌŒï¿½ï¿½ï¿½
 
-			ReadNumModel(fp);		//	ƒ‚ƒfƒ‹”‚Ì“Ç‚İ‚İ
-			ReadModelFileName(fp);	//	ƒ‚ƒfƒ‹ƒtƒ@ƒCƒ‹–¼‚Ì“Ç‚İ‚İ
-			ReadCharacterInfo(fp);	//	ƒLƒƒƒ‰ƒNƒ^î•ñ‚Ì“Ç‚İ‚İ
-			ReadMotion(fp);			//	ƒ‚[ƒVƒ‡ƒ“î•ñ‚Ì“Ç‚İ‚İ
+			ReadNumModel(fp);		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+			ReadModelFileName(fp);	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+			ReadCharacterInfo(fp);	//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+			ReadMotion(fp);			//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 		}
 
-		//	END_SCRIPT‚ÌŒŸõ
+		//	END_SCRIPTï¿½ÌŒï¿½ï¿½ï¿½
 		else if(strcmp( m_Buff , m_FileToken[LAST_WORD] ) == 0) break;
 	}
 
-	CManager::GetFileManager()->CloseFile(fp);	//	ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
+	CManager::GetFileManager()->CloseFile(fp);	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::ReadNumModel(FILE *fp)
- ˆø”:		FILE *fp	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
- –ß‚è’l:	
- à–¾:		ƒ‚ƒfƒ‹”‚Ì“Ç‚İ‚İ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::ReadNumModel(FILE *fp)
+ ï¿½ï¿½ï¿½ï¿½:		FILE *fp	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::ReadNumModel(FILE *fp)
 {
@@ -400,30 +398,30 @@ void CMotion::ReadNumModel(FILE *fp)
 		fscanf( fp , "%s" , m_Buff );
 
 		if(strcmp( m_Buff , m_FileToken[NUM_MODEL] ) == 0)
-		{	//	NUM_MODEL‚ÌŒŸõ
+		{	//	NUM_MODELï¿½ÌŒï¿½ï¿½ï¿½
 
 			fscanf( fp , "%s" , m_Buff );
 
 			if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-			{	//	=‚ÌŒŸõ
+			{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-				fscanf( fp , "%d" , &m_NumModel );	//	ƒ‚ƒfƒ‹”‚Ì“Ç‚İ‚İ
+				fscanf( fp , "%d" , &m_NumModel );	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 
 				m_CharInfo = new CHARPARTSSET[m_NumModel];
 
 				for(int i = 0 ; i < m_NumModel ; i++)
-				{	//	‰Šú‰»
-					m_CharInfo[i].Index = 0;								//	ƒp[ƒc”Ô†
-					m_CharInfo[i].Parent = 0;								//	eq\‘¢
-					m_CharInfo[i].OffsetPos = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	‰ŠúÀ•W
-					m_CharInfo[i].OffsetRot = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	‰Šú‰ñ“]
-					m_CharInfo[i].MovePos = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	ˆÚ“®—Ê
-					m_CharInfo[i].MoveRot = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	‰ñ“]—Ê
-					m_CharInfo[i].Pos = D3DXVECTOR3(0.0f,0.0f,0.0f);		//	À•W
-					m_CharInfo[i].Rot = D3DXVECTOR3(0.0f,0.0f,0.0f);		//	‰ñ“]
-/*					m_CharInfo[i].Texture = NULL;							//	ƒeƒNƒXƒ`ƒƒ‚Ìƒ|ƒCƒ“ƒ^
-					m_CharInfo[i].Mesh = NULL;								//	ƒƒbƒVƒ…î•ñ
-					m_CharInfo[i].BuffMat = NULL;							//	ƒ}ƒeƒŠƒAƒ‹î•ñ
+				{	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					m_CharInfo[i].Index = 0;								//	ï¿½pï¿½[ï¿½cï¿½Ôï¿½
+					m_CharInfo[i].Parent = 0;								//	ï¿½eï¿½qï¿½\ï¿½ï¿½
+					m_CharInfo[i].OffsetPos = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½W
+					m_CharInfo[i].OffsetRot = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+					m_CharInfo[i].MovePos = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	ï¿½Ú“ï¿½ï¿½ï¿½
+					m_CharInfo[i].MoveRot = D3DXVECTOR3(0.0f,0.0f,0.0f);	//	ï¿½ï¿½]ï¿½ï¿½
+					m_CharInfo[i].Pos = D3DXVECTOR3(0.0f,0.0f,0.0f);		//	ï¿½ï¿½ï¿½W
+					m_CharInfo[i].Rot = D3DXVECTOR3(0.0f,0.0f,0.0f);		//	ï¿½ï¿½]
+/*					m_CharInfo[i].Texture = NULL;							//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+					m_CharInfo[i].Mesh = NULL;								//	ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½
+					m_CharInfo[i].BuffMat = NULL;							//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½
 */				
 				}
 
@@ -434,10 +432,10 @@ void CMotion::ReadNumModel(FILE *fp)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::ReadModelFileName(FILE *fp)
- ˆø”:		FILE *fp	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
- –ß‚è’l:	
- à–¾:		ƒ‚ƒfƒ‹ƒtƒ@ƒCƒ‹–¼‚Ì“Ç‚İ‚İ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::ReadModelFileName(FILE *fp)
+ ï¿½ï¿½ï¿½ï¿½:		FILE *fp	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::ReadModelFileName(FILE *fp)
 {
@@ -446,20 +444,20 @@ void CMotion::ReadModelFileName(FILE *fp)
 	char ModelFileName[256];
 
 	while(nummodel != m_NumModel)
-	{	//	ƒ‚ƒfƒ‹”•ª
+	{	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		fscanf( fp , "%s" , m_Buff );
 
 		if(strcmp( m_Buff , m_FileToken[MODEL_FILENAME] ) == 0)
-		{	//	MODEL_FILENAME‚ÌŒŸõ
+		{	//	MODEL_FILENAMEï¿½ÌŒï¿½ï¿½ï¿½
 
 			fscanf( fp , "%s" , m_Buff );
 			if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-			{	//	=‚ÌŒŸõ
+			{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-				fscanf(fp, "%s", &ModelFileName);	//	ƒ‚ƒfƒ‹ƒtƒ@ƒCƒ‹–¼‚Ì“Ç‚İ‚İ
+				fscanf(fp, "%s", &ModelFileName);	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 
-				LoadModel(nummodel, ModelFileName);		//	ƒ‚ƒfƒ‹‚Ìƒ[ƒh
+				LoadModel(nummodel, ModelFileName);		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 
 				nummodel++;
 			}
@@ -468,11 +466,11 @@ void CMotion::ReadModelFileName(FILE *fp)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::LoadModel(const int nummodel, char *modelfilename)
- ˆø”:		const int nummodel		ƒ‚ƒfƒ‹”‚ÌƒJƒEƒ“ƒ^
-			char *modelfilename		ƒ‚ƒfƒ‹‚Ìƒtƒ@ƒCƒ‹–¼
- –ß‚è’l:	
- à–¾:		ƒ‚ƒfƒ‹‚Ìƒ[ƒh
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::LoadModel(const int nummodel, char *modelfilename)
+ ï¿½ï¿½ï¿½ï¿½:		const int nummodel		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½^
+			char *modelfilename		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void CMotion::LoadModel(const int nummodel, char *modelfilename)
 {
@@ -482,31 +480,31 @@ void CMotion::LoadModel(const int nummodel, char *modelfilename)
 	//m_CharInfo[nummodel].ModelParam = ModelManager->GetModelParam(modelfilename);
 
 
-	//	ƒfƒoƒCƒX‚Ìæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 	HRESULT hr;
 
-	// “Ç‚İ‚İ
-	hr = D3DXLoadMeshFromX(		modelfilename,		//	ƒtƒ@ƒCƒ‹–¼
+	// ï¿½Ç‚İï¿½ï¿½ï¿½
+	hr = D3DXLoadMeshFromX(		modelfilename,		//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 								D3DXMESH_SYSTEMMEM,
-								Device,				//	ƒfƒoƒCƒX
-								NULL,					//	—×Úƒoƒbƒtƒ@
-								&m_CharInfo[nummodel].BuffMat,			//	ƒ}ƒeƒŠƒAƒ‹î•ñ‚ğŠi”[
+								Device,				//	ï¿½fï¿½oï¿½Cï¿½X
+								NULL,					//	ï¿½×Úƒoï¿½bï¿½tï¿½@
+								&m_CharInfo[nummodel].BuffMat,			//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
 								NULL,
-								&m_CharInfo[nummodel].NumMat,				//	ƒ}ƒeƒŠƒAƒ‹”
-								&m_CharInfo[nummodel].Mesh );				//	ƒƒbƒVƒ…
+								&m_CharInfo[nummodel].NumMat,				//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½
+								&m_CharInfo[nummodel].Mesh );				//	ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 
-	//	ƒ‚ƒfƒ‹‚ÌƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ÌƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if(FAILED(hr))
 	{
 		MessageBox( NULL , modelfilename , "Motion.cpp" , MB_OK | MB_ICONHAND );
 	}
 
-	//	ƒ}ƒeƒŠƒAƒ‹î•ñ‚Ìƒ|ƒCƒ“ƒ^‚Æ‚µ‚Äƒoƒbƒtƒ@‚ÌƒAƒhƒŒƒX‚ğæ“¾
+	//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½Æ‚ï¿½ï¿½Äƒoï¿½bï¿½tï¿½@ï¿½ÌƒAï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_CharInfo[nummodel].Mat = ( D3DXMATERIAL* )m_CharInfo[nummodel].BuffMat->GetBufferPointer();
 
-	//	ƒeƒNƒXƒ`ƒƒ‚Ì“®“IŠm•Û
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì“ï¿½ï¿½Iï¿½mï¿½ï¿½
 	m_CharInfo[nummodel].Texture = new LPDIRECT3DTEXTURE9[m_CharInfo[nummodel].NumMat];
 
 
@@ -524,10 +522,10 @@ void CMotion::LoadModel(const int nummodel, char *modelfilename)
 
 			hr = D3DXCreateTextureFromFile( Device, filePath, &m_CharInfo[nummodel].Texture[j]);
 
-			//	ƒeƒNƒXƒ`ƒƒ‚ÌƒGƒ‰[ƒ`ƒFƒbƒN
+			//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 			if(FAILED(hr))
 			{
-				MessageBox( NULL , "ƒ‚ƒfƒ‹‚ÌƒeƒNƒXƒ`ƒƒƒpƒX‚ª‚¨‚©‚µ‚¢‚Å‚·" , "Motion.cpp" , MB_OK | MB_ICONHAND );
+				MessageBox( NULL , "ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½pï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½" , "Motion.cpp" , MB_OK | MB_ICONHAND );
 			}
 		}
 	}
@@ -535,10 +533,10 @@ void CMotion::LoadModel(const int nummodel, char *modelfilename)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::ReadCharacterInfo(FILE *fp)
- ˆø”:		FILE *fp	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
- –ß‚è’l:	
- à–¾:		ƒLƒƒƒ‰ƒNƒ^î•ñ‚Ì“Ç‚İ‚İ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::ReadCharacterInfo(FILE *fp)
+ ï¿½ï¿½ï¿½ï¿½:		FILE *fp	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::ReadCharacterInfo(FILE *fp)
 {
@@ -546,65 +544,65 @@ void CMotion::ReadCharacterInfo(FILE *fp)
 	{
 		fscanf( fp , "%s" , m_Buff );
 		if(strcmp( m_Buff , m_FileToken[CHARACTERSET] ) == 0)
-		{	//	CHARACTERSET‚ÌŒŸõ
+		{	//	CHARACTERSETï¿½ÌŒï¿½ï¿½ï¿½
 
-			ReadPartsSet(fp);	//	ƒLƒƒƒ‰ƒNƒ^‚Ìƒp[ƒcî•ñ‚Ì“Ç‚İ‚İ
+			ReadPartsSet(fp);	//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½Ìƒpï¿½[ï¿½cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 		}
 
-		//	END_CHARACTERSET‚ÌŒŸõ
+		//	END_CHARACTERSETï¿½ÌŒï¿½ï¿½ï¿½
 		else if(strcmp( m_Buff , m_FileToken[END_CHARACTERSET] ) == 0) break;
 	}
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::ReadPartsSet(FILE *fp)
- ˆø”:		FILE *fp	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
- –ß‚è’l:	
- à–¾:		ƒLƒƒƒ‰ƒNƒ^‚Ìƒp[ƒcî•ñ‚Ì“Ç‚İ‚İ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::ReadPartsSet(FILE *fp)
+ ï¿½ï¿½ï¿½ï¿½:		FILE *fp	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½Ìƒpï¿½[ï¿½cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::ReadPartsSet(FILE *fp)
 {
 	int nummodel = 0;
 
 	while( nummodel != m_NumModel )
-	{	//	ƒ‚ƒfƒ‹”•ª
+	{	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		fscanf( fp , "%s" , m_Buff );
 
 		if(strcmp( m_Buff , m_FileToken[PARTSSET] ) == 0)
-		{	//	PARTSSET‚ÌŒŸõ
+		{	//	PARTSSETï¿½ÌŒï¿½ï¿½ï¿½
 
 			while( 1 )
 			{
 				fscanf( fp , "%s" , m_Buff );
 
 				if(strcmp( m_Buff , m_FileToken[INDEX] ) == 0)
-				{	//	INDEX‚ÌŒŸõ
+				{	//	INDEXï¿½ÌŒï¿½ï¿½ï¿½
 					fscanf( fp , "%s" , m_Buff );
 					if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-					{	//	=‚ÌŒŸõ
+					{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-						fscanf( fp , "%d" , &m_CharInfo[nummodel].Index );	//	ƒp[ƒc”Ô†‚Ì“Ç‚İ‚İ
+						fscanf( fp , "%d" , &m_CharInfo[nummodel].Index );	//	ï¿½pï¿½[ï¿½cï¿½Ôï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 					}
 				}
 
 				else if(strcmp( m_Buff , m_FileToken[PARENT] ) == 0)
-				{	//	PARENT‚ÌŒŸõ
+				{	//	PARENTï¿½ÌŒï¿½ï¿½ï¿½
 					fscanf( fp , "%s" , m_Buff );
 					if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-					{	//	=‚ÌŒŸõ
+					{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-						fscanf( fp , "%d" , &m_CharInfo[nummodel].Parent );	//	eq\‘¢‚Ì“Ç‚İ‚İ
+						fscanf( fp , "%d" , &m_CharInfo[nummodel].Parent );	//	ï¿½eï¿½qï¿½\ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 					}
 				}
 
 				else if(strcmp( m_Buff , m_FileToken[POS] ) == 0)
-				{	//	POS‚ÌŒŸõ
+				{	//	POSï¿½ÌŒï¿½ï¿½ï¿½
 					fscanf( fp , "%s" , m_Buff );
 					if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-					{	//	=‚ÌŒŸõ
+					{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-						//	À•W‚Ì“Ç‚İ‚İ
+						//	ï¿½ï¿½ï¿½Wï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 						fscanf( fp , "%f" , &m_CharInfo[nummodel].OffsetPos.x );
 						fscanf( fp , "%f" , &m_CharInfo[nummodel].OffsetPos.y );
 						fscanf( fp , "%f" , &m_CharInfo[nummodel].OffsetPos.z );
@@ -612,12 +610,12 @@ void CMotion::ReadPartsSet(FILE *fp)
 				}
 
 				else if(strcmp( m_Buff , m_FileToken[ROT] ) == 0)
-				{	//	ROT‚ÌŒŸõ
+				{	//	ROTï¿½ÌŒï¿½ï¿½ï¿½
 					fscanf( fp , "%s" , m_Buff );
 					if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-					{	//	=‚ÌŒŸõ
+					{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-						//	‰ñ“]‚Ì“Ç‚İ‚İ
+						//	ï¿½ï¿½]ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 						fscanf( fp , "%f" , &m_CharInfo[nummodel].OffsetRot.x );
 						fscanf( fp , "%f" , &m_CharInfo[nummodel].OffsetRot.y );
 						fscanf( fp , "%f" , &m_CharInfo[nummodel].OffsetRot.z );
@@ -627,7 +625,7 @@ void CMotion::ReadPartsSet(FILE *fp)
 			}
 		}
 
-		//	END_PARTSSET‚ÌŒŸõ
+		//	END_PARTSSETï¿½ÌŒï¿½ï¿½ï¿½
 		if(strcmp( m_Buff , m_FileToken[END_PARTSSET] ) == 0)
 		{
 			nummodel++;
@@ -636,56 +634,56 @@ void CMotion::ReadPartsSet(FILE *fp)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMotion::ReadMotion(FILE *fp)
- ˆø”:		FILE *fp	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
- –ß‚è’l:	
- à–¾:		ƒ‚[ƒVƒ‡ƒ“î•ñ‚Ì“Ç‚İ‚İ
+ ï¿½Öï¿½ï¿½ï¿½:	void CMotion::ReadMotion(FILE *fp)
+ ï¿½ï¿½ï¿½ï¿½:		FILE *fp	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMotion::ReadMotion(FILE *fp)
 {
 	int cntmotion = 0;
 
 	while(cntmotion != MAX_MOTION)
-	{	//	ƒ‚[ƒVƒ‡ƒ“”‚ğ’´‚¦‚È‚©‚Á‚½‚ç
+	{	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ğ’´‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		fscanf( fp , "%s" , m_Buff );
 
 		if(strcmp( m_Buff , m_FileToken[MOTIONSET] ) == 0)
-		{	//	MOTIONSET‚ÌŒŸõ
+		{	//	MOTIONSETï¿½ÌŒï¿½ï¿½ï¿½
 
 			while( 1 )
 			{
 				fscanf( fp , "%s" , m_Buff );
 
 				if(strcmp( m_Buff , m_FileToken[LOOP] ) == 0)
-				{	//	LOOP‚ÌŒŸõ
+				{	//	LOOPï¿½ÌŒï¿½ï¿½ï¿½
 					fscanf( fp , "%s" , m_Buff );
 					if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-					{	//	=‚ÌŒŸõ
-						fscanf( fp , "%d" , &m_Motion[cntmotion].Loop );	//	ƒ‹[ƒv‚·‚é‚©‚Ì“Ç‚İ‚İ
+					{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
+						fscanf( fp , "%d" , &m_Motion[cntmotion].Loop );	//	ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚©ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 					}
 				}
 
 				else if(strcmp( m_Buff , m_FileToken[NUMKEY] ) == 0)
-				{	//	NUM_KEY‚ÌŒŸõ
+				{	//	NUM_KEYï¿½ÌŒï¿½ï¿½ï¿½
 					fscanf( fp , "%s" , m_Buff );
 					if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-					{	//	=‚ÌŒŸõ
-						fscanf( fp , "%d" , &m_Motion[cntmotion].NumKey );	//	ƒL[”‚Ì“Ç‚İ‚İ
+					{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
+						fscanf( fp , "%d" , &m_Motion[cntmotion].NumKey );	//	ï¿½Lï¿½[ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 
 						m_Motion[cntmotion].Frame = new int[m_Motion[cntmotion].NumKey];
 
 						m_Motion[cntmotion].Next = new KEYINFO[ m_Motion[cntmotion].NumKey ];
 						for(int i = 0 ; i < m_Motion[cntmotion].NumKey ; i++ )
-						{	//	ƒL[”•ª
+						{	//	ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½
 
 							m_Motion[cntmotion].Next[i].Pos = new D3DXVECTOR3[m_NumModel];
 							m_Motion[cntmotion].Next[i].Rot = new D3DXVECTOR3[m_NumModel];
 						}
 						for(int j = 0 ; j < m_Motion[cntmotion].NumKey ; j++ )
-						{	//	‰Šú‰»
+						{	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 							for(int k = 0 ; k < m_NumModel ; k++ )
-							{	//	ƒ‚ƒfƒ‹”•ª
+							{	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 								m_Motion[cntmotion].Next[j].Pos[k].x = 0.0f;
 								m_Motion[cntmotion].Next[j].Pos[k].y = 0.0f;
@@ -703,36 +701,36 @@ void CMotion::ReadMotion(FILE *fp)
 			int numkey = 0;
 
 			while(numkey != m_Motion[cntmotion].NumKey)
-			{	//	ƒL[”•ª
+			{	//	ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½
 
 				fscanf( fp , "%s" , m_Buff );
 
 				if(strcmp( m_Buff , m_FileToken[KEYSET] ) == 0)
-				{	//	KEYSET‚ÌŒŸõ
+				{	//	KEYSETï¿½ÌŒï¿½ï¿½ï¿½
 
 					int nummodel = 0;
 
 					while( nummodel != m_NumModel )
-					{	//	ƒ‚ƒfƒ‹”•ª
+					{	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 						fscanf( fp , "%s" , m_Buff );
 
 						if(strcmp( m_Buff , m_FileToken[FRAME] ) == 0)
-						{	//	FRAME‚ÌŒŸõ
+						{	//	FRAMEï¿½ÌŒï¿½ï¿½ï¿½
 							fscanf( fp , "%s" , m_Buff );
 							if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-							{	//	=‚ÌŒŸõ
-								fscanf( fp , "%d" , &m_Motion[cntmotion].Frame[numkey] );//	ƒtƒŒ[ƒ€”‚Ì“Ç‚İ‚İ
+							{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
+								fscanf( fp , "%d" , &m_Motion[cntmotion].Frame[numkey] );//	ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 							}
 						}
 
 						else if(strcmp( m_Buff , m_FileToken[POS] ) == 0)
-						{	//	POS‚ÌŒŸõ
+						{	//	POSï¿½ÌŒï¿½ï¿½ï¿½
 							fscanf( fp , "%s" , m_Buff );
 							if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-							{	//	=‚ÌŒŸõ
+							{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-								//	À•W‚Ì“Ç‚İ‚İ
+								//	ï¿½ï¿½ï¿½Wï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 								fscanf( fp , "%f" , &m_Motion[cntmotion].Next[numkey].Pos[nummodel].x );
 								fscanf( fp , "%f" , &m_Motion[cntmotion].Next[numkey].Pos[nummodel].y );
 								fscanf( fp , "%f" , &m_Motion[cntmotion].Next[numkey].Pos[nummodel].z );
@@ -740,12 +738,12 @@ void CMotion::ReadMotion(FILE *fp)
 						}
 
 						else if(strcmp( m_Buff , m_FileToken[ROT] ) == 0)
-						{	//	ROT‚ÌŒŸõ
+						{	//	ROTï¿½ÌŒï¿½ï¿½ï¿½
 							fscanf( fp , "%s" , m_Buff );
 							if(strcmp( m_Buff , m_FileToken[EQUAL] ) == 0)
-							{	//	=‚ÌŒŸõ
+							{	//	=ï¿½ÌŒï¿½ï¿½ï¿½
 
-								//	‰ñ“]‚Ì“Ç‚İ‚İ
+								//	ï¿½ï¿½]ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 								fscanf( fp , "%f" , &m_Motion[cntmotion].Next[numkey].Rot[nummodel].x );
 								fscanf( fp , "%f" , &m_Motion[cntmotion].Next[numkey].Rot[nummodel].y );
 								fscanf( fp , "%f" , &m_Motion[cntmotion].Next[numkey].Rot[nummodel].z );
@@ -753,23 +751,23 @@ void CMotion::ReadMotion(FILE *fp)
 						}
 
 						else if(strcmp( m_Buff , m_FileToken[END_KEY] ) == 0)
-						{	//	END_KEY‚ÌŒŸõ
+						{	//	END_KEYï¿½ÌŒï¿½ï¿½ï¿½
 							nummodel++;
 						}
 					}
 				}
 
 				else if(strcmp( m_Buff , m_FileToken[END_KEYSET] ) == 0)
-				{	//	END_KEYSET‚ÌŒŸõ
+				{	//	END_KEYSETï¿½ÌŒï¿½ï¿½ï¿½
 					numkey++;
 				}
 			}
 		}
 
-		//	END_MOTIONSET‚ÌŒŸõ
+		//	END_MOTIONSETï¿½ÌŒï¿½ï¿½ï¿½
 		if(strcmp( m_Buff , m_FileToken[END_MOTIONSET] ) == 0) cntmotion++;
 
-		//	END_SCRIPT‚ÌŒŸõ
+		//	END_SCRIPTï¿½ÌŒï¿½ï¿½ï¿½
 		if(strcmp( m_Buff , m_FileToken[END_SCRIPT] ) == 0) break;
 	}
 }

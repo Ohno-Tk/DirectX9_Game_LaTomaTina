@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		’n–Ê[ Ground.h ]
+		ï¿½nï¿½ï¿½[ Ground.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/30
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/30
 =============================================================================*/
 
@@ -17,28 +15,28 @@
 #define _GROUND_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CGround:public CSprite3D
 {
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CGround(int Priolity) :CSprite3D(Priolity) {
 		m_Scroll = 0.0f;
 		m_ScrollSpeed = 0.0f;
 	}
 
-	static CGround* Create(int Priolity);	//	¶¬
+	static CGround* Create(int Priolity);	//	ï¿½ï¿½ï¿½ï¿½
 
 	//	Setter
 	void SetScroll(const float speed) { m_ScrollSpeed = speed; }
 
 private:
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
-	void SetUpVerTex(void);		//	’¸“_‚Ìİ’è
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
+	void SetUpVerTex(void);		//	ï¿½ï¿½ï¿½_ï¿½Ìİ’ï¿½
 
 private:
 	float m_Scroll;

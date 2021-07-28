@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒQ[ƒ€ƒV[ƒ“[ GameScene.h ]
+		ï¿½Qï¿½[ï¿½ï¿½ï¿½Vï¿½[ï¿½ï¿½[ GameScene.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
@@ -17,12 +15,12 @@
 #define _GAMESCENE_H_
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define MAX_HOUSE 16
 
 /*-----------------------------------------------------------------------------
-	‘O•ûéŒ¾
+	ï¿½Oï¿½ï¿½ï¿½éŒ¾
 -----------------------------------------------------------------------------*/
 class CSprite2D;
 class CGround;
@@ -33,17 +31,17 @@ class CEnemyManager;
 class CPlayer;
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CGameScene :public CMode
 {
 public:
 	CGameScene();
 
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 	static void GameClear(void) { m_Clear = true; }
 	static void GameOver(void) { m_GameOver = true; }
@@ -53,8 +51,8 @@ public:
 	static CPlayer* GetPlayer(void) { return m_Player; }
 
 private:
-	void ConditionalTransition(void);	//	‘JˆÚğŒ
-	void ObjectCreate(void);			//	ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	void ConditionalTransition(void);	//	ï¿½Jï¿½Úï¿½ï¿½ï¿½
+	void ObjectCreate(void);			//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 
 private:
 	CGround* m_Ground;
