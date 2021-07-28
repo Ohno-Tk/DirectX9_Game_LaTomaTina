@@ -1,74 +1,72 @@
 /*=============================================================================
 
-		ƒ‚[ƒVƒ‡ƒ“[ Motion.h ]
+		ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½[ Motion.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/07
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	“ñdƒCƒ“ƒNƒ‹[ƒh–h~
+	ï¿½ï¿½dï¿½Cï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½[ï¿½hï¿½hï¿½~
 -----------------------------------------------------------------------------*/
 #ifndef _MOTION_H_
 #define _MOTION_H_
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define MOTION_PATH "data/MOTION/"	//	ƒ‚[ƒVƒ‡ƒ“ƒpƒX
-#define MAX_MOTION (10)	//	Å‘åƒ‚[ƒVƒ‡ƒ“”
+#define MOTION_PATH "data/MOTION/"	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½pï¿½X
+#define MAX_MOTION (10)	//	ï¿½Å‘åƒ‚ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CMotion:public CScene
 {
 public:
-	CMotion(int Priolity);	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CMotion(int Priolity);	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	~CMotion();
 
-	static CMotion *Create(const int priolity, char *FileName);	//	¶¬
+	static CMotion *Create(const int priolity, char *FileName);	//	ï¿½ï¿½ï¿½ï¿½
 
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 	//	Setter
-	void SetFileName(char *data) { m_TextFileName = data; }	//	ƒtƒ@ƒCƒ‹–¼‚ÌƒZƒbƒg
-	void SetMotionIndex(const int index);	//	ƒ‚[ƒVƒ‡ƒ“”Ô†‚ÌƒZƒbƒg
-	void SetMotionPosition(const int index, const D3DXVECTOR3 pos) { m_CharInfo[index].OffsetPos = pos; }	//	À•W
-	void SetMotionRotation(const int index, const D3DXVECTOR3 rot) { m_CharInfo[index].OffsetRot = rot; }	//	‰ñ“]
+	void SetFileName(char *data) { m_TextFileName = data; }	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
+	void SetMotionIndex(const int index);	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ôï¿½ï¿½ÌƒZï¿½bï¿½g
+	void SetMotionPosition(const int index, const D3DXVECTOR3 pos) { m_CharInfo[index].OffsetPos = pos; }	//	ï¿½ï¿½ï¿½W
+	void SetMotionRotation(const int index, const D3DXVECTOR3 rot) { m_CharInfo[index].OffsetRot = rot; }	//	ï¿½ï¿½]
 
 																											//	Getter
 	D3DXVECTOR3 GetMotionPosition(const int index) 
 	{
 		return m_CharInfo[index].OffsetPos;
-	}	//	À•W
-	D3DXVECTOR3 *GetMotionPositionPointer(const int index) { return &m_CharInfo[index].OffsetPos; }	//	À•W‚Ìƒ|ƒCƒ“ƒ^
-	D3DXVECTOR3 GetMotionRotation(const int index) { return m_CharInfo[index].OffsetRot; }	//	‰ñ“]
+	}	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR3 *GetMotionPositionPointer(const int index) { return &m_CharInfo[index].OffsetPos; }	//	ï¿½ï¿½ï¿½Wï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+	D3DXVECTOR3 GetMotionRotation(const int index) { return m_CharInfo[index].OffsetRot; }	//	ï¿½ï¿½]
 
 private:
-	void SetWorld(const int cntmodel, LPDIRECT3DDEVICE9 Device);	//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
-	void ReadText(void);											//	ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
-	void ReadNumModel(FILE *fp);									//	ƒ‚ƒfƒ‹”‚Ì“Ç‚İ‚İ
-	void ReadModelFileName(FILE *fp);								//	ƒ‚ƒfƒ‹ƒtƒ@ƒCƒ‹–¼‚Ì“Ç‚İ‚İ
-	void LoadModel(const int nummodel, char *modelfilename);		//	ƒ‚ƒfƒ‹‚Ìƒ[ƒh
-	void ReadCharacterInfo(FILE *fp);								//	ƒLƒƒƒ‰ƒNƒ^î•ñ‚Ì“Ç‚İ‚İ
-	void ReadPartsSet(FILE *fp);									//	ƒLƒƒƒ‰ƒNƒ^‚Ìƒp[ƒcî•ñ‚Ì“Ç‚İ‚İ
-	void ReadMotion(FILE *fp);										//	ƒ‚[ƒVƒ‡ƒ“î•ñ‚Ì“Ç‚İ‚İ
+	void SetWorld(const int cntmodel, LPDIRECT3DDEVICE9 Device);	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
+	void ReadText(void);											//	ï¿½eï¿½Lï¿½Xï¿½gï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+	void ReadNumModel(FILE *fp);									//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+	void ReadModelFileName(FILE *fp);								//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+	void LoadModel(const int nummodel, char *modelfilename);		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
+	void ReadCharacterInfo(FILE *fp);								//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+	void ReadPartsSet(FILE *fp);									//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½Ìƒpï¿½[ï¿½cï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
+	void ReadMotion(FILE *fp);										//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 
 private:
 	enum TOKEN
@@ -107,44 +105,44 @@ private:
 
 	struct CHARPARTSSET
 	{
-		int					Index;		//	ƒp[ƒc”Ô†
-		int					Parent;		//	eq\‘¢
-		D3DXVECTOR3			OffsetPos;	//	‰ŠúÀ•W
-		D3DXVECTOR3			OffsetRot;	//	‰Šú‰ñ“]
-		D3DXVECTOR3			MovePos;	//	•âŠÔˆÚ“®—Ê
-		D3DXVECTOR3			MoveRot;	//	•âŠÔ‰ñ“]—Ê
-		D3DXVECTOR3			Pos;		//	•âŠÔÀ•W
-		D3DXVECTOR3			Rot;		//	•âŠÔ‰ñ“]
-		D3DXMATRIX			MtxWorld;	//	ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX
-		D3DXMATRIX			MtxScl;		//	Šg‘åƒ}ƒgƒŠƒNƒX
-		D3DXMATRIX			MtxRot;		//	‰ñ“]ƒ}ƒgƒŠƒNƒX
-		D3DXMATRIX			MtxPos;		//	À•Wƒ}ƒgƒŠƒNƒX
-		LPD3DXBUFFER		BuffMat;	//	ƒ}ƒeƒŠƒAƒ‹î•ñ
-		D3DXMATERIAL		*Mat;		//	ƒ}ƒeƒŠƒAƒ‹ƒ|ƒCƒ“ƒ^
-		LPD3DXMESH			Mesh;		//	ƒƒbƒVƒ…î•ñ
-		DWORD				NumMat;		//	ƒ}ƒeƒŠƒAƒ‹î•ñ‚Ì”
-		LPDIRECT3DTEXTURE9	*Texture;	//	ƒeƒNƒXƒ`ƒƒ‚Ìƒ|ƒCƒ“ƒ^
+		int					Index;		//	ï¿½pï¿½[ï¿½cï¿½Ôï¿½
+		int					Parent;		//	ï¿½eï¿½qï¿½\ï¿½ï¿½
+		D3DXVECTOR3			OffsetPos;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½W
+		D3DXVECTOR3			OffsetRot;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		D3DXVECTOR3			MovePos;	//	ï¿½ï¿½ÔˆÚ“ï¿½ï¿½ï¿½
+		D3DXVECTOR3			MoveRot;	//	ï¿½ï¿½Ô‰ï¿½]ï¿½ï¿½
+		D3DXVECTOR3			Pos;		//	ï¿½ï¿½Ôï¿½ï¿½W
+		D3DXVECTOR3			Rot;		//	ï¿½ï¿½Ô‰ï¿½]
+		D3DXMATRIX			MtxWorld;	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½}ï¿½gï¿½ï¿½ï¿½bï¿½Nï¿½X
+		D3DXMATRIX			MtxScl;		//	ï¿½gï¿½ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
+		D3DXMATRIX			MtxRot;		//	ï¿½ï¿½]ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
+		D3DXMATRIX			MtxPos;		//	ï¿½ï¿½ï¿½Wï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
+		LPD3DXBUFFER		BuffMat;	//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½
+		D3DXMATERIAL		*Mat;		//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+		LPD3DXMESH			Mesh;		//	ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½
+		DWORD				NumMat;		//	ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½
+		LPDIRECT3DTEXTURE9	*Texture;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 	};
 
 	struct MOTION
 	{
-		int Loop;		//	ƒ‹[ƒv‚·‚é‚©
-		int NumKey;		//	ƒL[”
-		int *Frame;		//	ƒtƒŒ[ƒ€”
-		KEYINFO *Next;	//	Ÿ‚ÌêŠ
+		int Loop;		//	ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚©
+		int NumKey;		//	ï¿½Lï¿½[ï¿½ï¿½
+		int *Frame;		//	ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
+		KEYINFO *Next;	//	ï¿½ï¿½ï¿½ÌêŠ
 	};
 
-	int m_NumModel;		//	ƒ‚ƒfƒ‹”
-	int m_MotionIndex;	//	ƒ‚[ƒVƒ‡ƒ“”Ô†
-	int m_NumKey;		//	ƒL[”
-	int m_UpdateCount;	//	XV‚ÌƒJƒEƒ“ƒ^
+	int m_NumModel;		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½
+	int m_MotionIndex;	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ôï¿½
+	int m_NumKey;		//	ï¿½Lï¿½[ï¿½ï¿½
+	int m_UpdateCount;	//	ï¿½Xï¿½Vï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½^
 
-	static char* m_FileToken[MAX_TOKEN];	//	ƒg[ƒNƒ“
-	static char CMotion::m_Buff[256];		//	ƒeƒLƒXƒgƒf[ƒ^“Ç‚İ‚İ‚Ìƒoƒbƒtƒ@
-	char* m_TextFileName;	//	ƒeƒLƒXƒg‚Ìƒtƒ@ƒCƒ‹–¼
+	static char* m_FileToken[MAX_TOKEN];	//	ï¿½gï¿½[ï¿½Nï¿½ï¿½
+	static char CMotion::m_Buff[256];		//	ï¿½eï¿½Lï¿½Xï¿½gï¿½fï¿½[ï¿½^ï¿½Ç‚İï¿½ï¿½İ‚Ìƒoï¿½bï¿½tï¿½@
+	char* m_TextFileName;	//	ï¿½eï¿½Lï¿½Xï¿½gï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 	char* m_ModelFileName;
 
-	CHARPARTSSET *m_CharInfo;		//	ƒLƒƒƒ‰ƒNƒ^[î•ñ
-	MOTION m_Motion[MAX_MOTION];	//	ƒ‚[ƒVƒ‡ƒ“î•ñ
+	CHARPARTSSET *m_CharInfo;		//	ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ï¿½ï¿½
+	MOTION m_Motion[MAX_MOTION];	//	ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 };
 #endif

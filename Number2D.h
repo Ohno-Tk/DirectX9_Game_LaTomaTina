@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		”š2D[ Number2D.h ]
+		ï¿½ï¿½ï¿½ï¿½2D[ Number2D.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/07/14
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
@@ -17,39 +15,39 @@
 #define _NUMBER2D_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CNumber2D
 {
 public:
-	CNumber2D();	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CNumber2D();	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	//	¶¬
+	//	ï¿½ï¿½ï¿½ï¿½
 	static CNumber2D *Create(D3DXVECTOR2 Pos, D3DXVECTOR2 Size, CTextureManager::TEXTURE_ID TextureID, int CntWidth);
 
-	void SetNumber(int Number);		//	”š‚Ì’lİ’è
+	void SetNumber(int Number);		//	ï¿½ï¿½ï¿½ï¿½ï¿½Ì’lï¿½İ’ï¿½
 
-	void Uninit(void);	//	I—¹
-	void Update(void);	//	XV
-	void Draw( void );	//	•`‰æ
+	void Uninit(void);	//	ï¿½Iï¿½ï¿½
+	void Update(void);	//	ï¿½Xï¿½V
+	void Draw( void );	//	ï¿½`ï¿½ï¿½
 
 	//	Setter
-	void SetColor(const D3DXCOLOR color) { m_Color = color; }	//	F‚ÌƒZƒbƒg
+	void SetColor(const D3DXCOLOR color) { m_Color = color; }	//	ï¿½Fï¿½ÌƒZï¿½bï¿½g
 
 private:
-	void Init(int CntWidth);		//	‰Šú‰»
-	void MakeVerTex(int CntWidth);	//	’¸“_‚Ìì¬
-	void SetVerTex( void );		//	’¸“_‚Ì•ÏX
+	void Init(int CntWidth);		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	void MakeVerTex(int CntWidth);	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+	void SetVerTex( void );		//	ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 
-	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;		// ’¸“_ƒoƒbƒtƒ@‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;		// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
-	D3DXVECTOR2 m_Position;	//	À•W
-	D3DXVECTOR2 m_Size;	//	‘å‚«‚³
-	D3DXVECTOR2 m_USet;	//	ƒeƒNƒXƒ`ƒƒÀ•W
+	D3DXVECTOR2 m_Position;	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR2 m_Size;	//	ï¿½å‚«ï¿½ï¿½
+	D3DXVECTOR2 m_USet;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 
-	D3DXCOLOR m_Color;	//	F
+	D3DXCOLOR m_Color;	//	ï¿½F
 
-	CTextureManager::TEXTURE_ID m_TextureId;	//	ƒeƒNƒXƒ`ƒƒ‚ÌID
+	CTextureManager::TEXTURE_ID m_TextureId;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
 
 };
 #endif

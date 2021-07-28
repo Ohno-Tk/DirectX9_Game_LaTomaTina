@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒ}ƒl[ƒWƒƒ[ Manager.h ]
+		ï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½[ Manager.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
@@ -17,76 +15,76 @@
 #define _MANAGER_H_
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define ENABLE_PEOC_SOUND	//	Sound
 //#undef ENABLE_PEOC_SOUND
 
-#define ENABLE_PEOC_DEBUGCONSOLE	//	ƒfƒoƒbƒOƒRƒ“ƒ\[ƒ‹
+#define ENABLE_PEOC_DEBUGCONSOLE	//	ï¿½fï¿½oï¿½bï¿½Oï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½
 #undef ENABLE_PEOC_DEBUGCONSOLE
 
 /*-----------------------------------------------------------------------------
-	‘O•ûéŒ¾
+	ï¿½Oï¿½ï¿½ï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-class CMode;			//	‰æ–Ê‘JˆÚ
-class CInputKeyboard;	//	ƒL[ƒ{[ƒh
+class CMode;			//	ï¿½ï¿½Ê‘Jï¿½ï¿½
+class CInputKeyboard;	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h
 class CInputMouse;
 #ifdef ENABLE_PEOC_SOUND
-	class CSound;		//	ƒTƒEƒ“ƒh
+	class CSound;		//	ï¿½Tï¿½Eï¿½ï¿½ï¿½h
 #endif
-class CTextureManager;	//	ƒeƒNƒXƒ`ƒƒŠÇ—
-class CModelManager;	//	ƒ‚ƒfƒ‹ŠÇ—
-class CFileManager;		//	ƒtƒ@ƒCƒ‹ŠÇ—
-class CCamera;			//	ƒJƒƒ‰
-class CLight;			//	ƒ‰ƒCƒg
-class CFade;			//	ƒtƒF[ƒh
+class CTextureManager;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½
+class CModelManager;	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ç—ï¿½
+class CFileManager;		//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç—ï¿½
+class CCamera;			//	ï¿½Jï¿½ï¿½ï¿½ï¿½
+class CLight;			//	ï¿½ï¿½ï¿½Cï¿½g
+class CFade;			//	ï¿½tï¿½Fï¿½[ï¿½h
 #ifdef ENABLE_PEOC_DEBUGCONSOLE
-	class CDebugConsole;	//	ƒfƒoƒbƒOƒRƒ“ƒ\[ƒ‹
+	class CDebugConsole;	//	ï¿½fï¿½oï¿½bï¿½Oï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½
 #endif
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CManager
 {
 public:
-	void Init(HINSTANCE hInstance, HWND hWnd);	//	‰Šú‰»
-	void Uninit(void);	//	I—¹
-	void Update(void);	//	XV
-	void Draw(void);	//	•`‰æ
+	void Init(HINSTANCE hInstance, HWND hWnd);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	void Uninit(void);	//	ï¿½Iï¿½ï¿½
+	void Update(void);	//	ï¿½Xï¿½V
+	void Draw(void);	//	ï¿½`ï¿½ï¿½
 
-	static void SetMode(CMode *Mode);	//	‰æ–Ê‘JˆÚ‚ÌØ‚è‘Ö‚¦
+	static void SetMode(CMode *Mode);	//	ï¿½ï¿½Ê‘Jï¿½Ú‚ÌØ‚ï¿½Ö‚ï¿½
 
 	//	Setter
 	static void SetTomatoCount(const int count) { m_TomatoCont = count; }
 
 	//	Getter
-	static CInputKeyboard* GetKeyboard(void) { return m_Keyboard; }	//	ƒL[ƒ{[ƒh
+	static CInputKeyboard* GetKeyboard(void) { return m_Keyboard; }	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h
 	static CInputMouse* GetMouse(void) { return m_Mouse; }
-	static CSound* GetSound(void) { return m_Sound; }				//	ƒTƒEƒ“ƒh
-	static CTextureManager* GetTextureManager(void) { return m_TextureManager; }	//	ƒeƒNƒXƒ`ƒƒŠÇ—
-	static CModelManager* GetModelManager(void) { return m_ModelManager; }	//	ƒ‚ƒfƒ‹ŠÇ—
-	static CFileManager* GetFileManager(void) { return m_FileManager; }		//	ƒtƒ@ƒCƒ‹ŠÇ—
-	static CCamera* GetCamera(void) { return m_Camera; }			//	ƒJƒƒ‰
+	static CSound* GetSound(void) { return m_Sound; }				//	ï¿½Tï¿½Eï¿½ï¿½ï¿½h
+	static CTextureManager* GetTextureManager(void) { return m_TextureManager; }	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½
+	static CModelManager* GetModelManager(void) { return m_ModelManager; }	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ç—ï¿½
+	static CFileManager* GetFileManager(void) { return m_FileManager; }		//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç—ï¿½
+	static CCamera* GetCamera(void) { return m_Camera; }			//	ï¿½Jï¿½ï¿½ï¿½ï¿½
 
 
 	static int GetTomatoCount(void) { return m_TomatoCont; }
 
 private:
-	static CMode* m_Mode;				//	‰æ–Ê‘JˆÚ	
-	static CInputKeyboard* m_Keyboard;	//	ƒL[ƒ{[ƒh
+	static CMode* m_Mode;				//	ï¿½ï¿½Ê‘Jï¿½ï¿½	
+	static CInputKeyboard* m_Keyboard;	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h
 	static CInputMouse* m_Mouse;
 #ifdef ENABLE_PEOC_SOUND
-	static CSound* m_Sound;				//	ƒTƒEƒ“ƒh
+	static CSound* m_Sound;				//	ï¿½Tï¿½Eï¿½ï¿½ï¿½h
 #endif
-	static CTextureManager* m_TextureManager;	//	ƒeƒNƒXƒ`ƒƒŠÇ—
-	static CModelManager* m_ModelManager;		//	ƒ‚ƒfƒ‹ŠÇ—
-	static CFileManager* m_FileManager;			//	ƒtƒ@ƒCƒ‹ŠÇ—
-	static CCamera* m_Camera;					//	ƒJƒƒ‰
-	static CLight* m_Light;						//	ƒ‰ƒCƒg
-	static CFade* m_Fade;						//	ƒtƒF[ƒh
+	static CTextureManager* m_TextureManager;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½
+	static CModelManager* m_ModelManager;		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ç—ï¿½
+	static CFileManager* m_FileManager;			//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç—ï¿½
+	static CCamera* m_Camera;					//	ï¿½Jï¿½ï¿½ï¿½ï¿½
+	static CLight* m_Light;						//	ï¿½ï¿½ï¿½Cï¿½g
+	static CFade* m_Fade;						//	ï¿½tï¿½Fï¿½[ï¿½h
 #ifdef ENABLE_PEOC_DEBUGCONSOLE
-	static CDebugConsole* m_DebugConsole;		//	ƒfƒoƒbƒOƒRƒ“ƒ\[ƒ‹
+	static CDebugConsole* m_DebugConsole;		//	ï¿½fï¿½oï¿½bï¿½Oï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½
 #endif
 
 	static int m_TomatoCont;

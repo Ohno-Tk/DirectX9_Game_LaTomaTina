@@ -3,13 +3,11 @@
 		[ Target.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/09/02
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/09/02
 =============================================================================*/
 
@@ -17,7 +15,7 @@
 #define _TARGET_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CTarget:public CSpriteBillboard
 {
@@ -30,9 +28,9 @@ private:
 	virtual void Init(void)override { 
 		CSpriteBillboard::Init();
 		CScene::SetObjeType(OBJTYPE_TARGET);
-	}	//	‰Šú‰»
-	virtual void Uninit(void)override { CSpriteBillboard::Uninit(); }	//	I—¹
-	virtual void Update(void)override { CSpriteBillboard::Update(); }	//	XV
-	virtual void Draw(void)override { CSpriteBillboard::Draw(); }	//	•`‰æ
+	}	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override { CSpriteBillboard::Uninit(); }	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override { CSpriteBillboard::Update(); }	//	ï¿½Xï¿½V
+	virtual void Draw(void)override { CSpriteBillboard::Draw(); }	//	ï¿½`ï¿½ï¿½
 };
 #endif

@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒV[ƒ“•`‰æ( ƒŠƒXƒg\‘¢ )[ Scene.h ]
+		ï¿½Vï¿½[ï¿½ï¿½ï¿½`ï¿½ï¿½( ï¿½ï¿½ï¿½Xï¿½gï¿½\ï¿½ï¿½ )[ Scene.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/04/26
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
@@ -17,60 +15,60 @@
 #define _SCENE_H_
 
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define PRIOLITY_MAX (6)	//	—Dæ‡ˆÊ
+#define PRIOLITY_MAX (6)	//	ï¿½Dï¿½æ‡ï¿½ï¿½
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CScene
 {
 public:
-	typedef enum	//	ƒIƒuƒWƒFƒNƒg‚Ìí—Ş
+	typedef enum	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½
 	{
-		OBJTYPE_NONE = 0,	//	‚È‚µ
-		OBJTYPE_BULLET,	//	’e
+		OBJTYPE_NONE = 0,	//	ï¿½È‚ï¿½
+		OBJTYPE_BULLET,	//	ï¿½e
 		OBJTYPE_ENEMY,
 		OBJTYPE_TARGET,
-		OBJTYPE_MAX			//	Å‘å”
+		OBJTYPE_MAX			//	ï¿½Å‘å”
 	}OBJTYPE;
 
-	CScene(int Priolity);	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CScene(int Priolity);	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	virtual void Init(void) = 0;	//	‰Šú‰»
-	virtual void Uninit(void) = 0;	//	I—¹
-	virtual void Update(void) = 0;	//	XV
-	virtual void Draw(void) = 0;	//	•`‰æ
+	virtual void Init(void) = 0;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void) = 0;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void) = 0;	//	ï¿½Xï¿½V
+	virtual void Draw(void) = 0;	//	ï¿½`ï¿½ï¿½
 
-	static void UpdateAll(void);	//	‘SƒIƒuƒWƒFƒNƒg‚ÌXV
-	static void DrawAll(void);		//	‘SƒIƒuƒWƒFƒNƒg‚Ì•`‰æ
-	static void ReleaseAll(void);	//	‘SƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+	static void UpdateAll(void);	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌXï¿½V
+	static void DrawAll(void);		//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì•`ï¿½ï¿½
+	static void ReleaseAll(void);	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‰ï¿½ï¿½
 
 	//	Setter
-	void SetPosition(const D3DXVECTOR3 Position) { m_Position = Position; }	//	À•W
-	void SetObjeType(const OBJTYPE objType) { m_objType = objType; }		//	ƒIƒuƒWƒFƒNƒgí—Ş
+	void SetPosition(const D3DXVECTOR3 Position) { m_Position = Position; }	//	ï¿½ï¿½ï¿½W
+	void SetObjeType(const OBJTYPE objType) { m_objType = objType; }		//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½
 
 
 	//	Getter
-	D3DXVECTOR3 GetPosition(void) { return m_Position; }		//	À•W
-	D3DXVECTOR3* GetPositionPointer(void) { return &m_Position; }//	À•W‚Ìƒ|ƒCƒ“ƒ^
-	const OBJTYPE GetObjType(void)const { return m_objType; }	//	ƒIƒuƒWƒFƒNƒgí—Ş
-	static CScene *GetList(int Priority) { return m_Top[Priority]; }	//	ƒŠƒXƒg‚Ìæ“ª
-	CScene *GetNext(void) { return m_Next; }	//	Ÿ‚ÌƒŠƒXƒg
+	D3DXVECTOR3 GetPosition(void) { return m_Position; }		//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR3* GetPositionPointer(void) { return &m_Position; }//	ï¿½ï¿½ï¿½Wï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+	const OBJTYPE GetObjType(void)const { return m_objType; }	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½
+	static CScene *GetList(int Priority) { return m_Top[Priority]; }	//	ï¿½ï¿½ï¿½Xï¿½gï¿½Ìæ“ª
+	CScene *GetNext(void) { return m_Next; }	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Xï¿½g
 
 private:
-	bool m_Delete;	//	íœƒtƒ‰ƒO
+	bool m_Delete;	//	ï¿½íœï¿½tï¿½ï¿½ï¿½O
 
-	OBJTYPE m_objType;	//	ƒIƒuƒWƒFƒNƒg‚Ìí—Ş
+	OBJTYPE m_objType;	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½
 
-	static CScene *m_Top[PRIOLITY_MAX];	//	æ“ª‚Ìƒ|ƒCƒ“ƒ^
-	CScene *m_Next;			//	Ÿ‚Ìƒ|ƒCƒ“ƒ^
+	static CScene *m_Top[PRIOLITY_MAX];	//	ï¿½æ“ªï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+	CScene *m_Next;			//	ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
 protected:
-	D3DXVECTOR3 m_Position;	//	À•W
+	D3DXVECTOR3 m_Position;	//	ï¿½ï¿½ï¿½W
 
-	void Release(void) { m_Delete = true; }	//	ƒŠƒŠ[ƒX
+	void Release(void) { m_Delete = true; }	//	ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½X
 
 };
 #endif

@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		2D•`‰æ[ Sprite2D.h ]
+		2Dï¿½`ï¿½ï¿½[ Sprite2D.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
@@ -17,44 +15,44 @@
 #define _SPRITE2D_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CSprite2D:public CScene
 {
 public:
-	CSprite2D(int Priolity);	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CSprite2D(int Priolity);	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	static CSprite2D* Create(int Priolity);	//	¶¬
+	static CSprite2D* Create(int Priolity);	//	ï¿½ï¿½ï¿½ï¿½
 
-	virtual void Init(void)override;	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
-	virtual void TextureAnimation(void);		//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“
+	virtual void TextureAnimation(void);		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
 
 	//	Setter
-	void SetSize(const D3DXVECTOR2 Size) { m_Size = Size; }	//	‘å‚«‚³
-	void SetColor(const D3DXCOLOR Col) { m_Color = Col; }	//	F
-	void SetTexturePattern(const int Pattern) { m_TexturePattern = Pattern; }	//	ƒeƒNƒXƒ`ƒƒƒpƒ^[ƒ“
-	void SetAnimationTime(const float Time) { m_TextureAnimationTime = Time; }	//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒ^ƒCƒ€
-	void SetTextureID(const CTextureManager::TEXTURE_ID Id) { m_TextureId = Id; }//	ƒeƒNƒXƒ`ƒƒID
+	void SetSize(const D3DXVECTOR2 Size) { m_Size = Size; }	//	ï¿½å‚«ï¿½ï¿½
+	void SetColor(const D3DXCOLOR Col) { m_Color = Col; }	//	ï¿½F
+	void SetTexturePattern(const int Pattern) { m_TexturePattern = Pattern; }	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½
+	void SetAnimationTime(const float Time) { m_TextureAnimationTime = Time; }	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½
+	void SetTextureID(const CTextureManager::TEXTURE_ID Id) { m_TextureId = Id; }//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ID
 
 	//	Getter
-	D3DXVECTOR2 GetSize(void) { return m_Size; }	//	‘å‚«‚³
-	D3DXCOLOR GetColor(void) { return m_Color; }	//	F
+	D3DXVECTOR2 GetSize(void) { return m_Size; }	//	ï¿½å‚«ï¿½ï¿½
+	D3DXCOLOR GetColor(void) { return m_Color; }	//	ï¿½F
 
 private:
-	void MakeVerTex(void);		//	’¸“_‚Ìì¬
-	void SetUpVerTex(void);		//	’¸“_‚Ìİ’è
+	void MakeVerTex(void);		//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+	void SetUpVerTex(void);		//	ï¿½ï¿½ï¿½_ï¿½Ìİ’ï¿½
 private:
-	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;	//	’¸“_ƒoƒbƒtƒ@
-	D3DXVECTOR2 m_Size;					//	‘å‚«‚³
-	D3DXCOLOR m_Color;					//	F
-	int m_TexturePattern;				//	ƒeƒNƒXƒ`ƒƒƒpƒ^[ƒ“
-	float m_TextureAnimationCount;		//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒJƒEƒ“ƒ^
-	float m_TextureAnimationTime;		//	ƒeƒNƒXƒ`ƒƒƒAƒjƒ[ƒVƒ‡ƒ“ƒ^ƒCƒ€
+	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
+	D3DXVECTOR2 m_Size;					//	ï¿½å‚«ï¿½ï¿½
+	D3DXCOLOR m_Color;					//	ï¿½F
+	int m_TexturePattern;				//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½
+	float m_TextureAnimationCount;		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½^
+	float m_TextureAnimationTime;		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½
 
-	CTextureManager::TEXTURE_ID m_TextureId;	//	ƒeƒNƒXƒ`ƒƒID
+	CTextureManager::TEXTURE_ID m_TextureId;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ID
 };
 #endif

@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		ƒƒbƒVƒ…”¼‹…[ MeshDome.cpp ]
+		ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ MeshDome.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/05/12
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/18
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -23,119 +21,119 @@
 #include "MeshDome.h"
 
 /*-----------------------------------------------------------------------------
-	Ã“Iƒƒ“ƒo•Ï”
+	ï¿½Ã“Iï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DTEXTURE9 CMeshDome::m_Texture = NULL;	// ƒeƒNƒXƒ`ƒƒ‚Ö‚Ìƒ|ƒCƒ“ƒ^
+LPDIRECT3DTEXTURE9 CMeshDome::m_Texture = NULL;	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CMeshDome::CMeshDome(int Priolity)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰Šú‰»
+ï¿½Öï¿½ï¿½ï¿½:		CMeshDome::CMeshDome(int Priolity)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CMeshDome::CMeshDome(int Priolity) : CScene(Priolity)
 {
-	m_VtxBuff = NULL;		// ’¸“_ƒoƒbƒtƒ@‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	m_VtxBuff = NULL;		// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
-	m_IdxBuff = NULL;	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@
+	m_IdxBuff = NULL;	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@
 
-	m_Rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	// ‰ñ“]
-	m_Scl = D3DXVECTOR3(1.0f, 1.0f, 1.0f);	// Šg‘å—¦
+	m_Rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	// ï¿½ï¿½]
+	m_Scl = D3DXVECTOR3(1.0f, 1.0f, 1.0f);	// ï¿½gï¿½å—¦
 
-	m_UVSet = D3DXVECTOR2(0.0f, 0.0f);	//	UVÀ•W
+	m_UVSet = D3DXVECTOR2(0.0f, 0.0f);	//	UVï¿½ï¿½ï¿½W
 
-	m_NumBlock_X = 0;	//	‰¡‚Ì–‡”
-	m_NumBlock_Y = 0;	//	c‚Ì–‡”
+	m_NumBlock_X = 0;	//	ï¿½ï¿½ï¿½Ì–ï¿½ï¿½ï¿½
+	m_NumBlock_Y = 0;	//	ï¿½cï¿½Ì–ï¿½ï¿½ï¿½
 
-	m_Vertex = 0;		//	’¸“_”
-	m_IdxVerTex = 0;	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@”
+	m_Vertex = 0;		//	ï¿½ï¿½ï¿½_ï¿½ï¿½
+	m_IdxVerTex = 0;	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½
 
-	m_Radius = 0.0f;	//	”¼Œa
+	m_Radius = 0.0f;	//	ï¿½ï¿½ï¿½a
 
-	m_IdxBackDraw = IDXBACK_DRAW_CLOCKWISE;	//	‚Ç‚Á‚¿Žü‚è‚Å•`‰æ‚³‚¹‚é‚©
+	m_IdxBackDraw = IDXBACK_DRAW_CLOCKWISE;	//	ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•`ï¿½æ‚³ï¿½ï¿½ï¿½é‚©
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CMeshDome *CMeshDome::Create(D3DXVECTOR3 Pos, UINT NumBlock_X, UINT NumBlock_Y, float Radius, IDXBACK_DRAW IdxBack, CTextureManager::TEXTURE_ID TextureID)
- ˆø”:		D3DXVECTOR3 Pos							À•W
-			UINT NumBlock_X							‰¡‚Ì–‡”
-			UINT NumBlock_Y							c‚Ì–‡”
-			float Radius							”¼Œa
-			IDXBACK_DRAW IdxBack					‚Ç‚Á‚¿Žü‚è‚Å•`‰æ‚³‚¹‚é‚©
-			CTextureManager::TEXTURE_ID TextureID	ƒeƒNƒXƒ`ƒƒ‚ÌID
- –ß‚è’l:	return MeshDome;	ƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^
- à–¾:		¶¬
+ ï¿½Öï¿½ï¿½ï¿½:	CMeshDome *CMeshDome::Create(D3DXVECTOR3 Pos, UINT NumBlock_X, UINT NumBlock_Y, float Radius, IDXBACK_DRAW IdxBack, CTextureManager::TEXTURE_ID TextureID)
+ ï¿½ï¿½ï¿½ï¿½:		D3DXVECTOR3 Pos							ï¿½ï¿½ï¿½W
+			UINT NumBlock_X							ï¿½ï¿½ï¿½Ì–ï¿½ï¿½ï¿½
+			UINT NumBlock_Y							ï¿½cï¿½Ì–ï¿½ï¿½ï¿½
+			float Radius							ï¿½ï¿½ï¿½a
+			IDXBACK_DRAW IdxBack					ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•`ï¿½æ‚³ï¿½ï¿½ï¿½é‚©
+			CTextureManager::TEXTURE_ID TextureID	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
+ ï¿½ß‚ï¿½l:	return MeshDome;	ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CMeshDome *CMeshDome::Create(D3DXVECTOR3 Pos, UINT NumBlock_X, UINT NumBlock_Y, float Radius, IDXBACK_DRAW IdxBack, CTextureManager::TEXTURE_ID TextureID)
 {
 
 	CMeshDome *MeshDome;
 
-	//	¶¬
+	//	ï¿½ï¿½ï¿½ï¿½
 	MeshDome = new CMeshDome;
 
 
-	//	À•W‚ÌƒZƒbƒg
+	//	ï¿½ï¿½ï¿½Wï¿½ÌƒZï¿½bï¿½g
 	MeshDome->SetPosition( Pos );
 
-	//	c‰¡‚Ì–‡”‚ÌƒZƒbƒg
+	//	ï¿½cï¿½ï¿½ï¿½Ì–ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 	MeshDome->SetNumBlock( NumBlock_X , NumBlock_Y );
 
-	//	’¸“_”‚ÌŒvŽZ
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ÌŒvï¿½Z
 	MeshDome->SetVertexCount( NumBlock_X , NumBlock_Y );
 
-	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚ÌŒvŽZ
+	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ÌŒvï¿½Z
 	MeshDome->SetIdxVerTex( NumBlock_X , NumBlock_Y );
 
-	//	‚Ç‚Á‚¿Žü‚è‚Å•`‰æ‚³‚¹‚é‚©
+	//	ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•`ï¿½æ‚³ï¿½ï¿½ï¿½é‚©
 	MeshDome->SetIdxBackDraw( IdxBack );
 
-	//	ƒeƒNƒXƒ`ƒƒ‚ÌID‚ÌƒZƒbƒg
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½IDï¿½ÌƒZï¿½bï¿½g
 	MeshDome->SetTextureID( TextureID );
 
-	MeshDome->m_Radius = Radius;	//	”¼Œa
+	MeshDome->m_Radius = Radius;	//	ï¿½ï¿½ï¿½a
 
-	MeshDome->Init();	//	‰Šú‰»
+	MeshDome->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	return MeshDome;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CMeshDome::Init(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰Šú‰»
+ï¿½Öï¿½ï¿½ï¿½:		void CMeshDome::Init(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMeshDome::Init(void)
 {
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
-	//	’¸“_ƒoƒbƒtƒ@‚Ì¶¬
+	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½
 	if (FAILED(Device->CreateVertexBuffer(sizeof(VERTEX_3D) * NUM_VERTEX * m_Vertex, D3DUSAGE_WRITEONLY, FVF_VERTEX_3D, D3DPOOL_MANAGED, &m_VtxBuff, NULL)))
 	{
 
-		MessageBox(NULL, "’¸“_ƒoƒbƒtƒ@‚Ì¶¬ƒGƒ‰[", "MeshDome.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½[", "MeshDome.cpp", MB_OK | MB_ICONHAND);
 
 	}
 	
-	MakeVerTex();	//	’¸“_‚Ìì¬
+	MakeVerTex();	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 		
-	MakeIndex();	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚Ìì¬
+	MakeIndex();	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Ìì¬
 
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CMeshDome::Uninit(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CMeshDome::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMeshDome::Uninit(void)
 {
 
-	//	ƒkƒ‹ƒ`ƒFƒbƒN
+	//	ï¿½kï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 	if (m_VtxBuff != NULL)
 	{
 
@@ -152,15 +150,15 @@ void CMeshDome::Uninit(void)
 
 	}
 
-	CScene::Release();	//	ƒIƒuƒWƒFƒNƒgŽ©g‚Ì‰ð•ú
+	CScene::Release();	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½gï¿½Ì‰ï¿½ï¿½
 
 }
 
 /*---------------------------------------------------------------------------- -
-ŠÖ”–¼:		void CMeshDome::Update(void)
-ˆø” :
-–ß‚è’l :
-à–¾ :		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CMeshDome::Update(void)
+ï¿½ï¿½ï¿½ï¿½ :
+ï¿½ß‚ï¿½l :
+ï¿½ï¿½ï¿½ï¿½ :		ï¿½Xï¿½V
 ---------------------------------------------------------------------------- - */
 void CMeshDome::Update(void)
 {
@@ -168,199 +166,199 @@ void CMeshDome::Update(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CMeshDome::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CMeshDome::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CMeshDome::Draw(void)
 {
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	//	ƒpƒCƒvƒ‰ƒCƒ“‚ÌƒXƒgƒŠ[ƒ€
+	//	ï¿½pï¿½Cï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ÌƒXï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½
 	Device->SetStreamSource(0, m_VtxBuff, 0, sizeof(VERTEX_3D));
 
 	Device->SetIndices(m_IdxBuff);
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	Device->SetFVF(FVF_VERTEX_3D);
 
-	// ƒeƒNƒXƒ`ƒƒ‚ÌÝ’è
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌÝ’ï¿½
 	Device->SetTexture(0, CManager::GetTextureManager()->GetTextureInfo(m_TextureId).Texture);
 
-	SetWorld(Device);	//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+	SetWorld(Device);	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 
-	//	•`‰æ
+	//	ï¿½`ï¿½ï¿½
 	Device->DrawIndexedPrimitive(D3DPT_TRIANGLESTRIP, 0, 0, m_IdxVerTex, 0, m_IdxVerTex - 2);
 
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CMeshDome::MakeVerTex(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	void CMeshDome::MakeVerTex(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 void CMeshDome::MakeVerTex(void)
 {
 
-	//	‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾‚·‚éƒ|ƒCƒ“ƒ^•Ï”
+	//	ï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ïï¿½
 	VERTEX_3D* pVtx;
 
-	//	À•W‚ÌŠi”[•Ï”
+	//	ï¿½ï¿½ï¿½Wï¿½ÌŠiï¿½[ï¿½Ïï¿½
 	D3DXVECTOR3 Pos;
 
-	//	360“x‚Ìˆê‚Â•ª‚ÌŠp“x‹‚ß‚é
+	//	360ï¿½xï¿½Ìˆï¿½Â•ï¿½ï¿½ÌŠpï¿½xï¿½ï¿½ï¿½ß‚ï¿½
 	float Rot_XZ = 360.0f / m_NumBlock_X;
 
-	//	90“x‚Ìˆê‚Â•ª‚ÌŠp“x‹‚ß‚é
+	//	90ï¿½xï¿½Ìˆï¿½Â•ï¿½ï¿½ÌŠpï¿½xï¿½ï¿½ï¿½ß‚ï¿½
 	float Rot_Y = 90.0f / m_NumBlock_Y;
 
-	//	ˆê‚Â‚ÌUVÀ•W‚ð‹‚ß‚é
+	//	ï¿½ï¿½Â‚ï¿½UVï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 	m_UVSet.x = 1.0f / m_NumBlock_X;
 	m_UVSet.y = 1.0f / m_NumBlock_Y;
 
 
-	//	ƒoƒbƒtƒ@‚ðƒƒbƒN‚µ‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾‚·‚é
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	m_VtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
-	//	c
+	//	ï¿½c
 	for (UINT Cnt1 = 0; Cnt1 < m_NumBlock_Y + 1; Cnt1++)
 	{
 
-		//	Šp“x‚ÌÝ’è
-		float ƒÆy = 90 - (Cnt1 * Rot_Y);
+		//	ï¿½pï¿½xï¿½ÌÝ’ï¿½
+		float ï¿½ï¿½y = 90 - (Cnt1 * Rot_Y);
 
-		//	Å‰‚É90“x‚©‚ç‹‚ß‚é
-		//	90“x‚©‚çˆø‚¢‚Ä‚¢‚­
-		Pos.y = m_Radius * sinf(D3DXToRadian(ƒÆy));
+		//	ï¿½Åï¿½ï¿½ï¿½90ï¿½xï¿½ï¿½ï¿½ç‹ï¿½ß‚ï¿½
+		//	90ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+		Pos.y = m_Radius * sinf(D3DXToRadian(ï¿½ï¿½y));
 
-		//	‰¡
+		//	ï¿½ï¿½
 		for (UINT Cnt2 = 0; Cnt2 < m_NumBlock_X + 1; Cnt2++)
 		{
-			//	Šp“x‚ÌÝ’è
-			float ƒÆxz = Cnt2 * Rot_XZ;
+			//	ï¿½pï¿½xï¿½ÌÝ’ï¿½
+			float ï¿½ï¿½xz = Cnt2 * Rot_XZ;
 
-			//	XZŽ²‚Å360“x‹‚ß‚é
-			Pos.x = m_Radius * cosf(D3DXToRadian(ƒÆy)) * cosf(D3DXToRadian(ƒÆxz));
-			Pos.z = m_Radius * cosf(D3DXToRadian(ƒÆy)) * sinf(D3DXToRadian(ƒÆxz));
+			//	XZï¿½ï¿½ï¿½ï¿½360ï¿½xï¿½ï¿½ï¿½ß‚ï¿½
+			Pos.x = m_Radius * cosf(D3DXToRadian(ï¿½ï¿½y)) * cosf(D3DXToRadian(ï¿½ï¿½xz));
+			Pos.z = m_Radius * cosf(D3DXToRadian(ï¿½ï¿½y)) * sinf(D3DXToRadian(ï¿½ï¿½xz));
 
 
-			//	’¸“_À•W‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 			pVtx[0].Pos = Pos;
 
 
-			//	–@ü‚ÌÝ’è
+			//	ï¿½@ï¿½ï¿½ï¿½ÌÝ’ï¿½
 			pVtx[0].Nor = D3DXVECTOR3(0.0f, 10.0f, 0.0f);
 
 
-			//	’¸“_F‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 			pVtx[0].Color = D3DCOLOR_RGBA(255, 255, 255, 255);
 
 
-			//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+			//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 			pVtx[0].Tex = D3DXVECTOR2(Cnt2 * m_UVSet.x, Cnt1 * m_UVSet.y);
 
-			pVtx++;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+			pVtx++;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 		}
 	}
 
-	//	ƒoƒbƒtƒ@‚ÌƒAƒ“ƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒAï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_VtxBuff->Unlock();
 
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CMeshDome::MakeIndex(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚Ìì¬
+ï¿½Öï¿½ï¿½ï¿½:		void CMeshDome::MakeIndex(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 void CMeshDome::MakeIndex(void)
 {
 
 	HRESULT hr;
 
-	WORD* pIdx;	//	ƒ|ƒCƒ“ƒ^•Ï”
+	WORD* pIdx;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ïï¿½
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚Ì¶¬
+	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½
 	hr = Device->CreateIndexBuffer(
-		sizeof(WORD) * m_IdxVerTex,	//	ƒoƒbƒtƒ@—Ê
-		D3DUSAGE_WRITEONLY,	//	Žg—p•û–@ƒtƒ‰ƒO
-		D3DFMT_INDEX16, //	ƒCƒ“ƒfƒbƒNƒXƒtƒH[ƒ}ƒbƒg
-		D3DPOOL_MANAGED, //	ƒƒ‚ƒŠ‚ÌŠÇ—•û–@
-		&m_IdxBuff,	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ÌƒAƒhƒŒƒX
+		sizeof(WORD) * m_IdxVerTex,	//	ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½
+		D3DUSAGE_WRITEONLY,	//	ï¿½gï¿½pï¿½ï¿½ï¿½@ï¿½tï¿½ï¿½ï¿½O
+		D3DFMT_INDEX16, //	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½g
+		D3DPOOL_MANAGED, //	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŠÇ—ï¿½ï¿½ï¿½ï¿½@
+		&m_IdxBuff,	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½ÌƒAï¿½hï¿½ï¿½ï¿½X
 		NULL);
 
 
-	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚ÌƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if (FAILED(hr))
 	{
 
-		MessageBox(NULL, "ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚Ì¶¬Ž¸”s", "Mesh.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s", "Mesh.cpp", MB_OK | MB_ICONHAND);
 
 	}
 
 
-	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚ðƒƒbƒN
+	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_IdxBuff->Lock(0, 0, (void**)&pIdx, 0);
 
 
 	if (m_IdxBackDraw == IDXBACK_DRAW_CLOCKWISE)
-	{	//	ŽžŒv‰ñ‚è
+	{	//	ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½
 
-		//	ŽžŒv‰ñ‚è‚ð— –Ê‚Æ‚·‚é
-		//	c
+		//	ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ð— –Ê‚Æ‚ï¿½ï¿½ï¿½
+		//	ï¿½c
 		for (UINT Cnt1 = 0; Cnt1 < m_NumBlock_Y; Cnt1++)
 		{
 
-			//	‚Í‚¶‚ß‚¶‚á‚È‚©‚Á‚½‚ç
-			//	k‘Þƒ|ƒŠƒSƒ“
+			//	ï¿½Í‚ï¿½ï¿½ß‚ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//	ï¿½kï¿½Þƒ|ï¿½ï¿½ï¿½Sï¿½ï¿½
 			if (Cnt1 != 0)
 			{
 
-				//	1“_‘Å‚Â
+				//	1ï¿½_ï¿½Å‚ï¿½
 				pIdx[0] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1));
 
-				pIdx++;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+				pIdx++;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 			}
 
-				//	2“_‘Å‚Â
+				//	2ï¿½_ï¿½Å‚ï¿½
 			pIdx[0] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1));
 			pIdx[1] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1) - (m_NumBlock_X + 1));
 
-			pIdx += 2;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+			pIdx += 2;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
-			//	‰¡
+			//	ï¿½ï¿½
 			for (UINT Cnt2 = 0; Cnt2 < m_NumBlock_X; Cnt2++)
 			{
 
-				//	2“_‘Å‚Â
+				//	2ï¿½_ï¿½Å‚ï¿½
 				pIdx[0] = (WORD)(((Cnt1 + 1) * (m_NumBlock_X + 1) + 1) + Cnt2);
 				pIdx[1] = (WORD)(((Cnt1 + 1) * (m_NumBlock_X + 1) + 1) - (m_NumBlock_X + 1) + Cnt2);
 
-				pIdx += 2;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+				pIdx += 2;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 			}
 
-				//	ÅŒã‚¶‚á‚È‚©‚Á‚½‚ç
-				//	k‘Þƒ|ƒŠƒSƒ“
+				//	ï¿½ÅŒã‚¶ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				//	ï¿½kï¿½Þƒ|ï¿½ï¿½ï¿½Sï¿½ï¿½
 			if (Cnt1 != m_NumBlock_Y - 1)
 			{
 
-				//	1“_‘Å‚Â
+				//	1ï¿½_ï¿½Å‚ï¿½
 				pIdx[0] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1) - 1);
 
-				pIdx++;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+				pIdx++;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 			}
 		}
@@ -368,97 +366,97 @@ void CMeshDome::MakeIndex(void)
 	else
 	{
 
-		//	‹tŽžŒv‰ñ‚è‚ð— –Ê‚Æ‚·‚é
-		//	c
+		//	ï¿½tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ð— –Ê‚Æ‚ï¿½ï¿½ï¿½
+		//	ï¿½c
 		for (UINT Cnt1 = 0; Cnt1 < m_NumBlock_Y; Cnt1++)
 		{
-			//	‚Í‚¶‚ß‚¶‚á‚È‚©‚Á‚½‚ç
-			//	k‘Þƒ|ƒŠƒSƒ“
+			//	ï¿½Í‚ï¿½ï¿½ß‚ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//	ï¿½kï¿½Þƒ|ï¿½ï¿½ï¿½Sï¿½ï¿½
 			if (Cnt1 != 0)
 			{
-				//	1“_‘Å‚Â
+				//	1ï¿½_ï¿½Å‚ï¿½
 
 				pIdx[0] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1) - 1);
 
-				pIdx++;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+				pIdx++;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 			}
 
-				//	2“_‘Å‚Â
+				//	2ï¿½_ï¿½Å‚ï¿½
 			pIdx[1] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1));
 			pIdx[0] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1) - (m_NumBlock_X + 1));
 
-			pIdx += 2;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+			pIdx += 2;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
-			//	‰¡
+			//	ï¿½ï¿½
 			for (UINT Cnt2 = 0; Cnt2 < m_NumBlock_X; Cnt2++)
 			{
-				//	2“_‘Å‚Â
+				//	2ï¿½_ï¿½Å‚ï¿½
 				pIdx[1] = (WORD)(((Cnt1 + 1) * (m_NumBlock_X + 1) + 1) + Cnt2);
 				pIdx[0] = (WORD)(((Cnt1 + 1) * (m_NumBlock_X + 1) + 1) - (m_NumBlock_X + 1) + Cnt2);
 
-				pIdx += 2;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+				pIdx += 2;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 			}
 
-				//	ÅŒã‚¶‚á‚È‚©‚Á‚½‚ç
-				//	k‘Þƒ|ƒŠƒSƒ“
+				//	ï¿½ÅŒã‚¶ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				//	ï¿½kï¿½Þƒ|ï¿½ï¿½ï¿½Sï¿½ï¿½
 			if (Cnt1 != m_NumBlock_Y - 1)
 			{
-				//	1“_‘Å‚Â
+				//	1ï¿½_ï¿½Å‚ï¿½
 				pIdx[0] = (WORD)((Cnt1 + 1) * (m_NumBlock_X + 1));
 
-				pIdx++;	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+				pIdx++;	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 
 			}
 		}
 	}
 
-	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚ÌƒAƒ“ƒƒbƒN
+	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒAï¿½ï¿½ï¿½ï¿½ï¿½bï¿½N
 	m_IdxBuff->Unlock();
 
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CMeshDome::SetWorld(LPDIRECT3DDEVICE9 Device)
-ˆø”:		LPDIRECT3DDEVICE9 Device	ƒfƒoƒCƒX
-–ß‚è’l:
-à–¾:		ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+ï¿½Öï¿½ï¿½ï¿½:		void CMeshDome::SetWorld(LPDIRECT3DDEVICE9 Device)
+ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 Device	ï¿½fï¿½oï¿½Cï¿½X
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 -----------------------------------------------------------------------------*/
 void CMeshDome::SetWorld(LPDIRECT3DDEVICE9 Device)
 {
 	D3DXMATRIX mtxScl, mtxRot, mtxPos;
 
-	D3DXMatrixIdentity(&m_MtxWorld);	//	s—ñ‚ð’PˆÊs—ñ‚É‚·‚é
+	D3DXMatrixIdentity(&m_MtxWorld);	//	ï¿½sï¿½ï¿½ï¿½Pï¿½Êsï¿½ï¿½É‚ï¿½ï¿½ï¿½
 
 
-	//	Šg‘ås—ñ‚ðì‚é
-	D3DXMatrixScaling(&mtxScl,	//Šg‘ås—ñ‚ªì‚ç‚ê‚é
-		m_Scl.x,	//	XŽ²Šg‘å
-		m_Scl.y,	//	YŽ²Šg‘å
-		m_Scl.z);	//	ZŽ²Šg‘å
+	//	ï¿½gï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixScaling(&mtxScl,	//ï¿½gï¿½ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		m_Scl.x,	//	Xï¿½ï¿½ï¿½gï¿½ï¿½
+		m_Scl.y,	//	Yï¿½ï¿½ï¿½gï¿½ï¿½
+		m_Scl.z);	//	Zï¿½ï¿½ï¿½gï¿½ï¿½
 
-	//	‰ñ“]s—ñ‚ðì‚é
-	D3DXMatrixRotationYawPitchRoll(&mtxRot,	//	‰ñ“]s—ñ‚ªì‚ç‚ê‚é
-		D3DXToRadian(m_Rot.y), //	YŽ²‰ñ“]
-		D3DXToRadian(m_Rot.x), //	XŽ²‰ñ“]
-		D3DXToRadian(m_Rot.z)); //	ZŽ²‰ñ“]
+	//	ï¿½ï¿½]ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixRotationYawPitchRoll(&mtxRot,	//	ï¿½ï¿½]ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		D3DXToRadian(m_Rot.y), //	Yï¿½ï¿½ï¿½ï¿½]
+		D3DXToRadian(m_Rot.x), //	Xï¿½ï¿½ï¿½ï¿½]
+		D3DXToRadian(m_Rot.z)); //	Zï¿½ï¿½ï¿½ï¿½]
 
-	//	•½sˆÚ“®s—ñ‚ðì‚é
+	//	ï¿½ï¿½ï¿½sï¿½Ú“ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixTranslation(&mtxPos,
-		m_Position.x,	//	XŽ²ˆÚ“®
-		m_Position.y,	//	YŽ²ˆÚ“®
-		m_Position.z);	//	ZŽ²ˆÚ“®
+		m_Position.x,	//	Xï¿½ï¿½ï¿½Ú“ï¿½
+		m_Position.y,	//	Yï¿½ï¿½ï¿½Ú“ï¿½
+		m_Position.z);	//	Zï¿½ï¿½ï¿½Ú“ï¿½
 
 
-	//	Š|‚¯‚é
+	//	ï¿½|ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixMultiply(&m_MtxWorld, &m_MtxWorld, &mtxScl);
 
 	D3DXMatrixMultiply(&m_MtxWorld, &m_MtxWorld, &mtxRot);
 
 	D3DXMatrixMultiply(&m_MtxWorld, &m_MtxWorld, &mtxPos);
 
-	//	ƒfƒoƒCƒX‚Éƒ[ƒ‹ƒh•ÏŠ·s—ñ‚ðÝ’è
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½Ý’ï¿½
 	Device->SetTransform(D3DTS_WORLD, &m_MtxWorld);
 
 }

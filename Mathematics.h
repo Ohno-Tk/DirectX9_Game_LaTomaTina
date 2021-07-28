@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		”ŠwŒnŠÖ”[ Mathematics.h ]
+		ï¿½ï¿½ï¿½wï¿½nï¿½Öï¿½[ Mathematics.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/07/20
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/17
 =============================================================================*/
 
@@ -17,52 +15,52 @@
 #define _MATHEMATICS_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CAngle2Vector
-{	//	2‚Â‚ÌƒxƒNƒgƒ‹‚Ì‚È‚·Šp“x‚ğ‹‚ß‚é
+{	//	2ï¿½Â‚Ìƒxï¿½Nï¿½gï¿½ï¿½ï¿½Ì‚È‚ï¿½ï¿½pï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CAngle2Vector(D3DXVECTOR3 VectorA) :m_VectorA(VectorA) {}
 
-	//	Šp“x‚ğ‹‚ß‚é
+	//	ï¿½pï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 	float Angle2Vector(D3DXVECTOR3 VectorB);
 private:
-	D3DXVECTOR3 m_VectorA;	//	ƒxƒNƒgƒ‹A
+	D3DXVECTOR3 m_VectorA;	//	ï¿½xï¿½Nï¿½gï¿½ï¿½A
 };
 
 class CAstroidCurve
-{	//	ƒAƒXƒeƒƒCƒh‹Èü
+{	//	ï¿½Aï¿½Xï¿½eï¿½ï¿½ï¿½Cï¿½hï¿½Èï¿½
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CAstroidCurve(D3DXVECTOR3 op, float rotvalue, float radius);
 
-	//	ƒAƒXƒeƒƒCƒh‹ÈüŒvZ
+	//	ï¿½Aï¿½Xï¿½eï¿½ï¿½ï¿½Cï¿½hï¿½Èï¿½ï¿½vï¿½Z
 	D3DXVECTOR3 AstroidCurve();
 
 private:
-	D3DXVECTOR3 m_OriginPoint;	//	Œ´“_
+	D3DXVECTOR3 m_OriginPoint;	//	ï¿½ï¿½ï¿½_
 
-	float m_Rot;				//	Šp“x
-	float m_RotValue;			//	Šp“x•Ï‰»—Ê
-	float m_Radius;				//	”¼Œa
+	float m_Rot;				//	ï¿½pï¿½x
+	float m_RotValue;			//	ï¿½pï¿½xï¿½Ï‰ï¿½ï¿½ï¿½
+	float m_Radius;				//	ï¿½ï¿½ï¿½a
 };
 
 class CInvoluteCurve
-{	//	ƒCƒ“ƒ{ƒŠƒ…[ƒg‹Èü
+{	//	ï¿½Cï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½gï¿½Èï¿½
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CInvoluteCurve(D3DXVECTOR3 op, float rotvalue, float radius);
 
-	//	ƒCƒ“ƒ{ƒŠƒ…[ƒg‹ÈüŒvZ
+	//	ï¿½Cï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½gï¿½Èï¿½ï¿½vï¿½Z
 	D3DXVECTOR3 InvoluteCurve(void);
 
 private:
-	D3DXVECTOR3 m_OriginPoint;	//	Œ´“_
+	D3DXVECTOR3 m_OriginPoint;	//	ï¿½ï¿½ï¿½_
 
-	float m_Rot;				//	Šp“x
-	float m_RotValue;			//	Šp“x•Ï‰»—Ê
-	float m_Radius;				//	”¼Œa
+	float m_Rot;				//	ï¿½pï¿½x
+	float m_RotValue;			//	ï¿½pï¿½xï¿½Ï‰ï¿½ï¿½ï¿½
+	float m_Radius;				//	ï¿½ï¿½ï¿½a
 };
 
 #endif

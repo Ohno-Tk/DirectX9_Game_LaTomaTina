@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒEƒF[ƒu[ Wave.h ]
+		ï¿½Eï¿½Fï¿½[ï¿½u[ Wave.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/30
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/30
 =============================================================================*/
 
@@ -17,12 +15,12 @@
 #define _KILLCOUNT_H_
 
 /*-----------------------------------------------------------------------------
-	‘O•ûéŒ¾
+	ï¿½Oï¿½ï¿½ï¿½éŒ¾
 -----------------------------------------------------------------------------*/
 class CNumber2D;
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CKillCount:public CScene
 {
@@ -35,16 +33,16 @@ public:
 
 	static CKillCount* Create(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
-	void AddCount(const int add) { m_KillCount += add; }	//	‰ÁZ
+	void AddCount(const int add) { m_KillCount += add; }	//	ï¿½ï¿½ï¿½Z
 	void SetCount(const int count) { m_KillCount = count; }
 
 	int GetCount(void) { return m_KillCount; }
 
 private:
-	virtual void Init(void);	//	‰Šú‰»
-	virtual void Uninit(void);	//	I—¹
-	virtual void Update(void);	//	XV
-	virtual void Draw(void);	//	•`‰æ
+	virtual void Init(void);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void);	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void);	//	ï¿½Xï¿½V
+	virtual void Draw(void);	//	ï¿½`ï¿½ï¿½
 
 private:
 	CNumber2D* m_Number[2];
@@ -52,6 +50,6 @@ private:
 	D3DXVECTOR2 m_Pos;
 	D3DXVECTOR2 m_Size;
 
-	int m_KillCount;	//	ƒEƒF[ƒu”
+	int m_KillCount;	//	ï¿½Eï¿½Fï¿½[ï¿½uï¿½ï¿½
 };
 #endif

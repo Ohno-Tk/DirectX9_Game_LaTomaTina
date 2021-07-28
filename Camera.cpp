@@ -1,20 +1,18 @@
 /*=============================================================================
 
-ƒJƒƒ‰[ Camera.cpp ]
+ï¿½Jï¿½ï¿½ï¿½ï¿½[ Camera.cpp ]
 
 -------------------------------------------------------------------------------
-¡@»ìÒ
-‘å–ì‘ñ–ç
 
-¡@ì¬“ú
+ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 2017/08/25
 -------------------------------------------------------------------------------
-¡@XV“ú
+ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 2017/08/25
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Camera.h"
@@ -22,12 +20,12 @@
 #include "Manager.h"
 
 /*-----------------------------------------------------------------------------
-ƒ}ƒNƒ’è‹`
+ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define CAMERA_NEAR ( 1.0f )	//	near
 #define CAMERA_FAR ( 2000.0f )	//	far
 
-#define CAMERA_MOVE_SPEED (2.0f)	//	ˆÚ“®—Ê
+#define CAMERA_MOVE_SPEED (2.0f)	//	ï¿½Ú“ï¿½ï¿½ï¿½
 
 
 #define CAMERA_RANGE_V_MAX		(10.0f)
@@ -37,41 +35,41 @@
 
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:	CCamera::CCamera()
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ï¿½Öï¿½ï¿½ï¿½:	CCamera::CCamera()
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CCamera::CCamera()
 {
-	m_Pos = D3DXVECTOR3(0.0f, 0.5f, -100.0f);	//	ƒJƒƒ‰À•W
-	m_LookAt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);		//	’‹“_
-	m_VecUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);			//	ã‚Ì‹“_
+	m_Pos = D3DXVECTOR3(0.0f, 0.5f, -100.0f);	//	ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½W
+	m_LookAt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);		//	ï¿½ï¿½ï¿½ï¿½ï¿½_
+	m_VecUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);			//	ï¿½ï¿½Ìï¿½ï¿½_
 
 	m_VecAtCa = m_LookAt - m_Pos;
-	m_fLength = D3DXVec3Length(&m_VecAtCa);		//	’·‚³
+	m_fLength = D3DXVec3Length(&m_VecAtCa);		//	ï¿½ï¿½ï¿½ï¿½
 
 	m_fRotH = 0.0f;
 	m_fRotV = 0.0f;
-	//XY•½–Êã‚Å‚Ì“ñ“_ŠÔ‚ÌŠp“x‚ğ‹‚ß‚é
-	m_fRotH = atan2f(m_VecAtCa.z, m_VecAtCa.x);	//‰¡‰ñ“]
-												//XZ•½–Êã‚ÆYÀ•W‚ÌŠp“x‚ğ‹‚ß‚é
-	m_fRotV = atan2f(m_VecAtCa.y, sqrtf((m_VecAtCa.x * m_VecAtCa.x) + (m_VecAtCa.z * m_VecAtCa.z)));		//c‰ñ“]
+	//XYï¿½ï¿½ï¿½Êï¿½Å‚Ì“ï¿½_ï¿½Ô‚ÌŠpï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
+	m_fRotH = atan2f(m_VecAtCa.z, m_VecAtCa.x);	//ï¿½ï¿½ï¿½ï¿½]
+												//XZï¿½ï¿½ï¿½Êï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½ÌŠpï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
+	m_fRotV = atan2f(m_VecAtCa.y, sqrtf((m_VecAtCa.x * m_VecAtCa.x) + (m_VecAtCa.z * m_VecAtCa.z)));		//ï¿½cï¿½ï¿½]
 
-	m_fFov = D3DX_PI / 3.0f;					//‰æŠp60
+	m_fFov = D3DX_PI / 3.0f;					//ï¿½ï¿½p60
 
-												//	s—ñ‚ğ’PˆÊs—ñ‚É‚·‚é
-	D3DXMatrixIdentity(&m_MtxView);	//	ƒrƒ…[s—ñƒ}ƒgƒŠƒNƒX
-	D3DXMatrixIdentity(&m_mtxProj);	//	ƒvƒƒWƒFƒNƒVƒ‡ƒ“s—ñƒ}ƒgƒŠƒNƒX
+												//	ï¿½sï¿½ï¿½ï¿½Pï¿½Êsï¿½ï¿½É‚ï¿½ï¿½ï¿½
+	D3DXMatrixIdentity(&m_MtxView);	//	ï¿½rï¿½ï¿½ï¿½[ï¿½sï¿½ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
+	D3DXMatrixIdentity(&m_mtxProj);	//	ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
 
 	m_bUp = true;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CCamera::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CCamera::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CCamera::Update(void)
 {
@@ -90,66 +88,66 @@ void CCamera::Update(void)
 		m_Pos = D3DXVECTOR3(0.0f, 5.0f, -100.0f);
 	}
 
-	SetProjection();	//	ƒvƒƒWƒFƒNƒVƒ‡ƒ“‚ÌƒZƒbƒg
+	SetProjection();	//	ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CCamera::SetProjection(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒvƒƒWƒFƒNƒVƒ‡ƒ“‚ÌƒZƒbƒg
+ï¿½Öï¿½ï¿½ï¿½:		void CCamera::SetProjection(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 -----------------------------------------------------------------------------*/
 void CCamera::SetProjection(void)
 {
-	//	ƒfƒoƒCƒX‚Ìæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
-	//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
-	//	ƒ[ƒ‹ƒhƒ}ƒgƒŠƒNƒX‚Ìì¬
+	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
+	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½Xï¿½Ìì¬
 	D3DXMATRIX mtxWorld;
 
-	D3DXMatrixIdentity(&mtxWorld);	//	s—ñ‚ğ’PˆÊs—ñ‚É‚·‚é
+	D3DXMatrixIdentity(&mtxWorld);	//	ï¿½sï¿½ï¿½ï¿½Pï¿½Êsï¿½ï¿½É‚ï¿½ï¿½ï¿½
 
-									//	ƒfƒoƒCƒX‚Éƒ[ƒ‹ƒh•ÏŠ·s—ñ‚ğİ’è
+									//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½İ’ï¿½
 	Device->SetTransform(D3DTS_WORLD, &mtxWorld);
 
-	//	ƒrƒ…[À•W•ÏŠ·
+	//	ï¿½rï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 	D3DXMatrixLookAtLH(&m_MtxView, &m_Pos, &m_LookAt, &m_VecUp);
 
-	//	ƒfƒoƒCƒX‚Éƒrƒ…[•ÏŠ·s—ñ‚ğİ’è
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒrï¿½ï¿½ï¿½[ï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½İ’ï¿½
 	Device->SetTransform(D3DTS_VIEW, &m_MtxView);
 
-	//	ƒvƒƒWƒFƒNƒVƒ‡ƒ“•ÏŠ·
+	//	ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÏŠï¿½
 
 
-	//	ƒp[ƒXƒyƒNƒeƒBƒus—ñ
+	//	ï¿½pï¿½[ï¿½Xï¿½yï¿½Nï¿½eï¿½Bï¿½uï¿½sï¿½ï¿½
 	D3DXMatrixPerspectiveFovLH(&m_mtxProj,
-		m_fFov,	//	‰æŠp
-		(float)SCREEN_WIDTH / SCREEN_HEIGHT,	//	ƒAƒXƒyƒNƒg”ä
-		CAMERA_NEAR,	//	near	’l‚ğâ‘Î0ˆÈ‰º‚É‚µ‚È‚¢
+		m_fFov,	//	ï¿½ï¿½p
+		(float)SCREEN_WIDTH / SCREEN_HEIGHT,	//	ï¿½Aï¿½Xï¿½yï¿½Nï¿½gï¿½ï¿½
+		CAMERA_NEAR,	//	near	ï¿½lï¿½ï¿½ï¿½ï¿½0ï¿½È‰ï¿½ï¿½É‚ï¿½ï¿½È‚ï¿½
 		CAMERA_FAR);	//	far
 
-						//	ƒfƒoƒCƒX‚ÉƒvƒƒWƒFƒNƒVƒ‡ƒ“•ÏŠ·s—ñ‚ğİ’è
+						//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒvï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½İ’ï¿½
 	Device->SetTransform(D3DTS_PROJECTION, &m_mtxProj);
 
 }
 
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CCamera::SetPosition(const D3DXVECTOR3 Pos)
-ˆø”:		const D3DXVECTOR3 Pos	À•W
-–ß‚è’l:
-à–¾:		ƒJƒƒ‰À•W‚ÌƒZƒbƒg
+ï¿½Öï¿½ï¿½ï¿½:		void CCamera::SetPosition(const D3DXVECTOR3 Pos)
+ï¿½ï¿½ï¿½ï¿½:		const D3DXVECTOR3 Pos	ï¿½ï¿½ï¿½W
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌƒZï¿½bï¿½g
 -----------------------------------------------------------------------------*/
 void CCamera::SetPosition(const D3DXVECTOR3 Pos) {
 	m_Pos = Pos;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CCamera::SetPositionAt(const D3DXVECTOR3 PosAt)
-ˆø”:		const D3DXVECTOR3 PosAt		’‹“_
-–ß‚è’l:
-à–¾:		’‹“_‚ÌƒZƒbƒg
+ï¿½Öï¿½ï¿½ï¿½:		void CCamera::SetPositionAt(const D3DXVECTOR3 PosAt)
+ï¿½ï¿½ï¿½ï¿½:		const D3DXVECTOR3 PosAt		ï¿½ï¿½ï¿½ï¿½ï¿½_
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ÌƒZï¿½bï¿½g
 -----------------------------------------------------------------------------*/
 void CCamera::SetPositionAt(const D3DXVECTOR3 PosAt) {
 	m_LookAt = PosAt;
@@ -157,19 +155,19 @@ void CCamera::SetPositionAt(const D3DXVECTOR3 PosAt) {
 
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		const D3DXMATRIX CCamera::GetInversedView(void)const
-ˆø”:
-–ß‚è’l:		return mtxViewInverse;	‹ts—ñƒrƒ…[
-à–¾:		‹ts—ñƒrƒ…[‚Ìæ“¾
+ï¿½Öï¿½ï¿½ï¿½:		const D3DXMATRIX CCamera::GetInversedView(void)const
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:		return mtxViewInverse;	ï¿½tï¿½sï¿½ï¿½rï¿½ï¿½ï¿½[
+ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½sï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½Ìæ“¾
 -----------------------------------------------------------------------------*/
 const D3DXMATRIX CCamera::GetInversedView(void)const
 {
 	D3DXMATRIX mtxViewInverse;
 
-	//	“]’us—ñ
+	//	ï¿½]ï¿½uï¿½sï¿½ï¿½
 	D3DXMatrixTranspose(&mtxViewInverse, &m_MtxView);
 
-	//	•½sˆÚ“®¬•ª‚ğƒJƒbƒg
+	//	ï¿½ï¿½ï¿½sï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½bï¿½g
 	mtxViewInverse._14 = 0.0f;
 	mtxViewInverse._24 = 0.0f;
 	mtxViewInverse._34 = 0.0f;
@@ -201,12 +199,12 @@ void CCamera::InputProcess(void) {
 		m_fRotH = D3DX_PI / 2 + D3DXToRadian(CAMERA_RANGE_H_MAX);
 	}
 
-	//’‹“_‚©‚çƒJƒƒ‰‚Ö‚ÌƒxƒNƒgƒ‹‚ğXV‚·‚é
+	//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Ö‚Ìƒxï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½
 	m_VecAtCa.x = (float)(cos(m_fRotH) * cos(m_fRotV) * m_fLength);
 	m_VecAtCa.y = (float)(sin(m_fRotV) * m_fLength);
 	m_VecAtCa.z = (float)(sin(m_fRotH) * cos(m_fRotV) * m_fLength);
 
-	//’‹“_
+	//ï¿½ï¿½ï¿½ï¿½ï¿½_
 	m_LookAt = m_Pos + m_VecAtCa;
 }
 

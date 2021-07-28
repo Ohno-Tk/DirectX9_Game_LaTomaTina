@@ -1,42 +1,39 @@
 /*=============================================================================
 
-		DirectXÝ’è[ DirectX.cpp ]
+		DirectXï¿½Ý’ï¿½[ DirectX.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
-
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "GameLoop.h"
 
 /*-----------------------------------------------------------------------------
-	Ã“I•Ï”
+	ï¿½Ã“Iï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-D3DXCOLOR CDirectX::m_BackBufferColor = D3DCOLOR_RGBA(0, 177, 184, 255);//	ƒoƒbƒNƒoƒbƒtƒ@F
-LPDIRECT3D9 CDirectX::m_pD3D = NULL;			// Direct3DƒIƒuƒWƒFƒNƒg
-LPDIRECT3DDEVICE9 CDirectX::m_pD3DDevice = NULL;	// DeviceƒIƒuƒWƒFƒNƒg
+D3DXCOLOR CDirectX::m_BackBufferColor = D3DCOLOR_RGBA(0, 177, 184, 255);//	ï¿½oï¿½bï¿½Nï¿½oï¿½bï¿½tï¿½@ï¿½F
+LPDIRECT3D9 CDirectX::m_pD3D = NULL;			// Direct3Dï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
+LPDIRECT3DDEVICE9 CDirectX::m_pD3DDevice = NULL;	// Deviceï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
 
 #ifdef _DEBUG
-LPD3DXFONT CDirectX::m_Font = NULL;	// ƒtƒHƒ“ƒg‚Ö‚Ìƒ|ƒCƒ“ƒ^
+LPD3DXFONT CDirectX::m_Font = NULL;	// ï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 #endif
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT CDirectX::Init(HWND Wnd, bool Window)
- ˆø”:		HWND Wnd		ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
-			bool Window		ƒEƒBƒ“ƒhƒEƒ‚[ƒh
- –ß‚è’l:	return S_OK;	¬Œ÷
-			return E_FAIL;	Ž¸”s
- à–¾:		‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT CDirectX::Init(HWND Wnd, bool Window)
+ ï¿½ï¿½ï¿½ï¿½:		HWND Wnd		ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½nï¿½ï¿½ï¿½hï¿½ï¿½
+			bool Window		ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½[ï¿½h
+ ï¿½ß‚ï¿½l:	return S_OK;	ï¿½ï¿½ï¿½ï¿½
+			return E_FAIL;	ï¿½ï¿½ï¿½s
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 HRESULT CDirectX::Init(HWND Wnd, bool Window)
 {
@@ -46,35 +43,35 @@ HRESULT CDirectX::Init(HWND Wnd, bool Window)
 	D3DDISPLAYMODE d3ddm = {};
 
 
-	// Direct3DƒIƒuƒWƒFƒNƒg‚Ìì¬
+	// Direct3Dï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìì¬
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 
 	if (!m_pD3D)
-	{	//	ƒkƒ‹ƒ`ƒFƒbƒN
+	{	//	ï¿½kï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 
-		MessageBox(NULL, "Direct3DƒIƒuƒWƒFƒNƒg‚Ìì¬‚ÉŽ¸”s", "DirectX.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "Direct3Dï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìì¬ï¿½ÉŽï¿½ï¿½s", "DirectX.cpp", MB_OK | MB_ICONHAND);
 		return E_FAIL;
 	}
 
-	// Œ»Ý‚ÌƒfƒBƒXƒvƒŒƒCƒ‚[ƒh‚ðŽæ“¾
+	// ï¿½ï¿½ï¿½Ý‚Ìƒfï¿½Bï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½æ“¾
 	hr = m_pD3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &d3ddm);
 
 	if (FAILED(hr))
 	{
-		MessageBox(NULL, "ƒfƒBƒXƒvƒŒƒCƒ‚[ƒh‚ÌŽæ“¾‚ÉŽ¸”s", "DirectX.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½fï¿½Bï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½hï¿½ÌŽæ“¾ï¿½ÉŽï¿½ï¿½s", "DirectX.cpp", MB_OK | MB_ICONHAND);
 		return E_FAIL;
 	}
 
-	SetUpDevice(d3dpp, d3ddm, Wnd, Window);	//	ƒfƒoƒCƒX‚Ì‰Šú‰»
+	SetUpDevice(d3dpp, d3ddm, Wnd, Window);	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	SetRenderState();	//	ƒŒƒ“ƒ_[ƒXƒe[ƒg‚ÌÝ’è
+	SetRenderState();	//	ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½[ï¿½Xï¿½eï¿½[ï¿½gï¿½ÌÝ’ï¿½
 
-	SetSamplerState();	//	ƒTƒ“ƒvƒ‰[ƒXƒe[ƒg‚ÌÝ’è
+	SetSamplerState();	//	ï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½[ï¿½Xï¿½eï¿½[ï¿½gï¿½ÌÝ’ï¿½
 
-	SetTextureStageState();	//	ƒeƒNƒXƒ`ƒƒƒXƒe[ƒWƒXƒe[ƒg‚ÌÝ’è
+	SetTextureStageState();	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½Wï¿½Xï¿½eï¿½[ï¿½gï¿½ÌÝ’ï¿½
 
 #ifdef _DEBUG
-	// ƒfƒoƒbƒOî•ñ•\Ž¦—pƒtƒHƒ“ƒg‚ð¶¬
+	// ï¿½fï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½pï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½ð¶ï¿½
 	D3DXCreateFont(m_pD3DDevice, 18, 0, 0, 0, FALSE, SHIFTJIS_CHARSET,
 		OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, "Terminal", &m_Font);
 #endif
@@ -83,104 +80,104 @@ HRESULT CDirectX::Init(HWND Wnd, bool Window)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CDirectX::Uninit(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		I—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void CDirectX::Uninit(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::Uninit(void)
 {
 #ifdef _DEBUG
 	if (m_Font)
-	{	// î•ñ•\Ž¦—pƒtƒHƒ“ƒg
-		m_Font->Release();	//	‰ð•ú
+	{	// ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½pï¿½tï¿½Hï¿½ï¿½ï¿½g
+		m_Font->Release();	//	ï¿½ï¿½ï¿½
 		m_Font = NULL;
 	}
 
 #endif
 
 	if(m_pD3D)
-	{	//	Direct3DƒIƒuƒWƒFƒNƒg‚Ì”jŠü
+	{	//	Direct3Dï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì”jï¿½ï¿½
 
-		m_pD3D->Release();	//	‰ð•ú
+		m_pD3D->Release();	//	ï¿½ï¿½ï¿½
 		m_pD3D = NULL;
 	}
 
 	if(m_pD3DDevice)
-	{	// ƒfƒoƒCƒX‚Ì”jŠü
+	{	// ï¿½fï¿½oï¿½Cï¿½Xï¿½Ì”jï¿½ï¿½
 
-		m_pD3DDevice->Release();	//	‰ð•ú
+		m_pD3DDevice->Release();	//	ï¿½ï¿½ï¿½
 		m_pD3DDevice = NULL;
 	}
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CDirectX::DrawBegin(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		•`‰æ‚ÌŠJŽn
+ ï¿½Öï¿½ï¿½ï¿½:	void CDirectX::DrawBegin(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ÌŠJï¿½n
 -----------------------------------------------------------------------------*/
 void CDirectX::DrawBegin(void)
 {
-	// ƒoƒbƒNƒoƒbƒtƒ@•‚yƒoƒbƒtƒ@‚ÌƒNƒŠƒA
+	// ï¿½oï¿½bï¿½Nï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½yï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒNï¿½ï¿½ï¿½A
 	m_pD3DDevice->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER), m_BackBufferColor, 1.0f, 0);
 
-	// Direct3D‚É‚æ‚é•`‰æ‚ÌŠJŽn
+	// Direct3Dï¿½É‚ï¿½ï¿½`ï¿½ï¿½ÌŠJï¿½n
 	m_pD3DDevice->BeginScene();
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CDirectX::DrawEnd(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		•`‰æ‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void CDirectX::DrawEnd(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::DrawEnd(void)
 {
 #ifdef _DEBUG
 
-	DrawFPS();	// FPS•\Ž¦
+	DrawFPS();	// FPSï¿½\ï¿½ï¿½
 
 #endif
 
-	// Direct3D‚É‚æ‚é•`‰æ‚ÌI—¹
+	// Direct3Dï¿½É‚ï¿½ï¿½`ï¿½ï¿½ÌIï¿½ï¿½
 	m_pD3DDevice->EndScene();
 
-	// ƒoƒbƒNƒoƒbƒtƒ@‚Æƒtƒƒ“ƒgƒoƒbƒtƒ@‚Ì“ü‚ê‘Ö‚¦
+	// ï¿½oï¿½bï¿½Nï¿½oï¿½bï¿½tï¿½@ï¿½Æƒtï¿½ï¿½ï¿½ï¿½ï¿½gï¿½oï¿½bï¿½tï¿½@ï¿½Ì“ï¿½ï¿½ï¿½Ö‚ï¿½
 	m_pD3DDevice->Present(NULL, NULL, NULL, NULL);
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CDirectX::SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HWND Wnd, bool Window)
- ˆø”:		D3DPRESENT_PARAMETERS d3dpp
+ ï¿½Öï¿½ï¿½ï¿½:	void CDirectX::SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HWND Wnd, bool Window)
+ ï¿½ï¿½ï¿½ï¿½:		D3DPRESENT_PARAMETERS d3dpp
 			D3DDISPLAYMODE d3ddm
-			HWND Wnd						ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
-			bool Window						ƒEƒBƒ“ƒhƒEƒ‚[ƒh
- –ß‚è’l:	
- à–¾:		ƒfƒoƒCƒX‚Ì‰Šú‰»
+			HWND Wnd						ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½nï¿½ï¿½ï¿½hï¿½ï¿½
+			bool Window						ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½[ï¿½h
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HWND Wnd, bool Window)
 {
-	// ƒfƒoƒCƒX‚ÌƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“ƒpƒ‰ƒ[ƒ^‚ÌÝ’è
-	ZeroMemory(&d3dpp, sizeof(d3dpp));							// ƒ[ƒN‚ðƒ[ƒƒNƒŠƒA
-	d3dpp.BackBufferCount = 1;									// ƒoƒbƒNƒoƒbƒtƒ@‚Ì”
-	d3dpp.BackBufferWidth = SCREEN_WIDTH;						// ƒQ[ƒ€‰æ–ÊƒTƒCƒY(•)
-	d3dpp.BackBufferHeight = SCREEN_HEIGHT;						// ƒQ[ƒ€‰æ–ÊƒTƒCƒY(‚‚³)
-	d3dpp.BackBufferFormat = d3ddm.Format;						// ƒJƒ‰[ƒ‚[ƒh‚ÌŽw’è
-	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;					// ‰f‘œM†‚É“¯Šú‚µ‚ÄƒtƒŠƒbƒv‚·‚é
-	d3dpp.EnableAutoDepthStencil = TRUE;						// ƒfƒvƒXƒoƒbƒtƒ@i‚yƒoƒbƒtƒ@j‚ÆƒXƒeƒ“ƒVƒ‹ƒoƒbƒtƒ@‚ðì¬
-	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;					// ƒfƒvƒXƒoƒbƒtƒ@‚Æ‚µ‚Ä16bit‚ðŽg‚¤
-	d3dpp.Windowed = Window;									// ƒEƒBƒ“ƒhƒEƒ‚[ƒh
-	d3dpp.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;	// ƒŠƒtƒŒƒbƒVƒ…ƒŒ[ƒg
-	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;	// ƒCƒ“ƒ^[ƒoƒ‹
+	// ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìƒvï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½eï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½ÌÝ’ï¿½
+	ZeroMemory(&d3dpp, sizeof(d3dpp));							// ï¿½ï¿½ï¿½[ï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½A
+	d3dpp.BackBufferCount = 1;									// ï¿½oï¿½bï¿½Nï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½
+	d3dpp.BackBufferWidth = SCREEN_WIDTH;						// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ÊƒTï¿½Cï¿½Y(ï¿½ï¿½)
+	d3dpp.BackBufferHeight = SCREEN_HEIGHT;						// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ÊƒTï¿½Cï¿½Y(ï¿½ï¿½ï¿½ï¿½)
+	d3dpp.BackBufferFormat = d3ddm.Format;						// ï¿½Jï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½hï¿½ÌŽwï¿½ï¿½
+	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;					// ï¿½fï¿½ï¿½ï¿½Mï¿½ï¿½ï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äƒtï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½
+	d3dpp.EnableAutoDepthStencil = TRUE;						// ï¿½fï¿½vï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½iï¿½yï¿½oï¿½bï¿½tï¿½@ï¿½jï¿½ÆƒXï¿½eï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ì¬
+	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;					// ï¿½fï¿½vï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Æ‚ï¿½ï¿½ï¿½16bitï¿½ï¿½ï¿½gï¿½ï¿½
+	d3dpp.Windowed = Window;									// ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½[ï¿½h
+	d3dpp.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;	// ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½g
+	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;	// ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½oï¿½ï¿½
 
 
 	HRESULT hr;
 
 
-	// ƒfƒoƒCƒX‚Ì¶¬
-	// ƒfƒBƒXƒvƒŒƒCƒAƒ_ƒvƒ^‚ð•\‚·‚½‚ß‚ÌƒfƒoƒCƒX‚ðì¬
-	// •`‰æ‚Æ’¸“_ˆ—‚ðƒn[ƒhƒEƒFƒA‚Ås‚È‚¤
+	// ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìï¿½ï¿½ï¿½
+	// ï¿½fï¿½Bï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½Aï¿½_ï¿½vï¿½^ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ß‚Ìƒfï¿½oï¿½Cï¿½Xï¿½ï¿½ï¿½ì¬
+	// ï¿½`ï¿½ï¿½Æ’ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½[ï¿½hï¿½Eï¿½Fï¿½Aï¿½Åsï¿½È‚ï¿½
 	hr = m_pD3D->CreateDevice(D3DADAPTER_DEFAULT,
 		D3DDEVTYPE_HAL,
 		Wnd,
@@ -188,8 +185,8 @@ void CDirectX::SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HW
 		&d3dpp, &m_pD3DDevice);
 	if (FAILED(hr))
 	{
-		// ã‹L‚ÌÝ’è‚ªŽ¸”s‚µ‚½‚ç
-		// •`‰æ‚ðƒn[ƒhƒEƒFƒA‚Ås‚¢A’¸“_ˆ—‚ÍCPU‚Ås‚È‚¤
+		// ï¿½ï¿½Lï¿½ÌÝ’è‚ªï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ï¿½`ï¿½ï¿½ï¿½ï¿½nï¿½[ï¿½hï¿½Eï¿½Fï¿½Aï¿½Åsï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CPUï¿½Åsï¿½È‚ï¿½
 		hr = m_pD3D->CreateDevice(D3DADAPTER_DEFAULT,
 			D3DDEVTYPE_HAL,
 			Wnd,
@@ -197,8 +194,8 @@ void CDirectX::SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HW
 			&d3dpp, &m_pD3DDevice);
 		if (FAILED(hr))
 		{
-			// ã‹L‚ÌÝ’è‚ªŽ¸”s‚µ‚½‚ç
-			// •`‰æ‚Æ’¸“_ˆ—‚ðCPU‚Ås‚È‚¤
+			// ï¿½ï¿½Lï¿½ÌÝ’è‚ªï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ï¿½`ï¿½ï¿½Æ’ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CPUï¿½Åsï¿½È‚ï¿½
 			hr = m_pD3D->CreateDevice(D3DADAPTER_DEFAULT,
 				D3DDEVTYPE_REF, Wnd,
 				D3DCREATE_SOFTWARE_VERTEXPROCESSING,
@@ -206,60 +203,60 @@ void CDirectX::SetUpDevice(D3DPRESENT_PARAMETERS d3dpp, D3DDISPLAYMODE d3ddm, HW
 			if (FAILED(hr))
 			{
 
-				MessageBox(NULL, "ƒfƒoƒCƒX‚Ì¶¬‚ÉŽ¸”s", "DirectX.cpp", MB_OK | MB_ICONHAND);
+				MessageBox(NULL, "ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "DirectX.cpp", MB_OK | MB_ICONHAND);
 			}
 		}
 	}
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CDirectX::SetRenderState(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒŒƒ“ƒ_[ƒXƒe[ƒg‚ÌÝ’è
+ ï¿½Öï¿½ï¿½ï¿½:	void CDirectX::SetRenderState(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½[ï¿½Xï¿½eï¿½[ï¿½gï¿½ÌÝ’ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::SetRenderState(void)
 {
-	m_pD3DDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);				// ƒJƒŠƒ“ƒO‚ðs‚í‚È‚¢
-	m_pD3DDevice->SetRenderState(D3DRS_ZENABLE, TRUE);						// Zƒoƒbƒtƒ@‚ðŽg—p
-	m_pD3DDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);				// ƒ¿ƒuƒŒƒ“ƒh‚ðs‚¤
-	m_pD3DDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);		// ƒ¿ƒ\[ƒXƒJƒ‰[‚ÌŽw’è
-	m_pD3DDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);	// ƒ¿ƒfƒXƒeƒBƒl[ƒVƒ‡ƒ“ƒJƒ‰[‚ÌŽw’è
+	m_pD3DDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);				// ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½sï¿½ï¿½È‚ï¿½
+	m_pD3DDevice->SetRenderState(D3DRS_ZENABLE, TRUE);						// Zï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½gï¿½p
+	m_pD3DDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);				// ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½sï¿½ï¿½
+	m_pD3DDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);		// ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Jï¿½ï¿½ï¿½[ï¿½ÌŽwï¿½ï¿½
+	m_pD3DDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);	// ï¿½ï¿½ï¿½fï¿½Xï¿½eï¿½Bï¿½lï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½[ï¿½ÌŽwï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CDirectX::SetRenderState(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒTƒ“ƒvƒ‰[ƒXƒe[ƒg‚ÌÝ’è
+ ï¿½Öï¿½ï¿½ï¿½:	void CDirectX::SetRenderState(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½[ï¿½Xï¿½eï¿½[ï¿½gï¿½ÌÝ’ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::SetSamplerState(void)
 {
-	m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);	// ƒeƒNƒXƒ`ƒƒ‚t’l‚ÌŒJ‚è•Ô‚µÝ’è
-	m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);	// ƒeƒNƒXƒ`ƒƒ‚u’l‚ÌŒJ‚è•Ô‚µÝ’è
-	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);	// ƒeƒNƒXƒ`ƒƒŠg‘åŽž‚Ì•âŠÔÝ’è
-	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);	// ƒeƒNƒXƒ`ƒƒk¬Žž‚Ì•âŠÔÝ’è
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½tï¿½lï¿½ÌŒJï¿½ï¿½Ô‚ï¿½ï¿½Ý’ï¿½
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½uï¿½lï¿½ÌŒJï¿½ï¿½Ô‚ï¿½ï¿½Ý’ï¿½
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½gï¿½åŽžï¿½Ì•ï¿½ÔÝ’ï¿½
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½kï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½ÔÝ’ï¿½
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void SetRenderState(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒeƒNƒXƒ`ƒƒƒXƒe[ƒWƒXƒe[ƒg‚ÌÝ’è
+ ï¿½Öï¿½ï¿½ï¿½:	void SetRenderState(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½Wï¿½Xï¿½eï¿½[ï¿½gï¿½ÌÝ’ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::SetTextureStageState(void)
 {
-	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);	// ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒfƒBƒ“ƒOˆ—(‰Šú’l‚ÍD3DTOP_SELECTARG1)
-	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);	// Å‰‚ÌƒAƒ‹ƒtƒ@ˆø”(‰Šú’l‚ÍD3DTA_TEXTUREAƒeƒNƒXƒ`ƒƒ‚ª‚È‚¢ê‡‚ÍD3DTA_DIFFUSE)
-	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);	// ‚Q”Ô–Ú‚ÌƒAƒ‹ƒtƒ@ˆø”(‰Šú’l‚ÍD3DTA_CURRENT)
+	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);	// ï¿½Aï¿½ï¿½ï¿½tï¿½@ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½fï¿½Bï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½D3DTOP_SELECTARG1)
+	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);	// ï¿½Åï¿½ï¿½ÌƒAï¿½ï¿½ï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½D3DTA_TEXTUREï¿½Aï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ê‡ï¿½ï¿½D3DTA_DIFFUSE)
+	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);	// ï¿½Qï¿½Ô–Ú‚ÌƒAï¿½ï¿½ï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½D3DTA_CURRENT)
 }
 
 #ifdef _DEBUG
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CDirectX::DrawFPS(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		FPS•\Ž¦
+ï¿½Öï¿½ï¿½ï¿½:		void CDirectX::DrawFPS(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		FPSï¿½\ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CDirectX::DrawFPS(void)
 {
@@ -267,11 +264,11 @@ void CDirectX::DrawFPS(void)
 	char str[256];
 	int nCountFPS;
 
-	// FPSŽæ“¾
+	// FPSï¿½æ“¾
 	nCountFPS = CGameLoop::GetFPS();
 	wsprintf(str, "FPS:%d\n", nCountFPS);
 
-	// ƒeƒLƒXƒg•`‰æ
+	// ï¿½eï¿½Lï¿½Xï¿½gï¿½`ï¿½ï¿½
 	m_Font->DrawText(NULL, str, -1, &rect, DT_LEFT, D3DCOLOR_ARGB(0xff, 0xff, 0xff, 0xff));
 }
 #endif

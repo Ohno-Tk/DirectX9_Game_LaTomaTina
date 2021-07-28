@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		‰Æ[ House.h ]
+		ï¿½ï¿½[ House.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/30
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/30
 =============================================================================*/
 
@@ -17,7 +15,7 @@
 #define _HOUSE_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CHouse:public CSpriteModeLX
 {
@@ -26,16 +24,16 @@ public:
 		m_Speed = 0.05f;
 	}
 
-	static CHouse* Create(void);	//	¶¬
+	static CHouse* Create(void);	//	ï¿½ï¿½ï¿½ï¿½
 
 	//	Setter
 	void SetSpeed(const float speed) { m_Speed = speed; }
 
 private:
-	virtual void Init(void)override {}	//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;	//	•`‰æ
+	virtual void Init(void)override {}	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;	//	ï¿½`ï¿½ï¿½
 
 private:
 	float m_Speed;

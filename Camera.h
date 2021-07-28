@@ -1,15 +1,13 @@
 /*=============================================================================
 
-ƒJƒƒ‰[ Camera.h ]
+ï¿½Jï¿½ï¿½ï¿½ï¿½[ Camera.h ]
 
 -------------------------------------------------------------------------------
-¡@»ìÒ
-‘å–ì‘ñ–ç
 
-¡@ì¬“ú
+ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 2017/08/25
 -------------------------------------------------------------------------------
-¡@XV“ú
+ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 2017/08/25
 =============================================================================*/
 
@@ -17,42 +15,42 @@
 #define _CAMERA_H_
 
 /*-----------------------------------------------------------------------------
-ƒ}ƒNƒ
+ï¿½}ï¿½Nï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #define ENABLE_PEOC_DEBUG_CAMERA
 #undef ENABLE_PEOC_DEBUG_CAMERA
 
 /*-----------------------------------------------------------------------------
-ƒNƒ‰ƒX
+ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CCamera
 {
 public:
-	CCamera();	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CCamera();	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	void Update(void);		//	XV
+	void Update(void);		//	ï¿½Xï¿½V
 
-							//void NormalizeCamera(void);	//	ƒJƒƒ‰‚Ì³‹K‰»‚ğŒvZ
+							//void NormalizeCamera(void);	//	ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½Kï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Z
 
 							//	Setter
-	void SetPosition(const D3DXVECTOR3 Pos);		//	À•W
-	void SetPositionAt(const D3DXVECTOR3 PosAt);	//	’‹“_
+	void SetPosition(const D3DXVECTOR3 Pos);		//	ï¿½ï¿½ï¿½W
+	void SetPositionAt(const D3DXVECTOR3 PosAt);	//	ï¿½ï¿½ï¿½ï¿½ï¿½_
 
 													//	Getter
 
-	D3DXVECTOR3 GetCameraPos(void) { return m_Pos; }	//	ƒJƒƒ‰À•W
-	D3DXVECTOR3 GetCameraPosAt(void) { return m_LookAt; }	//	’‹“_
-	D3DXVECTOR3 GetCameraVecUp(void) { return m_VecUp; }	//	ã‚Ì‹“_
-	D3DXVECTOR3 GetForwardVector(void) { return m_VecAtCa; }	//	‘O•ûŒüƒxƒNƒgƒ‹
+	D3DXVECTOR3 GetCameraPos(void) { return m_Pos; }	//	ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½W
+	D3DXVECTOR3 GetCameraPosAt(void) { return m_LookAt; }	//	ï¿½ï¿½ï¿½ï¿½ï¿½_
+	D3DXVECTOR3 GetCameraVecUp(void) { return m_VecUp; }	//	ï¿½ï¿½Ìï¿½ï¿½_
+	D3DXVECTOR3 GetForwardVector(void) { return m_VecAtCa; }	//	ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½xï¿½Nï¿½gï¿½ï¿½
 
 	D3DXVECTOR2 GetCameraRotVH(void) { return D3DXVECTOR2(m_fRotV, m_fRotH); }
 
-	//	s—ñ
-	const D3DXMATRIX GetMtxView(void)const { return m_MtxView; };	//	ƒrƒ…[s—ñ
-	const D3DXMATRIX &GetMtxProjection(void)const { return m_mtxProj; }	//	ƒvƒƒWƒFƒNƒVƒ‡ƒ“s—ñ
+	//	ï¿½sï¿½ï¿½
+	const D3DXMATRIX GetMtxView(void)const { return m_MtxView; };	//	ï¿½rï¿½ï¿½ï¿½[ï¿½sï¿½ï¿½
+	const D3DXMATRIX &GetMtxProjection(void)const { return m_mtxProj; }	//	ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
 
-																		//	‹ts—ñ
-	const D3DXMATRIX GetInversedView(void)const;	//	ƒrƒ…[s—ñ
+																		//	ï¿½tï¿½sï¿½ï¿½
+	const D3DXMATRIX GetInversedView(void)const;	//	ï¿½rï¿½ï¿½ï¿½[ï¿½sï¿½ï¿½
 
 	void SwitchFrag(void) { m_bUp = !m_bUp; }
 	bool GetFrag(void) { return m_bUp; }
@@ -60,22 +58,22 @@ public:
 private:
 	void InputProcess(void);
 
-	void SetProjection(void);	//	ƒvƒƒWƒFƒNƒVƒ‡ƒ“‚ÌƒZƒbƒg
+	void SetProjection(void);	//	ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 
 private:
-	D3DXVECTOR3 m_LookAt;			//’‹“_À•W
-	D3DXVECTOR3 m_Pos;				//‹“_ˆÊ’u
-	D3DXVECTOR3 m_VecUp;			//ƒJƒƒ‰ã•ûŒü
-	D3DXVECTOR3 m_VecAtCa;			//’‹“_‚©‚çƒJƒƒ‰‚Ö‚ÌƒxƒNƒgƒ‹
-									//D3DXVECTOR3 m_NorVecAtCa;		//ª‚Ì³‹K‰»
-	float m_fLength;				//’‹“_‚©‚çƒJƒƒ‰‚Ö‚Ì‹——£
-	float m_fRotV;					//XZ•½–Ê²‚ÌŠp“x
-	float m_fRotH;					//ƒJƒƒ‰‚Æ’‹“_‚ÌXZ•½–Êã‚ÌŠp“x(Y²‰ñ“])
-	float m_fFov;					//‹–ìŠpA‰æŠp(ƒY[ƒ€ƒCƒ“AƒY[ƒ€ƒAƒEƒg)
+	D3DXVECTOR3 m_LookAt;			//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½W
+	D3DXVECTOR3 m_Pos;				//ï¿½ï¿½ï¿½_ï¿½Ê’u
+	D3DXVECTOR3 m_VecUp;			//ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXVECTOR3 m_VecAtCa;			//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Ö‚Ìƒxï¿½Nï¿½gï¿½ï¿½
+									//D3DXVECTOR3 m_NorVecAtCa;		//ï¿½ï¿½ï¿½Ìï¿½ï¿½Kï¿½ï¿½
+	float m_fLength;				//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Ö‚Ì‹ï¿½ï¿½ï¿½
+	float m_fRotV;					//XZï¿½ï¿½ï¿½Êï¿½ï¿½ÌŠpï¿½x
+	float m_fRotH;					//ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Æ’ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½XZï¿½ï¿½ï¿½Êï¿½ÌŠpï¿½x(Yï¿½ï¿½ï¿½ï¿½])
+	float m_fFov;					//ï¿½ï¿½ï¿½ï¿½pï¿½Aï¿½ï¿½p(ï¿½Yï¿½[ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Aï¿½Yï¿½[ï¿½ï¿½ï¿½Aï¿½Eï¿½g)
 
 
-	D3DXMATRIX m_MtxView;		//	ƒrƒ…[s—ñƒ}ƒgƒŠƒNƒX
-	D3DXMATRIX m_mtxProj;		//	ƒvƒƒWƒFƒNƒVƒ‡ƒ“s—ñƒ}ƒgƒŠƒNƒX
+	D3DXMATRIX m_MtxView;		//	ï¿½rï¿½ï¿½ï¿½[ï¿½sï¿½ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
+	D3DXMATRIX m_mtxProj;		//	ï¿½vï¿½ï¿½ï¿½Wï¿½Fï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½}ï¿½gï¿½ï¿½ï¿½Nï¿½X
 
 	bool m_bUp;
 };

@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		Xƒ‚ƒfƒ‹•`‰æ[ SpriteModeLX.cpp ]
+		Xï¿½ï¿½ï¿½fï¿½ï¿½ï¿½`ï¿½ï¿½[ SpriteModeLX.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -23,23 +21,23 @@
 #include "SpriteModeX.h"
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CSpriteModeLX::CSpriteModeLX(int Priolity)
- ˆø”:		int Priolity	—Dæ“x
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CSpriteModeLX::CSpriteModeLX(int Priolity)
+ ï¿½ï¿½ï¿½ï¿½:		int Priolity	ï¿½Dï¿½ï¿½x
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CSpriteModeLX::CSpriteModeLX(int Priolity) :CScene(Priolity)
 {
-	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	‰ñ“]
-	m_Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);	//	Šg‘å—¦
+	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	ï¿½ï¿½]
+	m_Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);	//	ï¿½gï¿½å—¦
 	m_FileName = NULL;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		CSpriteModeLX* CSpriteModeLX::Create(int Priolity)
-ˆø”:		int Priolity			—Dæ“x
-–ß‚è’l:
-à–¾:		¶¬
+ï¿½Öï¿½ï¿½ï¿½:		CSpriteModeLX* CSpriteModeLX::Create(int Priolity)
+ï¿½ï¿½ï¿½ï¿½:		int Priolity			ï¿½Dï¿½ï¿½x
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CSpriteModeLX* CSpriteModeLX::Create(int Priolity)
 {
@@ -47,98 +45,98 @@ CSpriteModeLX* CSpriteModeLX::Create(int Priolity)
 
 	spriteModelX = new CSpriteModeLX(Priolity);
 
-	spriteModelX->Init();	//	‰Šú‰»
+	spriteModelX->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	return spriteModelX;
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteModeLX::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteModeLX::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteModeLX::Draw(void)
 {
 	D3DMATERIAL9 matDef;
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
-	//	ƒ‚ƒfƒ‹ŠÇ—‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ç—ï¿½ï¿½ÌŽæ“¾
 	CModelManager *ModelManager = CManager::GetModelManager();
 
 	m_ModelParam = ModelManager->GetModelParam(m_FileName);
 
-	//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+	//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 	SetWorld(Device);
 
-	//	Œ»ÝƒfƒoƒCƒX‚ÉÝ’è‚³‚ê‚Ä‚¢‚éƒ}ƒeƒŠƒAƒ‹î•ñ‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½Ýƒfï¿½oï¿½Cï¿½Xï¿½ÉÝ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ÌŽæ“¾
 	Device->GetMaterial(&matDef);
 
 
-	// Œ»Ý‚Ìƒ}ƒeƒŠƒAƒ‹‚ðŽæ“¾
+	// ï¿½ï¿½ï¿½Ý‚Ìƒ}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
 	Device->GetMaterial(&matDef);
 
 
-	// ƒ}ƒeƒŠƒAƒ‹‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ“¾
+	// ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½æ“¾
 	m_ModelParam.Mat = (D3DXMATERIAL*)m_ModelParam.BuffMat->GetBufferPointer();
 
 
 	for (int nCntMat = 0; nCntMat < (int)m_ModelParam.NumMat; nCntMat++)
 	{
-		// ƒfƒoƒCƒX‚Éƒ}ƒeƒŠƒAƒ‹‚ÌÝ’è
+		// ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒ}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌÝ’ï¿½
 		Device->SetMaterial(&m_ModelParam.Mat[nCntMat].MatD3D);
 
-		// ƒeƒNƒXƒ`ƒƒ‚ÌÝ’è
+		// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌÝ’ï¿½
 		Device->SetTexture(0, m_ModelParam.Texture[nCntMat]);
 
-		// •`‰æ
+		// ï¿½`ï¿½ï¿½
 		m_ModelParam.Mesh->DrawSubset(nCntMat);
 	}
 
-	// ƒ}ƒeƒŠƒAƒ‹‚ðŒ³‚É–ß‚·
+	// ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
 	Device->SetMaterial(&matDef);
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CSpriteModeLX::SetWorld(LPDIRECT3DDEVICE9 Device)
-ˆø”:		LPDIRECT3DDEVICE9 Device	ƒfƒoƒCƒX
-–ß‚è’l:
-à–¾:		ƒ[ƒ‹ƒhÀ•W•ÏŠ·
+ï¿½Öï¿½ï¿½ï¿½:		void CSpriteModeLX::SetWorld(LPDIRECT3DDEVICE9 Device)
+ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 Device	ï¿½fï¿½oï¿½Cï¿½X
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 -----------------------------------------------------------------------------*/
 void CSpriteModeLX::SetWorld(LPDIRECT3DDEVICE9 Device)
 {
 	D3DXMATRIX mtxWorld, mtxScl, mtxRot, mtxPos;
 
-	D3DXMatrixIdentity(&mtxWorld);	//	s—ñ‚ð’PˆÊs—ñ‚É‚·‚é
+	D3DXMatrixIdentity(&mtxWorld);	//	ï¿½sï¿½ï¿½ï¿½Pï¿½Êsï¿½ï¿½É‚ï¿½ï¿½ï¿½
 
-	//	Šg‘ås—ñ‚ðì‚é
-	D3DXMatrixScaling(&mtxScl,	//Šg‘ås—ñ‚ªì‚ç‚ê‚é
-		m_Scale.x,	//	XŽ²Šg‘å
-		m_Scale.y,	//	YŽ²Šg‘å
-		m_Scale.z);	//	ZŽ²Šg‘å
+	//	ï¿½gï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixScaling(&mtxScl,	//ï¿½gï¿½ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		m_Scale.x,	//	Xï¿½ï¿½ï¿½gï¿½ï¿½
+		m_Scale.y,	//	Yï¿½ï¿½ï¿½gï¿½ï¿½
+		m_Scale.z);	//	Zï¿½ï¿½ï¿½gï¿½ï¿½
 
-	//	‰ñ“]s—ñ‚ðì‚é
-	D3DXMatrixRotationYawPitchRoll(&mtxRot,	//	‰ñ“]s—ñ‚ªì‚ç‚ê‚é
-		D3DXToRadian(m_Rotation.y), //	YŽ²‰ñ“]
-		D3DXToRadian(m_Rotation.x), //	XŽ²‰ñ“]
-		D3DXToRadian(m_Rotation.z)); //	ZŽ²‰ñ“]
+	//	ï¿½ï¿½]ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	D3DXMatrixRotationYawPitchRoll(&mtxRot,	//	ï¿½ï¿½]ï¿½sï¿½ñ‚ªï¿½ï¿½ï¿½ï¿½
+		D3DXToRadian(m_Rotation.y), //	Yï¿½ï¿½ï¿½ï¿½]
+		D3DXToRadian(m_Rotation.x), //	Xï¿½ï¿½ï¿½ï¿½]
+		D3DXToRadian(m_Rotation.z)); //	Zï¿½ï¿½ï¿½ï¿½]
 
-	//	•½sˆÚ“®s—ñ‚ðì‚é
+	//	ï¿½ï¿½ï¿½sï¿½Ú“ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixTranslation(&mtxPos,
-		m_Position.x,	//	XŽ²ˆÚ“®
-		m_Position.y,	//	YŽ²ˆÚ“®
-		m_Position.z);	//	ZŽ²ˆÚ“®
+		m_Position.x,	//	Xï¿½ï¿½ï¿½Ú“ï¿½
+		m_Position.y,	//	Yï¿½ï¿½ï¿½Ú“ï¿½
+		m_Position.z);	//	Zï¿½ï¿½ï¿½Ú“ï¿½
 
 
-	//	Š|‚¯‚Ä‚ ‚°‚é
+	//	ï¿½|ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxScl);
 
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxRot);
 
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxPos);
 
-	//	ƒfƒoƒCƒX‚Éƒ[ƒ‹ƒh•ÏŠ·s—ñ‚ðÝ’è
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Éƒï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ÏŠï¿½ï¿½sï¿½ï¿½ï¿½Ý’ï¿½
 	Device->SetTransform(D3DTS_WORLD, &mtxWorld);
 }

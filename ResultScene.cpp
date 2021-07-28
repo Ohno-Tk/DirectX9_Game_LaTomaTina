@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		ƒŠƒUƒ‹ƒgƒV[ƒ“[ ResultScene.cpp ]
+		ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Vï¿½[ï¿½ï¿½[ ResultScene.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/25
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/25
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Input.h"
@@ -38,10 +36,10 @@
 #include "House.h"
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CResultScene::Init(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰Šú‰»
+ï¿½Öï¿½ï¿½ï¿½:		void CResultScene::Init(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CResultScene::Init(void)
 {
@@ -49,10 +47,10 @@ void CResultScene::Init(void)
 
 	sound->Play(CSound::SOUND_LABEL_SE_GAMECLEAR);
 
-	//	ƒeƒNƒXƒ`ƒƒ‚Ìæ“¾
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìæ“¾
 	CTextureManager* TextureManager = CManager::GetTextureManager();
 
-	//	ƒeƒNƒXƒ`ƒƒ‚Ìƒ[ƒh
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	TextureManager->Load(CTextureManager::TEX_GROUND);
 	TextureManager->Load(CTextureManager::TEX_TITLE_LOGO);
 	TextureManager->Load(CTextureManager::TEX_PUSH_BUTTOM2);
@@ -61,55 +59,55 @@ void CResultScene::Init(void)
 	TextureManager->Load(CTextureManager::TEX_WAVE_LOGO);
 	TextureManager->Load(CTextureManager::TEX_LOGO,D3DXVECTOR2(1.0f,4.0f));
 
-	ObjectCreate();	//	ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	ObjectCreate();	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CResultScene::Uninit(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CResultScene::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CResultScene::Uninit(void)
 {
-	//	ƒeƒNƒXƒ`ƒƒ‚Ìæ“¾
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìæ“¾
 	CTextureManager* TextureManager = CManager::GetTextureManager();
 
 
-	TextureManager->UnloadAll();	//	‘SƒeƒNƒXƒ`ƒƒ‚Ì”jŠü
+	TextureManager->UnloadAll();	//	ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì”jï¿½ï¿½
 
-	CScene::ReleaseAll();	//	‘SƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+	CScene::ReleaseAll();	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‰ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CResultScene::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CResultScene::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CResultScene::Update(void)
 {
-	ConditionalTransition();	//	‘JˆÚğŒ
+	ConditionalTransition();	//	ï¿½Jï¿½Úï¿½ï¿½ï¿½
 
-	CScene::UpdateAll();	//	‘SƒIƒuƒWƒFƒNƒg‚ÌXV
+	CScene::UpdateAll();	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌXï¿½V
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CResultScene::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CResultScene::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CResultScene::Draw(void)
 {
-	CScene::DrawAll();	//	‘SƒIƒuƒWƒFƒNƒg‚Ì•`‰æ
+	CScene::DrawAll();	//	ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì•`ï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CResultScene::ConditionalTransition(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‘JˆÚğŒ
+ï¿½Öï¿½ï¿½ï¿½:		void CResultScene::ConditionalTransition(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Jï¿½Úï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CResultScene::ConditionalTransition(void)
 {
@@ -128,10 +126,10 @@ void CResultScene::ConditionalTransition(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CResultScene::ObjectCreate(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		ƒIƒuƒWƒFƒNƒg‚Ì¶¬
+ï¿½Öï¿½ï¿½ï¿½:		void CResultScene::ObjectCreate(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CResultScene::ObjectCreate(void)
 {

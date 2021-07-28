@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒtƒF[ƒhƒƒS[ FadeLogo.h ]
+		ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½S[ FadeLogo.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/07/20
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
@@ -17,41 +15,41 @@
 #define _FADE_LOGO_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CFadeRogo :public CSprite2D
 {
 public:
-	CFadeRogo(int Priolity);		//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	CFadeRogo(int Priolity);		//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
-	static CFadeRogo* Create(int Priolity);	//	¶¬
+	static CFadeRogo* Create(int Priolity);	//	ï¿½ï¿½ï¿½ï¿½
 
-	virtual void Init(void)override { CSprite2D::Init(); }	//	‰Šú‰»
-	virtual void Uninit(void)override { CSprite2D::Uninit(); }	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override { CSprite2D::Draw(); }	//	•`‰æ
+	virtual void Init(void)override { CSprite2D::Init(); }	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override { CSprite2D::Uninit(); }	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override { CSprite2D::Draw(); }	//	ï¿½`ï¿½ï¿½
 
 	//	Setter
-	void SetUpLimit(const float limit) { m_UplimitFade = limit; }	//	ãŒÀ’l
-	void SetLowerLimit(const float limit) { m_LowerFade = limit; }	//	‰ºŒÀ’l
-	void SetFadeFlag(const bool Flag) { m_FadeFlag = Flag; }//	ƒtƒF[ƒhƒtƒ‰ƒO
-	void SetAlpha(const float value) { m_Color.a = value; }	//	ƒ¿’l
+	void SetUpLimit(const float limit) { m_UplimitFade = limit; }	//	ï¿½ï¿½ï¿½ï¿½l
+	void SetLowerLimit(const float limit) { m_LowerFade = limit; }	//	ï¿½ï¿½ï¿½ï¿½ï¿½l
+	void SetFadeFlag(const bool Flag) { m_FadeFlag = Flag; }//	ï¿½tï¿½Fï¿½[ï¿½hï¿½tï¿½ï¿½ï¿½O
+	void SetAlpha(const float value) { m_Color.a = value; }	//	ï¿½ï¿½ï¿½l
 
 private:
 
 private:
 	typedef enum
-	{	//	ƒtƒF[ƒh‚Ìó‘Ô
-		FADE_IN = 0,	//	ƒtƒF[ƒhƒCƒ“
-		FADE_OUT,		//	ƒtƒF[ƒhƒAƒEƒg
+	{	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ìï¿½ï¿½
+		FADE_IN = 0,	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½
+		FADE_OUT,		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½g
 		FADE_MAX
 	}FADE;
 
-	D3DXCOLOR m_Color;	//	F
-	float m_UplimitFade;	//	ƒtƒF[ƒh‚ÌãŒÀ’l
-	float m_LowerFade;		//	ƒtƒF[ƒh‚Ì‰ºŒÀ’l
-	bool m_FadeFlag;		//	ƒtƒF[ƒhƒtƒ‰ƒO
+	D3DXCOLOR m_Color;	//	ï¿½F
+	float m_UplimitFade;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ìï¿½ï¿½ï¿½l
+	float m_LowerFade;		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì‰ï¿½ï¿½ï¿½ï¿½l
+	bool m_FadeFlag;		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½tï¿½ï¿½ï¿½O
 
-	FADE m_Fade;//	ƒtƒF[ƒhó‘Ô
+	FADE m_Fade;//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½
 };
 #endif

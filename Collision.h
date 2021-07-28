@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		Õ“Ë”»’è[ Collision.h ]
+		ï¿½Õ“Ë”ï¿½ï¿½ï¿½[ Collision.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/06/11
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
@@ -17,47 +15,47 @@
 #define _COLLISION_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CCollisionRectangle
-{	//	‹éŒ`
+{	//	ï¿½ï¿½`
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CCollisionRectangle(const D3DXVECTOR3 Pos , const D3DXVECTOR3 Size):m_Pos(Pos), m_Size(Size){}
 
-	//	Õ“Ë”»’è
+	//	ï¿½Õ“Ë”ï¿½ï¿½ï¿½
 	bool Judge(const D3DXVECTOR3 OtherPos, const D3DXVECTOR3 OtherSize);
 
 private:
-	D3DXVECTOR3 m_Pos;	//	À•W
-	D3DXVECTOR3 m_Size;	//	‘å‚«‚³
+	D3DXVECTOR3 m_Pos;	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR3 m_Size;	//	ï¿½å‚«ï¿½ï¿½
 };
 
 class CCollisionCircle
-{	//	‰~
+{	//	ï¿½~
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CCollisionCircle(const D3DXVECTOR3 Pos, const float Radius):m_Pos(Pos), m_Radius(Radius){}
 
-	//	‰~‚ÌÕ“Ë”»’è
+	//	ï¿½~ï¿½ÌÕ“Ë”ï¿½ï¿½ï¿½
 	bool Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius);
 
 private:
-	D3DXVECTOR3 m_Pos;	//	À•W
-	float m_Radius;		//	”¼Œa
+	D3DXVECTOR3 m_Pos;	//	ï¿½ï¿½ï¿½W
+	float m_Radius;		//	ï¿½ï¿½ï¿½a
 };
 
 class CCollisionSphere
-{	//	‹…
+{	//	ï¿½ï¿½
 public:
-	//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	CCollisionSphere(const D3DXVECTOR3 Pos, const float Radius):m_Pos(Pos), m_Radius(Radius){}
 
-	//	‹…‚ÌÕ“Ë”»’è
+	//	ï¿½ï¿½ï¿½ÌÕ“Ë”ï¿½ï¿½ï¿½
 	bool Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius);
 
 private:
-	D3DXVECTOR3 m_Pos;	//	À•W
-	float m_Radius;		//	”¼Œa
+	D3DXVECTOR3 m_Pos;	//	ï¿½ï¿½ï¿½W
+	float m_Radius;		//	ï¿½ï¿½ï¿½a
 };
 #endif

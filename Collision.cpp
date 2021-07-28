@@ -1,31 +1,29 @@
 /*=============================================================================
 
-		Õ“Ë”»’è[ Collision.cpp ]
+		ï¿½Õ“Ë”ï¿½ï¿½ï¿½[ Collision.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/06/11
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Collision.h"
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	bool CCollisionRectangle::Judge(const D3DXVECTOR3 OtherPos, const D3DXVECTOR3 OtherSize)
- ˆø”:		const D3DXVECTOR3 OtherPos		•¨‘ÌB‚ÌÀ•W
-			const D3DXVECTOR3 OtherSize		•¨‘ÌB‚Ì‘å‚«‚³
- –ß‚è’l:	Õ“Ë‚µ‚½	return true;
-			Õ“Ë‚µ‚È‚¢  return false;
- à–¾:		‹éŒ`‚ÌÕ“Ë”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	bool CCollisionRectangle::Judge(const D3DXVECTOR3 OtherPos, const D3DXVECTOR3 OtherSize)
+ ï¿½ï¿½ï¿½ï¿½:		const D3DXVECTOR3 OtherPos		ï¿½ï¿½ï¿½ï¿½Bï¿½Ìï¿½ï¿½W
+			const D3DXVECTOR3 OtherSize		ï¿½ï¿½ï¿½ï¿½Bï¿½Ì‘å‚«ï¿½ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½Õ“Ë‚ï¿½ï¿½ï¿½	return true;
+			ï¿½Õ“Ë‚ï¿½ï¿½È‚ï¿½  return false;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½`ï¿½ÌÕ“Ë”ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 bool CCollisionRectangle::Judge(const D3DXVECTOR3 OtherPos, const D3DXVECTOR3 OtherSize)
 {
@@ -33,55 +31,55 @@ bool CCollisionRectangle::Judge(const D3DXVECTOR3 OtherPos, const D3DXVECTOR3 Ot
 	float x[] = { m_Pos.x , m_Pos.x + m_Size.x , OtherPos.x , OtherPos.x + OtherSize.x };
 	float y[] = { m_Pos.y , m_Pos.y + m_Size.y , OtherPos.y , OtherPos.y + OtherSize.y };
 
-	//	Õ“Ë”»’è
+	//	ï¿½Õ“Ë”ï¿½ï¿½ï¿½
 	if( x[ 0 ] < x[ 3 ] && x[ 2 ] < x[ 1 ] && y[ 0 ] < y[ 3 ] && y[ 2 ] < y[ 1 ] ) return true;
 
 	return false;
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	bool CCollisionCircle::Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius)
- ˆø”:		const D3DXVECTOR3 OtherPos	•¨‘ÌB‚ÌÀ•W
-			const float OtherRadius		•¨‘ÌB‚Ì”¼Œa
- –ß‚è’l:	Õ“Ë‚µ‚½	return true;
-			Õ“Ë‚µ‚È‚¢  return false;
- à–¾:		‰~‚ÌÕ“Ë”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	bool CCollisionCircle::Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius)
+ ï¿½ï¿½ï¿½ï¿½:		const D3DXVECTOR3 OtherPos	ï¿½ï¿½ï¿½ï¿½Bï¿½Ìï¿½ï¿½W
+			const float OtherRadius		ï¿½ï¿½ï¿½ï¿½Bï¿½Ì”ï¿½ï¿½a
+ ï¿½ß‚ï¿½l:	ï¿½Õ“Ë‚ï¿½ï¿½ï¿½	return true;
+			ï¿½Õ“Ë‚ï¿½ï¿½È‚ï¿½  return false;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½~ï¿½ÌÕ“Ë”ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 bool CCollisionCircle::Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius)
 {
-	//	À•W‚ÌŒvZ
+	//	ï¿½ï¿½ï¿½Wï¿½ÌŒvï¿½Z
 	float Pos[] = { ( OtherPos.x - m_Pos.x ) * ( OtherPos.x - m_Pos.x ) ,
 					( OtherPos.y - m_Pos.y ) * ( OtherPos.y - m_Pos.y ) };
 
-	//	”¼Œa‚ÌŒvZ
+	//	ï¿½ï¿½ï¿½aï¿½ÌŒvï¿½Z
 	float Radius = ( m_Radius + OtherRadius ) * ( m_Radius + OtherRadius );
 
-	//	Õ“Ë”»’è
+	//	ï¿½Õ“Ë”ï¿½ï¿½ï¿½
 	if( Pos[ 0 ] + Pos[ 1 ] <= Radius ) return true;
 
 	return false;
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	bool CCollisionSphere::Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius)
- ˆø”:		const D3DXVECTOR3 OtherPos	•¨‘ÌB‚ÌÀ•W
-			const float OtherRadius		•¨‘ÌB‚Ì”¼Œa
- –ß‚è’l:	Õ“Ë‚µ‚½	return true;
-			Õ“Ë‚µ‚È‚¢  return false;
- à–¾:		‹…‚ÌÕ“Ë”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	bool CCollisionSphere::Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius)
+ ï¿½ï¿½ï¿½ï¿½:		const D3DXVECTOR3 OtherPos	ï¿½ï¿½ï¿½ï¿½Bï¿½Ìï¿½ï¿½W
+			const float OtherRadius		ï¿½ï¿½ï¿½ï¿½Bï¿½Ì”ï¿½ï¿½a
+ ï¿½ß‚ï¿½l:	ï¿½Õ“Ë‚ï¿½ï¿½ï¿½	return true;
+			ï¿½Õ“Ë‚ï¿½ï¿½È‚ï¿½  return false;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ÌÕ“Ë”ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 bool CCollisionSphere::Judge(const D3DXVECTOR3 OtherPos, const float OtherRadius)
 {
 
-	//	À•W‚ÌŒvZ
+	//	ï¿½ï¿½ï¿½Wï¿½ÌŒvï¿½Z
 	float Pos[] = { ( OtherPos.x - m_Pos.x ) * ( OtherPos.x - m_Pos.x ) ,
 					( OtherPos.y - m_Pos.y ) * ( OtherPos.y - m_Pos.y ) ,
 					( OtherPos.z - m_Pos.z ) * ( OtherPos.z - m_Pos.z ) };
 
-	//	”¼Œa‚ÌŒvZ
+	//	ï¿½ï¿½ï¿½aï¿½ÌŒvï¿½Z
 	float Radius = ( m_Radius + OtherRadius ) * ( m_Radius + OtherRadius );
 
-	//	Õ“Ë”»’è
+	//	ï¿½Õ“Ë”ï¿½ï¿½ï¿½
 	if( Pos[ 0 ] + Pos[ 1 ] + Pos[ 2 ] <= Radius ) return true;
 
 	return false;

@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		”š2D[ Number2D.cpp ]
+		ï¿½ï¿½ï¿½ï¿½2D[ Number2D.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/07/14
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Manager.h"
@@ -22,62 +20,62 @@
 #include "Number2D.h"
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define BUNKATUSU ( 0.1f )	//	ƒeƒNƒXƒ`ƒƒ‚Ì•ªŠ„”
+#define BUNKATUSU ( 0.1f )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CNumber2D :: CNumber2D()
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CNumber2D :: CNumber2D()
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CNumber2D::CNumber2D()
 {
 
-	m_VtxBuff = NULL;							// ’¸“_ƒoƒbƒtƒ@
+	m_VtxBuff = NULL;							// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
 
-	m_Position = D3DXVECTOR2(0.0f, 0.0f);		//	À•W
-	m_Size = D3DXVECTOR2(0.0f, 0.0f);			//	‘å‚«‚³
-	m_USet = D3DXVECTOR2(0.0f, 0.0f);			//	ƒeƒNƒXƒ`ƒƒÀ•W
-	m_Color = D3DXCOLOR(255, 255, 255, 255);	//	F
+	m_Position = D3DXVECTOR2(0.0f, 0.0f);		//	ï¿½ï¿½ï¿½W
+	m_Size = D3DXVECTOR2(0.0f, 0.0f);			//	ï¿½å‚«ï¿½ï¿½
+	m_USet = D3DXVECTOR2(0.0f, 0.0f);			//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
+	m_Color = D3DXCOLOR(255, 255, 255, 255);	//	ï¿½F
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CNumber2D *CNumber2D::Create(D3DXVECTOR2 Pos, D3DXVECTOR2 Size, CTextureManager::TEXTURE_ID TextureID, int CntWidth)
- ˆø”:		D3DXVECTOR3 Pos							À•W
-			D3DXVECTOR3 Size						‘å‚«‚³
-			CTextureManager::TEXTURE_ID TextureID	ƒeƒNƒXƒ`ƒƒ‚ÌID
-			int CntWidth							‰¡‚ÌƒJƒEƒ“ƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CNumber2D *CNumber2D::Create(D3DXVECTOR2 Pos, D3DXVECTOR2 Size, CTextureManager::TEXTURE_ID TextureID, int CntWidth)
+ ï¿½ï¿½ï¿½ï¿½:		D3DXVECTOR3 Pos							ï¿½ï¿½ï¿½W
+			D3DXVECTOR3 Size						ï¿½å‚«ï¿½ï¿½
+			CTextureManager::TEXTURE_ID TextureID	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
+			int CntWidth							ï¿½ï¿½ï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½^
 			NUMBERTYPE numbertype
- –ß‚è’l:	return number2D;	ƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^
- à–¾:		¶¬
+ ï¿½ß‚ï¿½l:	return number2D;	ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 CNumber2D *CNumber2D::Create(D3DXVECTOR2 Pos, D3DXVECTOR2 Size, CTextureManager::TEXTURE_ID TextureID, int CntWidth)
 {
 
 	CNumber2D *number2D;
 
-	//	¶¬
+	//	ï¿½ï¿½ï¿½ï¿½
 	number2D = new CNumber2D;
 
-	number2D->m_Position = Pos;	//	À•W
+	number2D->m_Position = Pos;	//	ï¿½ï¿½ï¿½W
 
-	number2D->m_Size = Size;	//	‘å‚«‚³
+	number2D->m_Size = Size;	//	ï¿½å‚«ï¿½ï¿½
 
-	number2D->m_TextureId = TextureID;	//	ƒeƒNƒXƒ`ƒƒ‚ÌID
+	number2D->m_TextureId = TextureID;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
 
-	//	‰Šú‰»
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	number2D->Init(CntWidth);
 
 	return number2D;
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CNumber2D::Init(int CntWidth)
- ˆø”:		int CntWidth		‰¡‚ÌƒJƒEƒ“ƒ^
- –ß‚è’l:	
- à–¾:		‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void CNumber2D::Init(int CntWidth)
+ ï¿½ï¿½ï¿½ï¿½:		int CntWidth		ï¿½ï¿½ï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CNumber2D::Init(int CntWidth)
 {
@@ -85,16 +83,16 @@ void CNumber2D::Init(int CntWidth)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CNumber2D::Uninit( void )
-ˆø”:
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CNumber2D::Uninit( void )
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CNumber2D::Uninit(void)
 {
 
-	// ’¸“_ƒoƒbƒtƒ@‚Ì”jŠü
-	if (m_VtxBuff != NULL)	//	’¸“_ƒoƒbƒtƒ@ƒCƒ“ƒ^ƒtƒF[ƒXŠJ•ú
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ì”jï¿½ï¿½
+	if (m_VtxBuff != NULL)	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½^ï¿½tï¿½Fï¿½[ï¿½Xï¿½Jï¿½ï¿½
 	{
 
 		m_VtxBuff->Release();
@@ -104,151 +102,151 @@ void CNumber2D::Uninit(void)
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CNumber2D::Update( void )
-ˆø”:		
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CNumber2D::Update( void )
+ï¿½ï¿½ï¿½ï¿½:		
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CNumber2D::Update(void)
 {
 
-	//	’¸“_‚Ì•ÏX
+	//	ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 	SetVerTex();
 
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CNumber2D::Draw( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void CNumber2D::Draw( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CNumber2D::Draw( void )
 {
 
-	//	ƒfƒoƒCƒX‚Ìæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚ğƒf[ƒ^ƒXƒgƒŠ[ƒ€‚Éİ’è
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Éİ’ï¿½
 	Device->SetStreamSource(0, m_VtxBuff, 0, sizeof(VERTEX_2D));
 
 
-	// ’¸“_ƒtƒH[ƒ}ƒbƒg‚Ìİ’è
+	// ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½Ìİ’ï¿½
 	Device->SetFVF(FVF_VERTEX_2D);
 
 
 
-	// ƒeƒNƒXƒ`ƒƒ‚Ìİ’è
+	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìİ’ï¿½
 	Device->SetTexture(0, CManager::GetTextureManager()->GetTextureInfo(m_TextureId).Texture);
 
 
-	// •`‰æ
+	// ï¿½`ï¿½ï¿½
 	Device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CNumber2D::MakeVerTex( int CntWidth)
- ˆø”:		int CntWidth	‰¡‚ÌƒJƒEƒ“ƒ^
- –ß‚è’l:	
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	void CNumber2D::MakeVerTex( int CntWidth)
+ ï¿½ï¿½ï¿½ï¿½:		int CntWidth	ï¿½ï¿½ï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½^
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 void CNumber2D::MakeVerTex(int CntWidth)
 {
 
-	//	ƒfƒoƒCƒX‚Ìæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 	LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
 
-	// ’¸“_ƒoƒbƒtƒ@‚Ì¶¬
+	// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½
 	if (FAILED(Device->CreateVertexBuffer(sizeof(VERTEX_2D) * NUM_VERTEX, D3DUSAGE_WRITEONLY, FVF_VERTEX_2D, D3DPOOL_MANAGED, &m_VtxBuff, NULL)))
 	{
-		MessageBox(NULL, "’¸“_ƒoƒbƒtƒ@‚Ì¶¬¸”s", "Number2D.cpp", MB_OK | MB_ICONHAND);
+		MessageBox(NULL, "ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s", "Number2D.cpp", MB_OK | MB_ICONHAND);
 	}
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff-> Lock ( 0 , 0 , ( void** )&pVtx , 0 );
 
 
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].Pos = D3DXVECTOR3( m_Position.x            - m_Size.x * CntWidth , m_Position.y            , 0.0f);
 	pVtx[ 1 ].Pos = D3DXVECTOR3( m_Position.x + m_Size.x - m_Size.x * CntWidth , m_Position.y            , 0.0f);
 	pVtx[ 2 ].Pos = D3DXVECTOR3( m_Position.x            - m_Size.x * CntWidth , m_Position.y + m_Size.y , 0.0f);
 	pVtx[ 3 ].Pos = D3DXVECTOR3( m_Position.x + m_Size.x - m_Size.x * CntWidth , m_Position.y + m_Size.y , 0.0f);
 
 
-	//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 	pVtx[ 0 ].Rhw = 1.0f;
 	pVtx[ 1 ].Rhw = 1.0f;
 	pVtx[ 2 ].Rhw = 1.0f;
 	pVtx[ 3 ].Rhw = 1.0f;
 
 
-	//	’¸“_F‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 	pVtx[ 0 ].Color = m_Color;
 	pVtx[ 1 ].Color = m_Color;
 	pVtx[ 2 ].Color = m_Color;
 	pVtx[ 3 ].Color = m_Color;
 
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].Tex = D3DXVECTOR2( m_USet.x             , 0 );
 	pVtx[ 1 ].Tex = D3DXVECTOR2( m_USet.x + BUNKATUSU , 0 );
 	pVtx[ 2 ].Tex = D3DXVECTOR2( m_USet.x             , 1 );
 	pVtx[ 3 ].Tex = D3DXVECTOR2( m_USet.x + BUNKATUSU , 1 );
 
 
-	//	ƒoƒbƒtƒ@‚ÌƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½Ìƒï¿½ï¿½bï¿½N
 	m_VtxBuff-> Unlock();
 
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CNumber2D :: SetVerTex( ivoid )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		’¸“_‚Ì•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void CNumber2D :: SetVerTex( ivoid )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 -----------------------------------------------------------------------------*/
 void CNumber2D::SetVerTex( void )
 {
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	m_VtxBuff -> Lock ( 0 , 0 , ( void** )&pVtx , 0 );
 
 
-	//	’¸“_F‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 	pVtx[0].Color = m_Color;
 	pVtx[1].Color = m_Color;
 	pVtx[2].Color = m_Color;
 	pVtx[3].Color = m_Color;
 
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[0].Tex = D3DXVECTOR2(m_USet.x, 0);
 	pVtx[1].Tex = D3DXVECTOR2(m_USet.x + BUNKATUSU, 0);
 	pVtx[2].Tex = D3DXVECTOR2(m_USet.x, 1);
 	pVtx[3].Tex = D3DXVECTOR2(m_USet.x + BUNKATUSU, 1);
 
 
-	//	ƒoƒbƒtƒ@‚ÌƒƒbƒN
+	//	ï¿½oï¿½bï¿½tï¿½@ï¿½Ìƒï¿½ï¿½bï¿½N
 	m_VtxBuff -> Unlock();
 
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CNumber2D::SetNumber(int Number)
-ˆø”:		int Number	”š
-–ß‚è’l:
-à–¾:		’¸“_‚Ì•ÏX
+ï¿½Öï¿½ï¿½ï¿½:		void CNumber2D::SetNumber(int Number)
+ï¿½ï¿½ï¿½ï¿½:		int Number	ï¿½ï¿½ï¿½ï¿½
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ì•ÏX
 -----------------------------------------------------------------------------*/
 void CNumber2D::SetNumber(int Number)
 {

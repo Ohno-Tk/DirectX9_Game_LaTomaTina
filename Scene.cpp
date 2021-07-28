@@ -1,43 +1,41 @@
 /*=============================================================================
 
-		ƒV[ƒ“( ƒŠƒXƒg\‘¢ )[ Scene.cpp ]
+		ï¿½Vï¿½[ï¿½ï¿½( ï¿½ï¿½ï¿½Xï¿½gï¿½\ï¿½ï¿½ )[ Scene.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/04/26
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "DirectX.h"
 #include "Scene.h"
 
 /*-----------------------------------------------------------------------------
-	Ã“I•Ï”
+	ï¿½Ã“Iï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-CScene *CScene::m_Top[] = { NULL };		//	æ“ª‚Ìƒ|ƒCƒ“ƒ^
+CScene *CScene::m_Top[] = { NULL };		//	ï¿½æ“ªï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CScene::CScene(int Priolity)
- ˆø”:		int Priolity	—Dæ“x
- –ß‚è’l:	
- à–¾:		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ ï¿½Öï¿½ï¿½ï¿½:	CScene::CScene(int Priolity)
+ ï¿½ï¿½ï¿½ï¿½:		int Priolity	ï¿½Dï¿½ï¿½x
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 -----------------------------------------------------------------------------*/
 CScene::CScene(int Priolity)
 {
-	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	À•W
+	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//	ï¿½ï¿½ï¿½W
 
-	m_objType = OBJTYPE_NONE;	//	ƒIƒuƒWƒFƒNƒg‚ÌŽí—Þ
+	m_objType = OBJTYPE_NONE;	//	ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌŽï¿½ï¿½
 
-	m_Delete = false;	//	íœƒtƒ‰ƒO
+	m_Delete = false;	//	ï¿½íœï¿½tï¿½ï¿½ï¿½O
 
 
 	if (m_Top[Priolity] == NULL)
@@ -54,7 +52,7 @@ CScene::CScene(int Priolity)
 		while (Scene->m_Next != NULL)
 		{
 
-			//	m_Next‚ÌŽw‚µŽ¦‚·æ‚Ìƒ|ƒCƒ“ƒ^‚ð“ü‚ê‚Ä‚¢‚é
+			//	m_Nextï¿½ÌŽwï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 			Scene = Scene->m_Next;
 
 		}
@@ -67,10 +65,10 @@ CScene::CScene(int Priolity)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CScene::UpdateAll(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		‘SƒIƒuƒWƒFƒNƒg‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void CScene::UpdateAll(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void CScene::UpdateAll(void)
 {
@@ -79,23 +77,23 @@ void CScene::UpdateAll(void)
 	{
 
 		CScene *Scene = m_Top[CntPriolity];
-		CScene *ScenePrev = m_Top[CntPriolity];	//	‘O‚ÌƒV[ƒ“ƒ|ƒCƒ“ƒ^
-		CScene *SceneNext;			//	ŽŸ‚ÌƒV[ƒ“ƒ|ƒCƒ“ƒ^
+		CScene *ScenePrev = m_Top[CntPriolity];	//	ï¿½Oï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
+		CScene *SceneNext;			//	ï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 		while (Scene != NULL)
 		{
-			Scene->Update();	//	XV
+			Scene->Update();	//	ï¿½Xï¿½V
 
 			Scene = Scene->m_Next;
 		}
 
 		while (Scene != NULL)
-		{	//	ƒŠƒXƒg\‘¢‚ð1‚Â‚¸‚Â’²‚×‚Ä‚¢‚­
+		{	//	ï¿½ï¿½ï¿½Xï¿½gï¿½\ï¿½ï¿½ï¿½ï¿½1ï¿½Â‚ï¿½ï¿½Â’ï¿½ï¿½×‚Ä‚ï¿½ï¿½ï¿½
 
 			SceneNext = Scene->m_Next;
 
 			if (Scene->m_Delete == true)
-			{	//	íœƒtƒ‰ƒO‚ªtrue‚¾‚Á‚½‚ç
+			{	//	ï¿½íœï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½trueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 				if (Scene == m_Top[CntPriolity])
 				{
@@ -103,11 +101,11 @@ void CScene::UpdateAll(void)
 				}
 				else
 				{					
-					ScenePrev->m_Next = Scene->m_Next;	//	ƒŠƒXƒg\‘¢‚Ì‚Â‚È‚¬•Ï‚¦
+					ScenePrev->m_Next = Scene->m_Next;	//	ï¿½ï¿½ï¿½Xï¿½gï¿½\ï¿½ï¿½ï¿½Ì‚Â‚È‚ï¿½ï¿½Ï‚ï¿½
 				}
 
-				Scene->Uninit();	//	I—¹
-				delete Scene;		//	íœ
+				Scene->Uninit();	//	ï¿½Iï¿½ï¿½
+				delete Scene;		//	ï¿½íœ
 			}
 			else
 			{
@@ -125,7 +123,7 @@ void CScene::UpdateAll(void)
 
 		while (scene != NULL)
 		{
-			// íœˆË—Š‚³‚ê‚Ä‚È‚¢ƒ‚ƒm‚ÍXV
+			// ï¿½íœï¿½Ë—ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚È‚ï¿½ï¿½ï¿½ï¿½mï¿½ÍXï¿½V
 			if (!scene->m_Delete)scene->Update();
 			scene = scene->m_Next;
 		}
@@ -139,16 +137,16 @@ void CScene::UpdateAll(void)
 			{
 				if (scene == m_Top[i])
 				{
-					// æ“ª‚ð”jŠü‚·‚é€”õ
+					// ï¿½æ“ªï¿½ï¿½jï¿½ï¿½ï¿½ï¿½ï¿½é€ï¿½ï¿½
 					m_Top[i] = scene->m_Next;
 				}
 				else
 				{
-					// ƒŠƒXƒg\‘¢‚Ì‚Â‚È‚¬•Ï‚¦
+					// ï¿½ï¿½ï¿½Xï¿½gï¿½\ï¿½ï¿½ï¿½Ì‚Â‚È‚ï¿½ï¿½Ï‚ï¿½
 					scenePrev->m_Next = scene->m_Next;
 				}
 
-				// ”jŠü
+				// ï¿½jï¿½ï¿½
 				delete scene;
 				scene = NULL;
 
@@ -158,7 +156,7 @@ void CScene::UpdateAll(void)
 				scenePrev = scene;
 			}
 
-			// i‚ß‚é
+			// ï¿½iï¿½ß‚ï¿½
 			scene = sceneNext;
 
 		}
@@ -166,10 +164,10 @@ void CScene::UpdateAll(void)
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CScene::DrawAll(void)
- ˆø”:		
- –ß‚è’l:	
- à–¾:		‘SƒIƒuƒWƒFƒNƒg‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void CScene::DrawAll(void)
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CScene::DrawAll(void)
 {
@@ -180,18 +178,18 @@ void CScene::DrawAll(void)
 
 		while (Scene != NULL)
 		{			
-			Scene->Draw();	//	•`‰æ
+			Scene->Draw();	//	ï¿½`ï¿½ï¿½
 		
-			Scene = Scene->m_Next;	//	ŽŸ‚ðŽw‚µŽ¦‚·ƒ|ƒCƒ“ƒ^‚ðŠi”[
+			Scene = Scene->m_Next;	//	ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½iï¿½[
 		}
 	}
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CScene::ReleaseAll( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		‘SƒIƒuƒWƒFƒNƒg‚Ì‰ð•ú
+ ï¿½Öï¿½ï¿½ï¿½:	void CScene::ReleaseAll( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‰ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CScene::ReleaseAll(void)
 {
@@ -205,15 +203,15 @@ void CScene::ReleaseAll(void)
 		while (Scene != NULL)
 		{
 	
-			SceneNext = Scene->m_Next;	//	ŽŸ‚Ìƒ|ƒCƒ“ƒ^‚ð•Û‘¶
+			SceneNext = Scene->m_Next;	//	ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½Û‘ï¿½
 			
-			Scene->Uninit();	//	I—¹
+			Scene->Uninit();	//	ï¿½Iï¿½ï¿½
 
-			delete Scene;	//	ƒV[ƒ“‚ÌƒfƒŠ[ƒg
+			delete Scene;	//	ï¿½Vï¿½[ï¿½ï¿½ï¿½Ìƒfï¿½ï¿½ï¿½[ï¿½g
 
-			Scene = SceneNext;	//	ƒV[ƒ“‚ÉŽŸ‚ÌƒV[ƒ“‚ð“ü‚ê‚é
+			Scene = SceneNext;	//	ï¿½Vï¿½[ï¿½ï¿½ï¿½ÉŽï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		}	
-		m_Top[ CntPriolity ] = NULL;	//	ƒgƒbƒv‚ÉNULL‚ð‚¢‚ê‚é
+		m_Top[ CntPriolity ] = NULL;	//	ï¿½gï¿½bï¿½vï¿½ï¿½NULLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 }

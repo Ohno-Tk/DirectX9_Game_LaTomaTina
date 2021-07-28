@@ -1,41 +1,39 @@
 /*=============================================================================
 
-		ƒeƒNƒXƒ`ƒƒŠÇ—[ TextureManager.cpp ]
+		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½[ TextureManager.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/24
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "TextureManager.h"
 
 /*-----------------------------------------------------------------------------
-	ƒ}ƒNƒ’è‹`
+	ï¿½}ï¿½Nï¿½ï¿½ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define TEXTURE_PATH "data/TEXTURE/"
 
 /*-----------------------------------------------------------------------------
-	Ã“I•Ï”
+	ï¿½Ã“Iï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
 const LPSTR CTextureManager::m_FilePass[] = {
-	TEXTURE_PATH"Fade.jpg",	//	ƒtƒF[ƒh
-	TEXTURE_PATH"TITLE/title_text.png",	//	ƒvƒbƒVƒ…ƒ{ƒ^ƒ“
-	TEXTURE_PATH"TITLE/title.png",	//	ƒ^ƒCƒgƒ‹ƒƒS
-	TEXTURE_PATH"GAME/Ground.jpg",	//	’n–Ê
+	TEXTURE_PATH"Fade.jpg",	//	ï¿½tï¿½Fï¿½[ï¿½h
+	TEXTURE_PATH"TITLE/title_text.png",	//	ï¿½vï¿½bï¿½Vï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½
+	TEXTURE_PATH"TITLE/title.png",	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
+	TEXTURE_PATH"GAME/Ground.jpg",	//	ï¿½nï¿½ï¿½
 	TEXTURE_PATH"GAME/runningman000.png",
-	TEXTURE_PATH"GAME/number000.png",	//	”š
-	TEXTURE_PATH"GAME/Kill_Logo.png",	//	killƒƒS
-	TEXTURE_PATH"GAME/sky001.jpg",	//	ƒXƒJƒCƒh[ƒ€
+	TEXTURE_PATH"GAME/number000.png",	//	ï¿½ï¿½ï¿½ï¿½
+	TEXTURE_PATH"GAME/Kill_Logo.png",	//	killï¿½ï¿½ï¿½S
+	TEXTURE_PATH"GAME/sky001.jpg",	//	ï¿½Xï¿½Jï¿½Cï¿½hï¿½[ï¿½ï¿½
 	TEXTURE_PATH"GAME/UI.png",
 	TEXTURE_PATH"text.png",
 	TEXTURE_PATH"RESULT/rogo.png",
@@ -47,52 +45,52 @@ const LPSTR CTextureManager::m_FilePass[] = {
 };
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTextureManager::Load(TEXTURE_ID Id, D3DXVECTOR2 Div)
-ˆø”:		TEXTURE_ID Id		ƒeƒNƒXƒ`ƒƒ‚ÌID
-–ß‚è’l:
-à–¾:		ƒeƒNƒXƒ`ƒƒ‚Ìƒ[ƒh
+ï¿½Öï¿½ï¿½ï¿½:		void CTextureManager::Load(TEXTURE_ID Id, D3DXVECTOR2 Div)
+ï¿½ï¿½ï¿½ï¿½:		TEXTURE_ID Id		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void CTextureManager::Load(TEXTURE_ID Id, D3DXVECTOR2 Div)
 {
 	m_TextureInfo[Id].Div = Div;
 
-	//	“¯‚¶ƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚é‚©‚ÌŒŸõ
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½é‚©ï¿½ÌŒï¿½ï¿½ï¿½
 	auto it = m_Texture_Map.find(Id);
 
 	if (it == m_Texture_Map.end())
-	{	//	‘¶İ‚µ‚È‚©‚Á‚½‚ç
+	{	//	ï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		HRESULT hr;
 
-		//	ƒfƒoƒCƒX‚Ìæ“¾
+		//	ï¿½fï¿½oï¿½Cï¿½Xï¿½Ìæ“¾
 		LPDIRECT3DDEVICE9 Device = CDirectX::GetDevice();
 
-		//	ƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 		hr = D3DXCreateTextureFromFile(Device, m_FilePass[Id], &m_TextureInfo[Id].Texture);
 
 		if (FAILED(hr))
 		{
-			MessageBox(NULL, "ƒeƒNƒXƒ`ƒƒ‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ‚Å‚µ‚½", "Texture.cpp", MB_OK | MB_ICONHAND);
+			MessageBox(NULL, "ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ß‚Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½", "Texture.cpp", MB_OK | MB_ICONHAND);
 			return;
 		}
 
-		//ƒeƒNƒXƒ`ƒƒÚ×î•ñæ“¾
+		//ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ú×ï¿½ï¿½æ“¾
 		D3DXIMAGE_INFO ImageInfo;
 		D3DXGetImageInfoFromFile(m_FilePass[Id], &ImageInfo);
 		m_TextureInfo[Id].Size.x = ImageInfo.Width / Div.x;
 		m_TextureInfo[Id].Size.y = ImageInfo.Height / Div.y;
 
 
-		//	ƒL[‚Æ’l‚ğ˜AŒ‹‚³‚¹‚é
+		//	ï¿½Lï¿½[ï¿½Æ’lï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		m_Texture_Map[Id] = m_TextureInfo[Id];
 	}
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CTextureManager::UnloadAll(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		‘SƒeƒNƒXƒ`ƒƒ‚Ì”jŠü
+ï¿½Öï¿½ï¿½ï¿½:		void CTextureManager::UnloadAll(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì”jï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CTextureManager::UnloadAll(void)
 {
@@ -100,9 +98,9 @@ void CTextureManager::UnloadAll(void)
 	{
 		if (it->second.Texture == NULL) continue;
 
-		it->second.Texture->Release();	//	‰ğ•ú
+		it->second.Texture->Release();	//	ï¿½ï¿½ï¿½
 		it->second.Texture = NULL;
 	}
 
-	m_Texture_Map.clear();	//	‘S—v‘f‚Ìíœ
+	m_Texture_Map.clear();	//	ï¿½Sï¿½vï¿½fï¿½Ìíœ
 }

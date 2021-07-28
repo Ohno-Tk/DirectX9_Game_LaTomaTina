@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		ƒ}ƒl[ƒWƒƒ[ Manager.cpp ]
+		ï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½[ Manager.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/08/24
 ------------------------------------------------------------------------------- 
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/27
 =============================================================================*/
 
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include "DirectX.h"
 #include "Input.h"
@@ -33,33 +31,33 @@
 #include "DebugConsole.h"
 
 /*-----------------------------------------------------------------------------
-	Ã“I•Ï”
+	ï¿½Ã“Iï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-CMode* CManager::m_Mode = new CTitleScene;		//	‰æ–Ê‘JˆÚ
-CInputKeyboard* CManager::m_Keyboard = NULL;	//	ƒL[ƒ{[ƒh
+CMode* CManager::m_Mode = new CTitleScene;		//	ï¿½ï¿½Ê‘Jï¿½ï¿½
+CInputKeyboard* CManager::m_Keyboard = NULL;	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h
 CInputMouse* CManager::m_Mouse = NULL;
 #ifdef ENABLE_PEOC_SOUND
-	CSound* CManager::m_Sound = NULL;			//	ƒTƒEƒ“ƒh
+	CSound* CManager::m_Sound = NULL;			//	ï¿½Tï¿½Eï¿½ï¿½ï¿½h
 #endif
-CTextureManager* CManager::m_TextureManager = NULL;	//	ƒeƒNƒXƒ`ƒƒŠÇ—
-CModelManager* CManager::m_ModelManager = NULL;		//	ƒ‚ƒfƒ‹ŠÇ—
-CFileManager* CManager::m_FileManager = NULL;		//	ƒtƒ@ƒCƒ‹ŠÇ—
-CCamera* CManager::m_Camera = NULL;	//	ƒJƒƒ‰
-CLight* CManager::m_Light = NULL;	//	ƒ‰ƒCƒg
-CFade* CManager::m_Fade = NULL;		//	ƒtƒF[ƒh
+CTextureManager* CManager::m_TextureManager = NULL;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ç—ï¿½
+CModelManager* CManager::m_ModelManager = NULL;		//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ç—ï¿½
+CFileManager* CManager::m_FileManager = NULL;		//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç—ï¿½
+CCamera* CManager::m_Camera = NULL;	//	ï¿½Jï¿½ï¿½ï¿½ï¿½
+CLight* CManager::m_Light = NULL;	//	ï¿½ï¿½ï¿½Cï¿½g
+CFade* CManager::m_Fade = NULL;		//	ï¿½tï¿½Fï¿½[ï¿½h
 
 #ifdef ENABLE_PEOC_DEBUGCONSOLE
-	CDebugConsole* CManager::m_DebugConsole = NULL;	//	ƒfƒoƒbƒOƒRƒ“ƒ\[ƒ‹
+	CDebugConsole* CManager::m_DebugConsole = NULL;	//	ï¿½fï¿½oï¿½bï¿½Oï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½
 #endif
 
 int CManager::m_TomatoCont = 0;
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CManager::Init(HINSTANCE hInstance, HWND hWnd)
- ˆø”:		HINSTANCE hInstance		ƒCƒ“ƒXƒ^ƒ“ƒX
-			HWND hWnd				ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
- –ß‚è’l:	
- à–¾:		‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void CManager::Init(HINSTANCE hInstance, HWND hWnd)
+ ï¿½ï¿½ï¿½ï¿½:		HINSTANCE hInstance		ï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½X
+			HWND hWnd				ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½nï¿½ï¿½ï¿½hï¿½ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CManager::Init(HINSTANCE hInstance, HWND hWnd)
 {
@@ -67,21 +65,21 @@ void CManager::Init(HINSTANCE hInstance, HWND hWnd)
 
 
 	//	DirectX
-	hr = CDirectX::Init(hWnd, true);	//	‰Šú‰»
+	hr = CDirectX::Init(hWnd, true);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	if (FAILED(hr))
-	{	//	ƒGƒ‰[ƒ`ƒFƒbƒN
-		MessageBox(NULL, "DirectXƒNƒ‰ƒX‚Ì¶¬‚ÉŽ¸”s", "Manager.cpp", MB_OK | MB_ICONHAND);
+	{	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
+		MessageBox(NULL, "DirectXï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "Manager.cpp", MB_OK | MB_ICONHAND);
 	}
 
-	//	ƒL[ƒ{[ƒh‚Ì¶¬
+	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ìï¿½ï¿½ï¿½
 	m_Keyboard = new CInputKeyboard;
 
-	hr = m_Keyboard->Init(hInstance, hWnd);	//	‰Šú‰»
+	hr = m_Keyboard->Init(hInstance, hWnd);	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	if (FAILED(hr))
-	{	//	ƒGƒ‰[ƒ`ƒFƒbƒN
-		MessageBox(NULL, "ƒL[ƒ{[ƒhƒNƒ‰ƒX‚Ì¶¬‚ÉŽ¸”s", "Manager.cpp", MB_OK | MB_ICONHAND);
+	{	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
+		MessageBox(NULL, "ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "Manager.cpp", MB_OK | MB_ICONHAND);
 	}
 
 	m_Mouse = new CInputMouse;
@@ -89,96 +87,96 @@ void CManager::Init(HINSTANCE hInstance, HWND hWnd)
 	hr = m_Mouse->Init(hInstance, hWnd);
 	
 #ifdef ENABLE_PEOC_SOUND
-	//	ƒTƒEƒ“ƒh‚Ì¶¬
+	//	ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½Ìï¿½ï¿½ï¿½
 	m_Sound = new CSound;
 
-	hr = m_Sound->Init();	//	‰Šú‰»
+	hr = m_Sound->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	if (FAILED(hr))
-	{	//	ƒGƒ‰[ƒ`ƒFƒbƒN
-		MessageBox(NULL, "ƒL[ƒ{[ƒhƒNƒ‰ƒX‚Ì¶¬‚ÉŽ¸”s", "Manager.cpp", MB_OK | MB_ICONHAND);
+	{	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
+		MessageBox(NULL, "ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½s", "Manager.cpp", MB_OK | MB_ICONHAND);
 	}
 #endif
 
-	//	ƒeƒNƒXƒ`ƒƒƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_TextureManager = new CTextureManager;
 
-	//	ƒ‚ƒfƒ‹ƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_ModelManager = new CModelManager;
 	m_ModelManager->Init();
 
-	//	ƒtƒ@ƒCƒ‹ŠÇ—ƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç—ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_FileManager = new CFileManager;
 
-	//	ƒJƒƒ‰ƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_Camera = new CCamera;
 
-	//	ƒ‰ƒCƒgƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½ï¿½ï¿½Cï¿½gï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_Light = new CLight;
-	m_Light->Init();	//	‰Šú‰»
+	m_Light->Init();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	//	ƒtƒF[ƒhƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_Fade = CFade::Create();
 
-	CDebugFont::Init();	//	ƒfƒoƒbƒOƒtƒHƒ“ƒg‚Ì‰Šú‰»
+	CDebugFont::Init();	//	ï¿½fï¿½oï¿½bï¿½Oï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	m_Mode->Init();	//	‰æ–Ê‘JˆÚ‚Ì‰Šú‰»
+	m_Mode->Init();	//	ï¿½ï¿½Ê‘Jï¿½Ú‚Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
 #ifdef ENABLE_PEOC_DEBUGCONSOLE
 
-	//	ƒfƒoƒbƒOƒRƒ“ƒ\[ƒ‹ƒNƒ‰ƒX‚Ì¶¬
+	//	ï¿½fï¿½oï¿½bï¿½Oï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	m_DebugConsole = new CDebugConsole;
 	m_DebugConsole->Init();
 #endif
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CManager::Uninit(void)
-ˆø”:		
-–ß‚è’l:
-à–¾:		I—¹
+ï¿½Öï¿½ï¿½ï¿½:		void CManager::Uninit(void)
+ï¿½ï¿½ï¿½ï¿½:		
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Iï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CManager::Uninit(void)
 {
-	CDebugFont::Uninit();	//	ƒfƒoƒbƒOƒtƒHƒ“ƒg‚ÌI—¹
+	CDebugFont::Uninit();	//	ï¿½fï¿½oï¿½bï¿½Oï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½ÌIï¿½ï¿½
 
 #ifdef ENABLE_PEOC_DEBUGCONSOLE
 	if (m_DebugConsole)
-	{	//	ƒfƒoƒbƒOƒRƒ“ƒ\[ƒ‹
+	{	//	ï¿½fï¿½oï¿½bï¿½Oï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½
 
-		m_DebugConsole->Uninit();	//	I—¹
-		delete m_DebugConsole;		//	‰ð•ú
+		m_DebugConsole->Uninit();	//	ï¿½Iï¿½ï¿½
+		delete m_DebugConsole;		//	ï¿½ï¿½ï¿½
 		m_DebugConsole = NULL;
 	}
 #endif
 
 	if (m_Mode)
-	{	//	‰æ–Ê‘JˆÚ
+	{	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 
-		m_Mode->Uninit();	//	I—¹
-		delete m_Mode;		//	‰ð•ú
+		m_Mode->Uninit();	//	ï¿½Iï¿½ï¿½
+		delete m_Mode;		//	ï¿½ï¿½ï¿½
 		m_Mode = NULL;
 	}
 
 	if (m_Fade)
-	{	//	ƒtƒF[ƒh
+	{	//	ï¿½tï¿½Fï¿½[ï¿½h
 
-		m_Fade->Uninit();	//	I—¹
-		delete m_Fade;		//	‰ð•ú
+		m_Fade->Uninit();	//	ï¿½Iï¿½ï¿½
+		delete m_Fade;		//	ï¿½ï¿½ï¿½
 		m_Fade = NULL;
 	}
 
 	if (m_Light)
-	{	//	ƒ‰ƒCƒg
+	{	//	ï¿½ï¿½ï¿½Cï¿½g
 
 		delete m_Light;
 		m_Light = NULL;
 	}
 
 	if (m_Camera)
-	{	//	ƒJƒƒ‰
+	{	//	ï¿½Jï¿½ï¿½ï¿½ï¿½
 
-		delete m_Camera;	//	‰ð•ú
+		delete m_Camera;	//	ï¿½ï¿½ï¿½
 		m_Camera = NULL;
 	}
 
@@ -189,27 +187,27 @@ void CManager::Uninit(void)
 	}
 
 	if (m_ModelManager)
-	{	//	ƒ‚ƒfƒ‹
+	{	//	ï¿½ï¿½ï¿½fï¿½ï¿½
 
 		m_ModelManager->UnloadAll();
-		delete m_ModelManager;	//	‰ð•ú
+		delete m_ModelManager;	//	ï¿½ï¿½ï¿½
 		m_ModelManager = NULL;
 	}
 
 	if (m_TextureManager)
-	{	//	ƒeƒNƒXƒ`ƒƒ
+	{	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
 
-		m_TextureManager->UnloadAll();	//	‘SƒeƒNƒXƒ`ƒƒ‚Ì”jŠü
-		delete m_TextureManager;		//	‰ð•ú
+		m_TextureManager->UnloadAll();	//	ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì”jï¿½ï¿½
+		delete m_TextureManager;		//	ï¿½ï¿½ï¿½
 		m_TextureManager = NULL;
 	}
 
 	if (m_Sound)
-	{	//	ƒTƒEƒ“ƒh
+	{	//	ï¿½Tï¿½Eï¿½ï¿½ï¿½h
 
 		m_Sound->Uninit();
-		delete m_Sound;		//	I—¹
-		m_Sound = NULL;		//	‰ð•ú
+		delete m_Sound;		//	ï¿½Iï¿½ï¿½
+		m_Sound = NULL;		//	ï¿½ï¿½ï¿½
 	}
 
 	if (m_Mouse)
@@ -220,71 +218,71 @@ void CManager::Uninit(void)
 	}
 
 	if (m_Keyboard)
-	{	//	ƒL[ƒ{[ƒh
+	{	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½h
 
-		m_Keyboard->Uninit();	//	I—¹
-		delete m_Keyboard;		//	‰ð•ú
+		m_Keyboard->Uninit();	//	ï¿½Iï¿½ï¿½
+		delete m_Keyboard;		//	ï¿½ï¿½ï¿½
 		m_Keyboard = NULL;
 	}
 
-	CDirectX::Uninit();	//	DirectX‚ÌI—¹
+	CDirectX::Uninit();	//	DirectXï¿½ÌIï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CManager::Update(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		XV
+ï¿½Öï¿½ï¿½ï¿½:		void CManager::Update(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void CManager::Update(void)
 {
-	m_Keyboard->Update();	//	ƒL[ƒ{[ƒh‚ÌXV
+	m_Keyboard->Update();	//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½ÌXï¿½V
 
 	m_Mouse->Update();
 
-	m_Camera->Update();		//	ƒJƒƒ‰‚ÌXV
+	m_Camera->Update();		//	ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ÌXï¿½V
 
-	m_Fade->Update();		//	ƒtƒF[ƒh‚ÌXV
+	m_Fade->Update();		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ÌXï¿½V
 
-	m_Mode->Update();		//	‰æ–Ê‘JˆÚ‚ÌXV
+	m_Mode->Update();		//	ï¿½ï¿½Ê‘Jï¿½Ú‚ÌXï¿½V
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CManager::Draw(void)
-ˆø”:
-–ß‚è’l:
-à–¾:		•`‰æ
+ï¿½Öï¿½ï¿½ï¿½:		void CManager::Draw(void)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CManager::Draw(void)
 {
-	CDirectX::DrawBegin();		//	•`‰æ‚ÌŠJŽn
+	CDirectX::DrawBegin();		//	ï¿½`ï¿½ï¿½ÌŠJï¿½n
 
-	m_Mode->Draw();				//	‰æ–Ê‘JˆÚ‚Ì•`‰æ
+	m_Mode->Draw();				//	ï¿½ï¿½Ê‘Jï¿½Ú‚Ì•`ï¿½ï¿½
 
-	m_Fade->Draw();				//	ƒtƒF[ƒh‚Ì•`‰æ
+	m_Fade->Draw();				//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 
-	CDebugFont::Draw();			//	ƒfƒoƒbƒOƒtƒHƒ“ƒg‚Ì•`‰æ
+	CDebugFont::Draw();			//	ï¿½fï¿½oï¿½bï¿½Oï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Ì•`ï¿½ï¿½
 
-	CDirectX::DrawEnd();		//	•`‰æ‚ÌI—¹
+	CDirectX::DrawEnd();		//	ï¿½`ï¿½ï¿½ÌIï¿½ï¿½
 }
 
 /*-----------------------------------------------------------------------------
-ŠÖ”–¼:		void CManager::SetMode(CMode *Mode)
-ˆø”:
-–ß‚è’l:
-à–¾:		‰æ–Ê‘JˆÚ‚ÌØ‚è‘Ö‚¦
+ï¿½Öï¿½ï¿½ï¿½:		void CManager::SetMode(CMode *Mode)
+ï¿½ï¿½ï¿½ï¿½:
+ï¿½ß‚ï¿½l:
+ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½Ê‘Jï¿½Ú‚ÌØ‚ï¿½Ö‚ï¿½
 -----------------------------------------------------------------------------*/
 void CManager::SetMode(CMode *Mode)
 {
 	if (!m_Mode) return;
 
-	m_Mode->Uninit();	//	I—¹
+	m_Mode->Uninit();	//	ï¿½Iï¿½ï¿½
 
-	delete m_Mode;		//	‰ð•ú
+	delete m_Mode;		//	ï¿½ï¿½ï¿½
 	m_Mode = NULL;
 
-	//	V‚µ‚¢ƒ‚[ƒh‚ÌÝ’è
+	//	ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ÌÝ’ï¿½
 	m_Mode = Mode;
 
-	m_Mode->Init();		//	‰Šú‰»
+	m_Mode->Init();		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

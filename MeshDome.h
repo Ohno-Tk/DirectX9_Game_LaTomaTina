@@ -1,15 +1,13 @@
 /*=============================================================================
 
-		ƒƒbƒVƒ…”¼‹…[ MeshDome.h ]
+		ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ MeshDome.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2017/05/12
 -------------------------------------------------------------------------------
-	¡@XV“ú
+	ï¿½ï¿½ï¿½@ï¿½Xï¿½Vï¿½ï¿½
 		2017/08/18
 =============================================================================*/
 
@@ -17,73 +15,73 @@
 #define _MESHDOME_H_
 
 /*-----------------------------------------------------------------------------
-	ƒNƒ‰ƒX
+	ï¿½Nï¿½ï¿½ï¿½X
 -----------------------------------------------------------------------------*/
 class CMeshDome : public CScene
 {
 public:
 	typedef enum
-	{	//	‚Ç‚Á‚¿ü‚è‚Å•`‰æ‚³‚¹‚é‚©
+	{	//	ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•`ï¿½æ‚³ï¿½ï¿½ï¿½é‚©
 
-		IDXBACK_DRAW_CLOCKWISE = 0,	//	Œv‰ñ‚è
-		IDXBACK_DRAW_INV_CLOCKWISE	//	‹tŒv‰ñ‚è
+		IDXBACK_DRAW_CLOCKWISE = 0,	//	ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½
+		IDXBACK_DRAW_INV_CLOCKWISE	//	ï¿½tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½
 
 	}IDXBACK_DRAW;
 
-	CMeshDome(int Priolity = 1);		//	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	~CMeshDome(){}	//	ƒfƒXƒXƒgƒ‰ƒNƒ^
+	CMeshDome(int Priolity = 1);		//	ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+	~CMeshDome(){}	//	ï¿½fï¿½Xï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 
 	static CMeshDome *Create(D3DXVECTOR3 Pos, UINT NumBlock_X, UINT NumBlock_Y, float Radius, IDXBACK_DRAW IdxBack, CTextureManager::TEXTURE_ID TextureID);
 
-	virtual void Init(void)override;		//	‰Šú‰»
-	virtual void Uninit(void)override;	//	I—¹
-	virtual void Update(void)override;	//	XV
-	virtual void Draw(void)override;		//	•`‰æ
+	virtual void Init(void)override;		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	virtual void Uninit(void)override;	//	ï¿½Iï¿½ï¿½
+	virtual void Update(void)override;	//	ï¿½Xï¿½V
+	virtual void Draw(void)override;		//	ï¿½`ï¿½ï¿½
 
-	void SetRot(const D3DXVECTOR3 Rot) { m_Rot = Rot; };		//	‰ñ“]‚ÌƒZƒbƒg
-															//	c‰¡‚Ì–‡”‚ÌƒZƒbƒg
+	void SetRot(const D3DXVECTOR3 Rot) { m_Rot = Rot; };		//	ï¿½ï¿½]ï¿½ÌƒZï¿½bï¿½g
+															//	ï¿½cï¿½ï¿½ï¿½Ì–ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 	void SetNumBlock(const UINT NumBlock_X, const UINT NumBlock_Y) { m_NumBlock_X = NumBlock_X; m_NumBlock_Y = NumBlock_Y; };
 
-	//	’¸“_”‚ÌŒvZ
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ÌŒvï¿½Z
 	void SetVertexCount(const UINT NumBlock_X, const UINT NumBlock_Y) { m_Vertex = (NumBlock_X + 1) * (NumBlock_Y + 1); };
 
-	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚ÌŒvZ
+	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ÌŒvï¿½Z
 	void SetIdxVerTex(const UINT NumBlock_X, const UINT NumBlock_Y) { m_IdxVerTex = (2 + 2 * NumBlock_X) * NumBlock_Y + (NumBlock_Y - 1) * 2; };
 
-	//	‚Ç‚Á‚¿ü‚è‚Å•`‰æ‚³‚¹‚é‚©
+	//	ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•`ï¿½æ‚³ï¿½ï¿½ï¿½é‚©
 	void SetIdxBackDraw(const IDXBACK_DRAW IdxBackDraw) { m_IdxBackDraw = IdxBackDraw; };
 
-	//	ƒeƒNƒXƒ`ƒƒ‚ÌID‚ÌƒZƒbƒg
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½IDï¿½ÌƒZï¿½bï¿½g
 	void SetTextureID(const CTextureManager::TEXTURE_ID Id) { m_TextureId = Id; }
 
 private:
-	void MakeIndex(void);	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@‚Ìì¬
-	void SetWorld(LPDIRECT3DDEVICE9 Device);		//	ƒ[ƒ‹ƒhÀ•W•ÏŠ·
-	void MakeVerTex(void);	//	’¸“_‚Ìì¬
+	void MakeIndex(void);	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Ìì¬
+	void SetWorld(LPDIRECT3DDEVICE9 Device);		//	ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
+	void MakeVerTex(void);	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
-	static LPDIRECT3DTEXTURE9 m_Texture;	// ƒeƒNƒXƒ`ƒƒ‚Ö‚Ìƒ|ƒCƒ“ƒ^
-	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;		// ’¸“_ƒoƒbƒtƒ@‚Ö‚Ìƒ|ƒCƒ“ƒ^
-	LPDIRECT3DINDEXBUFFER9	m_IdxBuff;		//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@ƒCƒ“ƒ^ƒtƒF[ƒX‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ÌƒAƒhƒŒƒX
+	static LPDIRECT3DTEXTURE9 m_Texture;	// ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+	LPDIRECT3DVERTEXBUFFER9 m_VtxBuff;		// ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^
+	LPDIRECT3DINDEXBUFFER9	m_IdxBuff;		//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½^ï¿½tï¿½Fï¿½[ï¿½Xï¿½Ö‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½ÌƒAï¿½hï¿½ï¿½ï¿½X
 
-	D3DXVECTOR3	m_Rot;			// ‰ñ“]
-	D3DXVECTOR3	m_Scl;			// Šg‘å—¦
+	D3DXVECTOR3	m_Rot;			// ï¿½ï¿½]
+	D3DXVECTOR3	m_Scl;			// ï¿½gï¿½å—¦
 
-	D3DXVECTOR2 m_UVSet;		//	ƒeƒNƒXƒ`ƒƒÀ•W
+	D3DXVECTOR2 m_UVSet;		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½W
 
-	D3DXMATRIX	m_MtxWorld;		// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX
+	D3DXMATRIX	m_MtxWorld;		// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½}ï¿½gï¿½ï¿½ï¿½bï¿½Nï¿½X
 
 
-	UINT m_NumBlock_X;	//	‰¡‚Ì–‡”
-	UINT m_NumBlock_Y;	//	c‚Ì–‡”
+	UINT m_NumBlock_X;	//	ï¿½ï¿½ï¿½Ì–ï¿½ï¿½ï¿½
+	UINT m_NumBlock_Y;	//	ï¿½cï¿½Ì–ï¿½ï¿½ï¿½
 
-	int m_Vertex;		//	’¸“_”
-	int m_IdxVerTex;	//	ƒCƒ“ƒfƒbƒNƒXƒoƒbƒtƒ@”
+	int m_Vertex;		//	ï¿½ï¿½ï¿½_ï¿½ï¿½
+	int m_IdxVerTex;	//	ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½
 
-	float m_Radius;	//	”¼Œa
+	float m_Radius;	//	ï¿½ï¿½ï¿½a
 
-	IDXBACK_DRAW m_IdxBackDraw;	//	‚Ç‚Á‚¿ü‚è‚Å•`‰æ‚³‚¹‚é‚©
+	IDXBACK_DRAW m_IdxBackDraw;	//	ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•`ï¿½æ‚³ï¿½ï¿½ï¿½é‚©
 
-	CTextureManager::TEXTURE_ID m_TextureId;	//	ƒeƒNƒXƒ`ƒƒ‚ÌID
+	CTextureManager::TEXTURE_ID m_TextureId;	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ID
 
 };
 #endif
